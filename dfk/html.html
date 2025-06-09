@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DFKLearn - Cours HTML</title>
+  <link rel="stylesheet" href="DFK.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>DFKLearn</h1>
+    <p>Apprendre HTML pas à pas</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="html.html" class="active">HTML</a>
+    <a href="css.html">CSS</a>
+    <a href="#">JavaScript</a>
+    <a href="#">Python</a>
+    <a href="#">Algorithme</a>
+    <a href="#">Langage C</a>
+  </nav>
+
+  <main>
+    <h2>📘 Cours HTML – Liste des chapitres</h2>
+    <ul>
+      <li><a href="chapitre1.html" onclick="showChapter(1); return false;"><h2><strong>Chapitre 1 : Introduction au HTML</strong></h2></a></li>
+      <br>
+      <li><a href="chapitre2.html" onclick="showChapter(2); return false;"><h2><strong>Chapitre 2 : Les balises HTML importantes pour structurer une page</strong></h2></a></li><br><br>
+      <li><a href="chapitre3.html" onclick="showChapter(3); return false;"><h2><strong></strong>Chapitre 3 : Liens et images</strong></h2></a></li>
+      <br>
+       <li><a href="devoir.html" onclick="showChapter(4); return false;"><h2><strong>Devoir </strong></h2></a></li>
+       <br>
+      <li><a href="chapitre4.html" onclick="showChapter(5); return false;"><h2><strong></strong>Chapitre 4 : Listes et tableaux</strong></h2></a></li>
+      <br>
+
+      <li><a href="chapitre5.html" onclick="showChapter(6); return false;"><h2><strong></strong>Chapitre 5 : Formulaires de base et avances</strong></h2></a></li>
+      <br>
+      
+     <li><a href="Devoir2.html" onclick="showChapter(7); return false;"><h2><strong></strong>devoir</strong></h2></a></li>
+     <br>
+      <li><a href="examen.html" onclick="showChapter(8); return false;"><h2><strong></strong>examen</strong></h2></a></li>
+     <br>
+
+
+    </ul>
+
+    <div id="chapter-content"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

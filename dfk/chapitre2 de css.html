@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 2 - Les Sélecteurs CSS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    h1, h2 { color: #2c3e50; }
+    .section { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 5px #ccc; margin-bottom: 20px; }
+    code { background: #eee; padding: 2px 6px; border-radius: 4px; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; }
+    button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .result { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>Chapitre 2 : Les Sélecteurs CSS</h1>
+    <p>Les sélecteurs CSS permettent de cibler les éléments HTML à styliser.</p>
+
+    <h2>1. Sélecteur de type</h2>
+    <p>Sélectionne tous les éléments d'un type donné :</p>
+    <code>p { color: red; }</code>
+
+    <h2>2. Sélecteur de classe</h2>
+    <p>Cible les éléments avec une classe spécifique :</p>
+    <code>.important { font-weight: bold; }</code>
+
+    <h2>3. Sélecteur d'identifiant (ID)</h2>
+    <p>Cible un élément unique avec un ID :</p>
+    <code>#titre { text-align: center; }</code>
+
+    <h2>4. Sélecteurs combinés</h2>
+    <p>Vous pouvez combiner les sélecteurs :</p>
+    <code>div p.important { color: blue; }</code>
+  </div>
+
+  <div class="section">
+    <h2>Exemple</h2>
+    <pre><code>&lt;style&gt;
+  p { color: green; }
+  .rouge { color: red; }
+  #titre { font-size: 24px; }
+&lt;/style&gt;
+
+&lt;h1 id="titre"&gt;Mon titre&lt;/h1&gt;
+&lt;p&gt;Paragraphe normal&lt;/p&gt;
+&lt;p class="rouge"&gt;Paragraphe rouge&lt;/p&gt;
+</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>QCM - Testez vos connaissances</h2>
+    <form id="qcm">
+      <p>1. Quel symbole utilise-t-on pour cibler une classe ?</p>
+      <label><input type="radio" name="q1" value="a"> #</label><br>
+      <label><input type="radio" name="q1" value="b"> .</label><br>
+      <label><input type="radio" name="q1" value="c"> *</label><br><br>
+
+      <p>2. Quel sélecteur est le plus spécifique ?</p>
+      <label><input type="radio" name="q2" value="a"> Le sélecteur de type</label><br>
+      <label><input type="radio" name="q2" value="b"> Le sélecteur de classe</label><br>
+      <label><input type="radio" name="q2" value="c"> Le sélecteur ID</label><br><br>
+
+      <button type="button" onclick="corrigerQCM()">Valider</button>
+      <p id="resultat" class="result"></p>
+    </form>
+  </div>
+
+  <script>
+    function corrigerQCM() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+      if (q1 && q1.value === "b") score++;
+      if (q2 && q2.value === "c") score++;
+
+      const res = document.getElementById("resultat");
+      if (score === 2) {
+        res.textContent = "✅ Bravo, vous avez tout juste !";
+        res.style.color = "green";
+      } else {
+        res.textContent = `❌ Vous avez ${score}/2 bonnes réponses. Réessayez.`;
+        res.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Devoir - Chapitre 3 : Opérateurs et Conditions</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 20px; }
+    section { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+    h1, h2 { color: #2c3e50; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; font-family: monospace; }
+    .correction { background: #e8f5e9; padding: 10px; border-left: 4px solid #2e7d32; margin-top: 10px; display: none; white-space: pre-wrap; }
+    label { display: block; margin: 5px 0; }
+    button { margin-top: 10px; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    #resultat { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>Devoir – Chapitre 3 : Opérateurs et Conditions</h1>
+
+  <!-- EXERCICES -->
+  <section>
+    <h2>Exercice 1 (5 pts)</h2>
+    <p>Crée deux variables a = 7 et b = 3. Affiche leur somme, différence, et produit.</p>
+    <textarea id="exo1"></textarea>
+    <button onclick="corriger('corr1')">Afficher la correction</button>
+    <div id="corr1" class="correction">
+let a = 7;
+let b = 3;
+console.log("Somme :", a + b);
+console.log("Différence :", a - b);
+console.log("Produit :", a * b);
+    </div>
+  </section>
+
+  <section>
+    <h2>Exercice 2 (5 pts)</h2>
+    <p>Compare x = 10 et y = "10" avec == et === et affiche les résultats.</p>
+    <textarea id="exo2"></textarea>
+    <button onclick="corriger('corr2')">Afficher la correction</button>
+    <div id="corr2" class="correction">
+let x = 10;
+let y = "10";
+console.log(x == y);  // true
+console.log(x === y); // false
+    </div>
+  </section>
+
+  <section>
+    <h2>Exercice 3 (5 pts)</h2>
+    <p>Crée une variable note. Si elle est ≥ 10, affiche "Réussi", sinon "Échec".</p>
+    <textarea id="exo3"></textarea>
+    <button onclick="corriger('corr3')">Afficher la correction</button>
+    <div id="corr3" class="correction">
+let note = 12;
+if (note >= 10) {
+  console.log("Réussi");
+} else {
+  console.log("Échec");
+}
+    </div>
+  </section>
+
+  <section>
+    <h2>Exercice 4 (5 pts)</h2>
+    <p>Crée une variable age. Utilise l'opérateur ternaire pour afficher "Majeur" ou "Mineur".</p>
+    <textarea id="exo4"></textarea>
+    <button onclick="corriger('corr4')">Afficher la correction</button>
+    <div id="corr4" class="correction">
+let age = 17;
+let statut = (age >= 18) ? "Majeur" : "Mineur";
+console.log(statut);
+    </div>
+  </section>
+
+  <!-- QCM -->
+  <section>
+    <h2>QCM (10 pts total – 6 questions)</h2>
+    <form id="qcmForm">
+      <p>1. Quel opérateur est utilisé pour une comparaison stricte ?</p>
+      <label><input type="radio" name="q1" value="a"> ==</label>
+      <label><input type="radio" name="q1" value="b"> !=</label>
+      <label><input type="radio" name="q1" value="c"> ===</label>
+
+      <p>2. Que retourne (5 !== "5") ?</p>
+      <label><input type="radio" name="q2" value="a"> true</label>
+      <label><input type="radio" name="q2" value="b"> false</label>
+      <label><input type="radio" name="q2" value="c"> undefined</label>
+
+      <p>3. Que signifie && en JavaScript ?</p>
+      <label><input type="radio" name="q3" value="a"> OU</label>
+      <label><input type="radio" name="q3" value="b"> NON</label>
+      <label><input type="radio" name="q3" value="c"> ET</label>
+
+      <p>4. Quel opérateur donne "faux" si l’une des conditions est fausse ?</p>
+      <label><input type="radio" name="q4" value="a"> &&</label>
+      <label><input type="radio" name="q4" value="b"> ||</label>
+      <label><input type="radio" name="q4" value="c"> !</label>
+
+      <p>5. Quel mot-clé démarre une condition ?</p>
+      <label><input type="radio" name="q5" value="a"> if</label>
+      <label><input type="radio" name="q5" value="b"> when</label>
+      <label><input type="radio" name="q5" value="c"> while</label>
+
+      <p>6. Que signifie (4 > 2) ?</p>
+      <label><input type="radio" name="q6" value="a"> false</label>
+      <label><input type="radio" name="q6" value="b"> true</label>
+      <label><input type="radio" name="q6" value="c"> NaN</label>
+    </form>
+    <button onclick="corrigerQCM()">Corriger QCM</button>
+    <div id="resultat"></div>
+  </section>
+
+  <script>
+    function corriger(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function corrigerQCM() {
+      const reponses = {
+        q1: 'c', q2: 'a', q3: 'c',
+        q4: 'a', q5: 'a', q6: 'b'
+      };
+      let score = 0;
+      for (let i = 1; i <= 6; i++) {
+        const nom = 'q' + i;
+        const radios = document.getElementsByName(nom);
+        for (let radio of radios) {
+          if (radio.checked && radio.value === reponses[nom]) {
+            score++;
+          }
+        }
+      }
+
+      const totalQCM = 10;
+      const pointsQCM = (score / 6) * totalQCM;
+      const totalExo = 20; // simulé à 20/20 ici
+      const total = pointsQCM + totalExo;
+      const percent = (total / 30) * 100;
+      let message = `Note finale : ${total.toFixed(1)}/30 (${percent.toFixed(1)}%)`;
+
+      message += percent >= 60 ? " ✅ Réussi" : " ❌ Échec";
+      document.getElementById("resultat").textContent = message;
+    }
+  </script>
+  
+
+  <h1>📘 Devoir Final – JavaScript Chapitres 1 à 3</h1>
+
+  <h2>📋 Instructions</h2>
+  <p>Ce devoir couvre les chapitres suivants :</p>
+  <ul>
+    <li>Chapitre 1 : Les variables</li>
+    <li>Chapitre 2 : Les opérateurs</li>
+    <li>Chapitre 3 : Les conditions</li>
+  </ul>
+  <p>Tu dois obtenir au moins <strong>60 %</strong> pour réussir.</p>
+
+  <div class="quiz">
+    <h2>🧠 QCM (12 questions)</h2>
+
+    <!-- Chapitre 1 -->
+    <div class="question">
+      <p><strong>1. Quel mot-clé permet de créer une variable ?</strong></p>
+      <input type="radio" name="q1" value="1"> A. let<br>
+      <input type="radio" name="q1" value="0"> B. varriable<br>
+      <input type="radio" name="q1" value="0"> C. define<br>
+    </div>
+    <div class="question">
+      <p><strong>2. Que fait <code>let nom = "Paul";</code> ?</strong></p>
+      <input type="radio" name="q2" value="1"> A. Crée une variable contenant un texte<br>
+      <input type="radio" name="q2" value="0"> B. Supprime une variable<br>
+      <input type="radio" name="q2" value="0"> C. Affiche une valeur<br>
+    </div>
+    <div class="question">
+      <p><strong>3. Comment stocker un nombre ?</strong></p>
+      <input type="radio" name="q3" value="1"> A. let x = 10;<br>
+      <input type="radio" name="q3" value="0"> B. x = "dix";<br>
+      <input type="radio" name="q3" value="0"> C. let = 10;<br>
+    </div>
+    <div class="question">
+      <p><strong>4. Quelle est la bonne syntaxe ?</strong></p>
+      <input type="radio" name="q4" value="0"> A. let nom "Alice";<br>
+      <input type="radio" name="q4" value="1"> B. let nom = "Alice";<br>
+      <input type="radio" name="q4" value="0"> C. nom = "Alice"<br>
+    </div>
+
+    <!-- Chapitre 2 -->
+    <div class="question">
+      <p><strong>5. Quel symbole est utilisé pour l'addition ?</strong></p>
+      <input type="radio" name="q5" value="1"> A. +<br>
+      <input type="radio" name="q5" value="0"> B. *<br>
+      <input type="radio" name="q5" value="0"> C. =<br>
+    </div>
+    <div class="question">
+      <p><strong>6. Que vaut <code>4 * 2</code> ?</strong></p>
+      <input type="radio" name="q6" value="1"> A. 8<br>
+      <input type="radio" name="q6" value="0"> B. 6<br>
+      <input type="radio" name="q6" value="0"> C. 10<br>
+    </div>
+    <div class="question">
+      <p><strong>7. Que fait l'opérateur <code>%</code> ?</strong></p>
+      <input type="radio" name="q7" value="0"> A. Addition<br>
+      <input type="radio" name="q7" value="1"> B. Modulo (reste de la division)<br>
+      <input type="radio" name="q7" value="0"> C. Soustraction<br>
+    </div>
+    <div class="question">
+      <p><strong>8. Quelle expression renvoie vrai ?</strong></p>
+      <input type="radio" name="q8" value="1"> A. 5 > 3<br>
+      <input type="radio" name="q8" value="0"> B. 5 == "6"<br>
+      <input type="radio" name="q8" value="0"> C. 3 >= 10<br>
+    </div>
+
+    <!-- Chapitre 3 -->
+    <div class="question">
+      <p><strong>9. Que fait <code>if (x &gt; 0)</code> ?</strong></p>
+      <input type="radio" name="q9" value="1"> A. Vérifie si x est positif<br>
+      <input type="radio" name="q9" value="0"> B. Multiplie x<br>
+      <input type="radio" name="q9" value="0"> C. Efface x<br>
+    </div>
+    <div class="question">
+      <p><strong>10. Le mot <code>else</code> sert à :</strong></p>
+      <input type="radio" name="q10" value="1"> A. Traiter le cas où if est faux<br>
+      <input type="radio" name="q10" value="0"> B. Répéter un test<br>
+      <input type="radio" name="q10" value="0"> C. Créer une variable<br>
+    </div>
+    <div class="question">
+      <p><strong>11. Quel test est faux ?</strong></p>
+      <input type="radio" name="q11" value="0"> A. 5 != 3<br>
+      <input type="radio" name="q11" value="1"> B. 7 < 2<br>
+      <input type="radio" name="q11" value="0"> C. 10 >= 10<br>
+    </div>
+    <div class="question">
+      <p><strong>12. Comment écrire une condition ?</strong></p>
+      <input type="radio" name="q12" value="1"> A. if (x == 5)<br>
+      <input type="radio" name="q12" value="0"> B. si x = 5<br>
+      <input type="radio" name="q12" value="0"> C. test (x == 5)<br>
+    </div>
+
+    <button onclick="corriger()">Corriger</button>
+    <div id="resultat" class="result"></div>
+  </div>
+
+  <h2>✍️ Exercices ouverts</h2>
+
+  <h3>Exercice 1</h3>
+  <p>Crée une variable <code>prenom</code> contenant ton prénom et affiche-la.</p>
+
+  <h3>Exercice 2</h3>
+  <p>Crée deux variables <code>a</code> et <code>b</code> et affiche leur somme.</p>
+
+  <h3>Exercice 3</h3>
+  <p>Crée une variable <code>age</code>. Si l'âge est supérieur ou égal à 18, affiche « Majeur », sinon « Mineur ».</p>
+
+  <h3>Exercice 4</h3>
+  <p>Crée une variable <code>note</code>. Si la note est supérieure ou égale à 10, affiche « Réussi », sinon « Échec ».</p>
+
+  <div class="a-propos">
+    <h2>ℹ️ À propos de JavaScript</h2>
+    <p><strong>Créateur :</strong> Brendan Eich</p>
+    <p><strong>Année de création :</strong> 1995</p>
+    <p>JavaScript est un langage utilisé dans tous les navigateurs pour rendre les sites web interactifs.</p>
+  </div>
+
+  <script>
+    function corriger() {
+      let score = 0;
+      for (let i = 1; i <= 12; i++) {
+        if (document.querySelector('input[name="q' + i + '"]:checked')?.value == "1") score++;
+      }
+
+      let pourcentage = (score / 12) * 100;
+      let message = `Score : ${score}/12 (${pourcentage.toFixed(0)}%) — `;
+
+      if (pourcentage >= 60) {
+        message += "✅ Réussi";
+        document.getElementById("resultat").className = "result valid";
+      } else {
+        message += "❌ Échec";
+        document.getElementById("resultat").className = "result echec";
+      }
+
+      document.getElementById("resultat").innerText = message;
+    }
+  </script>
+
+
+
+</body>
+</html>
