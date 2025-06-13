@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapitre 5 - Formulaires HTML de base et avancés</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  h1, h2 {
+    color: #2c3e50;
+  }
+  form {
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  input, select, textarea {
+    padding: 8px;
+    margin-top: 4px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    background-color: #2980b9;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #1c5980;
+  }
+  pre {
+    background: #eee;
+    border-left: 5px solid #3498db;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  .quiz {
+    margin-top: 20px;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  #result {
+    margin-top: 12px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Chapitre 5 : Formulaires HTML de base et avancés</h1>
+
+<h2>1. Qu'est-ce qu'un formulaire ?</h2>
+<p>Un formulaire HTML permet de collecter des données auprès des utilisateurs, comme du texte, des choix multiples, des dates, etc. Ces données peuvent ensuite être envoyées vers un serveur pour traitement.</p>
+
+<h2>2. Les balises principales d’un formulaire</h2>
+<ul>
+  <li><code>&lt;form&gt;</code> : conteneur du formulaire, avec des attributs comme <code>action</code> (URL du serveur) et <code>method</code> (GET ou POST).</li>
+  <li><code>&lt;input&gt;</code> : champ de saisie (texte, email, mot de passe, bouton radio, checkbox, etc.).</li>
+  <li><code>&lt;textarea&gt;</code> : zone de texte multilignes.</li>
+  <li><code>&lt;select&gt;</code> et <code>&lt;option&gt;</code> : menu déroulant.</li>
+  <li><code>&lt;button&gt;</code> : bouton pour soumettre ou autre action.</li>
+  <li><code>&lt;label&gt;</code> : permet d’associer un texte explicatif à un champ.</li>
+</ul>
+
+<h2>3. Exemple simple de formulaire</h2>
+
+<pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="nom"&gt;Nom :&lt;/label&gt;
+  &lt;input type="text" id="nom" name="nom" required /&gt;
+
+  &lt;label for="email"&gt;Email :&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required /&gt;
+
+  &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h2>4. Types d’<code>input</code> courants</h2>
+<ul>
+  <li><code>text</code> : champ texte simple</li>
+  <li><code>email</code> : champ email avec validation basique</li>
+  <li><code>password</code> : champ mot de passe masqué</li>
+  <li><code>radio</code> : choix unique parmi plusieurs options</li>
+  <li><code>checkbox</code> : choix multiple</li>
+  <li><code>submit</code> : bouton pour envoyer le formulaire</li>
+  <li><code>reset</code> : bouton pour réinitialiser les champs</li>
+  <li><code>date</code>, <code>number</code>, <code>color</code> etc. : champs spécialisés</li>
+</ul>
+
+<h2>5. Exemple avancé avec différents champs</h2>
+
+<form action="#" method="post">
+  <label for="prenom">Prénom :</label>
+  <input type="text" id="prenom" name="prenom" required />
+
+  <label for="age">Âge :</label>
+  <input type="number" id="age" name="age" min="1" max="120" />
+
+  <label>Sexe :</label>
+  <input type="radio" id="homme" name="sexe" value="homme" />
+  <label for="homme" style="display:inline;">Homme</label>
+  <input type="radio" id="femme" name="sexe" value="femme" />
+  <label for="femme" style="display:inline;">Femme</label>
+
+  <label for="interets">Centres d’intérêt :</label>
+  <input type="checkbox" id="sport" name="interets" value="sport" />
+  <label for="sport" style="display:inline;">Sport</label>
+  <input type="checkbox" id="musique" name="interets" value="musique" />
+  <label for="musique" style="display:inline;">Musique</label>
+  <input type="checkbox" id="lecture" name="interets" value="lecture" />
+  <label for="lecture" style="display:inline;">Lecture</label>
+
+  <label for="pays">Pays :</label>
+  <select id="pays" name="pays">
+    <option value="">-- Choisissez --</option>
+    <option value="france">France</option>
+    <option value="senegal">Sénégal</option>
+    <option value="canada">Canada</option>
+  </select>
+
+  <label for="message">Message :</label>
+  <textarea id="message" name="message" rows="4" placeholder="Écrivez votre message ici..."></textarea>
+
+  <button type="submit">Envoyer</button>
+  <button type="reset">Réinitialiser</button>
+</form>
+
+<h2>6. Validation simple avec HTML5</h2>
+<p>Les attributs <code>required</code>, <code>type="email"</code>, <code>min</code>, <code>max</code>, etc. permettent au navigateur de vérifier les données avant l’envoi.</p>
+
+<h2>7. Quiz rapide (QCM)</h2>
+<div class="quiz">
+  <form id="quizFormulaire">
+    <p>1. Quelle balise contient un formulaire ?</p>
+    <label><input type="radio" name="q1" value="a"> &lt;formulaire&gt;</label><br/>
+    <label><input type="radio" name="q1" value="b"> &lt;form&gt;</label><br/>
+    <label><input type="radio" name="q1" value="c"> &lt;input&gt;</label>
+
+    <p>2. Quel attribut de &lt;form&gt; indique où envoyer les données ?</p>
+    <label><input type="radio" name="q2" value="a"> method</label><br/>
+    <label><input type="radio" name="q2" value="b"> action</label><br/>
+    <label><input type="radio" name="q2" value="c"> enctype</label>
+
+    <p>3. Quel type d’&lt;input&gt; permet de choisir une seule option parmi plusieurs ?</p>
+    <label><input type="radio" name="q3" value="a"> checkbox</label><br/>
+    <label><input type="radio" name="q3" value="b"> radio</label><br/>
+    <label><input type="radio" name="q3" value="c"> text</label>
+
+    <p>4. Quelle balise permet d’écrire un texte sur plusieurs lignes ?</p>
+    <label><input type="radio" name="q4" value="a"> &lt;textarea&gt;</label><br/>
+    <label><input type="radio" name="q4" value="b"> &lt;input&gt;</label><br/>
+    <label><input type="radio" name="q4" value="c"> &lt;select&gt;</label>
+
+    <p>5. Quel attribut HTML permet de rendre un champ obligatoire ?</p>
+    <label><input type="radio" name="q5" value="a"> must</label><br/>
+    <label><input type="radio" name="q5" value="b"> required</label><br/>
+    <label><input type="radio" name="q5" value="c"> mandatory</label>
+
+    <br/>
+    <button type="button" onclick="verifierQuiz()">Vérifier</button>
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+function verifierQuiz() {
+  const reponses = {
+    q1: 'b',
+    q2: 'b',
+    q3: 'b',
+    q4: 'a',
+    q5: 'b'
+  };
+
+  let score = 0;
+  let total = Object.keys(reponses).length;
+
+  for (let key in reponses) {
+    let radios = document.getElementsByName(key);
+    for (let radio of radios) {
+      if (radio.checked) {
+        if (radio.value === reponses[key]) {
+          score++;
+        }
+        break;
+      }
+    }
+  }
+
+  let resultDiv = document.getElementById('result');
+  resultDiv.textContent = `Votre score : ${score} / ${total}`;
+}
+</script>
+
+</body>
+</html>

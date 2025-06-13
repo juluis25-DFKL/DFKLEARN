@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cours HTML - Chapitre 1 : Introduction au HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px auto;
+            max-width: 800px;
+            background: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #0055a5;
+        }
+        pre {
+            background: #eee;
+            padding: 15px;
+            border-left: 5px solid #0055a5;
+            overflow-x: auto;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        .qcm {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .qcm h3 {
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+        }
+        button {
+            background: #0055a5;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #003d75;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        a {
+            color: #0055a5;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 6px solid #ffeeba;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chapitre 1 : Introduction au HTML</h1>
+
+    <section>
+        <h2>Qu’est-ce que le HTML ?</h2>
+        <p>
+            HTML signifie <strong>HyperText Markup Language</strong>, soit en français <em>langage de balisage hypertexte</em>.
+            C’est le langage standard utilisé pour créer des pages web.
+        </p>
+        <p>
+            Le HTML sert à structurer le contenu d’une page : textes, images, liens, tableaux, formulaires, etc.
+        </p>
+        <p>
+            Ce langage a été inventé par <strong>Tim Berners-Lee</strong> en <strong>1991</strong>.
+            Depuis, il a beaucoup évolué pour devenir la base du web moderne.
+        </p>
+    </section>
+
+    <section>
+        <h2>Le rôle de la déclaration <code>&lt;!DOCTYPE html&gt;</code></h2>
+        <p>
+            La première ligne <code>&lt;!DOCTYPE html&gt;</code> est une déclaration spéciale qui indique au navigateur que la page utilise la norme HTML5.
+            Cela permet au navigateur d’interpréter correctement le code.
+        </p>
+        <div class="important">
+            <strong>Note :</strong> Ce n’est pas une balise HTML, mais une instruction pour le navigateur.
+        </div>
+    </section>
+
+    <section>
+        <h2>Structure de base d’une page HTML</h2>
+        <p>Voici un exemple minimaliste d’une page HTML complète :</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ma première page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bonjour le monde !&lt;/h1&gt;
+    &lt;p&gt;Bienvenue dans votre premier document HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+        <p>Explications :</p>
+        <ul>
+            <li><code>&lt;!DOCTYPE html&gt;</code> : déclaration du type de document (HTML5).</li>
+            <li><code>&lt;html lang="fr"&gt;</code> : racine du document, avec langue française.</li>
+            <li><code>&lt;head&gt;</code> : partie "en-tête" où on place les métadonnées, le titre, etc.</li>
+            <li><code>&lt;meta charset="UTF-8"&gt;</code> : définit l’encodage des caractères (important pour afficher les accents).</li>
+            <li><code>&lt;title&gt;</code> : titre de la page affiché dans l’onglet du navigateur.</li>
+            <li><code>&lt;body&gt;</code> : contenu visible de la page.</li>
+            <li><code>&lt;h1&gt;</code> : titre principal visible sur la page.</li>
+            <li><code>&lt;p&gt;</code> : paragraphe de texte.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Les balises orphelines (auto-fermantes)</h2>
+        <p>
+            Certaines balises HTML n’ont pas besoin de balise fermante, elles sont dites <em>orphelines</em> ou <em>auto-fermantes</em>.
+            On les utilise pour insérer des éléments qui ne contiennent pas de contenu, comme une image, un saut de ligne, ou une ligne horizontale.
+        </p>
+        <p>Exemples courants :</p>
+        <pre><code>&lt;br /&gt;  &lt;!-- saut de ligne --&gt;
+&lt;hr /&gt;  &lt;!-- ligne horizontale --&gt;
+&lt;img src="image.jpg" alt="Description" /&gt;  &lt;!-- image --&gt;
+</code></pre>
+        <p>
+            En HTML5, il est permis d’écrire ces balises sans la barre oblique finale, comme <code>&lt;br&gt;</code> ou <code>&lt;img src="..." alt="..."&gt;</code>, et le navigateur comprendra quand même.
+        </p>
+        <div class="important">
+            <strong>Important :</strong> Contrairement à la majorité des balises, ces balises n’ont pas de contenu à l’intérieur, donc pas de balise fermante.
+        </div>
+    </section>
+
+    <section>
+        <h2>Les balises non orphelines (avec contenu)</h2>
+        <p>
+            Contrairement aux balises orphelines, la plupart des balises HTML sont <em>non orphelines</em>.
+            Elles contiennent du contenu et doivent être ouvertes et fermées.
+        </p>
+        <p>Exemple :</p>
+        <pre><code>&lt;h1&gt;Titre principal&lt;/h1&gt;
+&lt;p&gt;Ceci est un paragraphe.&lt;/p&gt;
+&lt;div&gt;
+    &lt;p&gt;Un paragraphe dans une division.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+        <p>On voit ici que chaque balise d’ouverture comme <code>&lt;p&gt;</code> doit être fermée par <code>&lt;/p&gt;</code>.</p>
+    </section>
+
+    <section>
+        <h2>Exercice pratique</h2>
+        <p>Créez un fichier nommé <code>index.html</code> avec le contenu donné plus haut, puis ouvrez-le dans votre navigateur web pour voir le résultat.</p>
+        <p>Ajoutez dans le <code>&lt;body&gt;</code> un saut de ligne avec <code>&lt;br&gt;</code>, une image avec <code>&lt;img&gt;</code> (utilisez une image sur votre disque ou une URL) et une ligne horizontale avec <code>&lt;hr&gt;</code>.</p>
+        <p>Exemple :</p>
+        <pre><code>&lt;body&gt;
+    &lt;h1&gt;Bonjour le monde !&lt;/h1&gt;
+    &lt;p&gt;Bienvenue dans votre premier document HTML.&lt;/p&gt;
+    &lt;br&gt;
+    &lt;img src="https://via.placeholder.com/150" alt="Image exemple"&gt;
+    &lt;hr&gt;
+&lt;/body&gt;
+</code></pre>
+    </section>
+
+    <section class="qcm">
+        <h3>QCM : Testez vos connaissances</h3>
+
+        <form id="quiz-form">
+            <div>
+                <p><strong>1. Que signifie l'acronyme HTML ?</strong></p>
+                <label><input type="radio" name="q1" value="a" /> HyperText Markup Language</label>
+                <label><input type="radio" name="q1" value="b" /> Hyperlink Machine Language</label>
+                <label><input type="radio" name="q1" value="c" /> Hyperlink Text Markup Language</label>
+            </div>
+
+            <div>
+                <p><strong>2. Quelle balise contient le contenu visible de la page ?</strong></p>
+                <label><input type="radio" name="q2" value="a" /> &lt;head&gt;</label>
+                <label><input type="radio" name="q2" value="b" /> &lt;body&gt;</label>
+                <label><input type="radio" name="q2" value="c" /> &lt;html&gt;</label>
+            </div>
+
+            <div>
+                <p><strong>3. Quel est le rôle de la balise <code>&lt;title&gt;</code> ?</strong></p>
+                <label><input type="radio" name="q3" value="a" /> Afficher un titre dans la page</label>
+                <label><input type="radio" name="q3" value="b" /> Donner un titre à la page dans l'onglet du navigateur</label>
+                <label><input type="radio" name="q3" value="c" /> Ajouter un titre dans le corps du texte</label>
+            </div>
+
+            <div>
+                <p><strong>4. Qu’est-ce qu’une balise orpheline ?</strong></p>
+                <label><input type="radio" name="q4" value="a" /> Une balise sans attribut</label>
+                <label><input type="radio" name="q4" value="b" /> Une balise qui ne contient pas de contenu et qui ne nécessite pas de balise fermante</label>
+                <label><input type="radio" name="q4" value="c" /> Une balise fermante seule</label>
+            </div>
+
+            <div>
+                <p><strong>5. Comment écrit-on une balise non orpheline ?</strong></p>
+                <label><input type="radio" name="q5" value="a" /> &lt;balise /&gt;</label>
+                <label><input type="radio" name="q5" value="b" /> &lt;balise&gt;contenu&lt;/balise&gt;</label>
+                <label><input type="radio" name="q5" value="c" /> &lt;balise&gt;</label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Valider</button>
+        </form>
+
+        <div id="result"></div>
+    </section>
+
+    <script>
+        function checkAnswers() {
+            const form = document.getElementById('quiz-form');
+            const result = document.getElementById('result');
+            let score = 0;
+
+            const answers = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'b',
+                q4: 'b',
+                q5: 'b'
+            };
+
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const userAnswer = form.elements[question].value;
+                if (userAnswer === correctAnswer) {
+                    score++;
+                }
+            }
+
+            result.textContent = `Votre score : ${score} / 5`;
+
+            if(score === 5) {
+                result.style.color = 'green';
+                result.textContent += " 🎉 Bravo, vous avez tout bon !";
+            } else {
+                result.style.color = 'red';
+                result.textContent += " Essayez encore.";
+            }
+        }
+    </script>
+
+</body>
+</html>

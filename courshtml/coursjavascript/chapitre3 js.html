@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapitre 3 - Structures conditionnelles et Tableaux</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; max-width: 800px; }
+  h1, h2 { color: #2c3e50; }
+  pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  .qcm { margin-top: 30px; }
+  .qcm div { margin-bottom: 15px; }
+  button { padding: 10px 15px; font-size: 16px; cursor: pointer; }
+  #result { margin-top: 20px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Chapitre 3 : Structures conditionnelles et Tableaux</h1>
+
+<h2>1. Structures conditionnelles</h2>
+
+<h3>a) if simple</h3>
+<pre><code>
+if (condition) {
+  // instructions si condition vraie
+}
+</code></pre>
+
+<h3>b) if...else</h3>
+<pre><code>
+if (condition) {
+  // instructions si condition vraie
+} else {
+  // instructions si condition fausse
+}
+</code></pre>
+
+<h3>c) if...else if...else</h3>
+<pre><code>
+if (condition1) {
+  // instructions si condition1 vraie
+} else if (condition2) {
+  // instructions si condition2 vraie
+} else {
+  // instructions sinon
+}
+</code></pre>
+
+<h3>d) switch</h3>
+<pre><code>
+let jour = "lundi";
+
+switch (jour) {
+  case "lundi":
+    console.log("Début de semaine");
+    break;
+  case "vendredi":
+    console.log("Fin de semaine");
+    break;
+  default:
+    console.log("Jour quelconque");
+}
+</code></pre>
+
+<h2>2. Tableaux (Arrays)</h2>
+
+<p>Déclaration et accès :</p>
+<pre><code>
+let couleurs = ["rouge", "vert", "bleu"];
+console.log(couleurs[1]); // affiche "vert"
+</code></pre>
+
+<p>Modifier, ajouter et supprimer éléments :</p>
+<pre><code>
+couleurs[2] = "jaune";
+couleurs.push("violet");
+couleurs.pop();
+</code></pre>
+
+<p>Longueur :</p>
+<pre><code>
+console.log(couleurs.length);
+</code></pre>
+
+<h2>3. Boucle pour parcourir un tableau</h2>
+<pre><code>
+for (let i = 0; i < couleurs.length; i++) {
+  console.log(couleurs[i]);
+}
+</code></pre>
+
+<h2>4. Exemple complet</h2>
+<pre><code>
+let score = 75;
+
+if (score >= 90) {
+  console.log("Excellent");
+} else if (score >= 70) {
+  console.log("Bien");
+} else if (score >= 50) {
+  console.log("Moyen");
+} else {
+  console.log("Insuffisant");
+}
+
+let jourSemaine = 3;
+
+switch (jourSemaine) {
+  case 1:
+    console.log("Lundi");
+    break;
+  case 2:
+    console.log("Mardi");
+    break;
+  case 3:
+    console.log("Mercredi");
+    break;
+  default:
+    console.log("Jour inconnu");
+}
+</code></pre>
+
+<hr>
+
+<div class="qcm">
+  <h2>QCM - Testez vos connaissances</h2>
+
+  <form id="quizForm">
+    <div>
+      <p>1) Quelle structure conditionnelle permet de tester plusieurs cas différents d'une même variable ?</p>
+      <input type="radio" id="q1a" name="q1" value="0" required />
+      <label for="q1a">if...else</label><br />
+      <input type="radio" id="q1b" name="q1" value="1" />
+      <label for="q1b">switch</label><br />
+      <input type="radio" id="q1c" name="q1" value="0" />
+      <label for="q1c">for</label>
+    </div>
+
+    <div>
+      <p>2) Comment accéder au 3ème élément d'un tableau nommé "tab" ?</p>
+      <input type="radio" id="q2a" name="q2" value="1" required />
+      <label for="q2a">tab[2]</label><br />
+      <input type="radio" id="q2b" name="q2" value="0" />
+      <label for="q2b">tab[3]</label><br />
+      <input type="radio" id="q2c" name="q2" value="0" />
+      <label for="q2c">tab.get(3)</label>
+    </div>
+
+    <div>
+      <p>3) Quelle méthode ajoute un élément à la fin d'un tableau ?</p>
+      <input type="radio" id="q3a" name="q3" value="0" required />
+      <label for="q3a">pop()</label><br />
+      <input type="radio" id="q3b" name="q3" value="1" />
+      <label for="q3b">push()</label><br />
+      <input type="radio" id="q3c" name="q3" value="0" />
+      <label for="q3c">shift()</label>
+    </div>
+
+    <div>
+      <p>4) Quel mot-clé commence une condition alternative si la première condition est fausse ?</p>
+      <input type="radio" id="q4a" name="q4" value="0" required />
+      <label for="q4a">else if</label><br />
+      <input type="radio" id="q4b" name="q4" value="1" />
+      <label for="q4b">else</label><br />
+      <input type="radio" id="q4c" name="q4" value="0" />
+      <label for="q4c">switch</label>
+    </div>
+
+    <div>
+      <p>5) Quelle boucle permet d'exécuter un bloc de code tant qu'une condition est vraie ?</p>
+      <input type="radio" id="q5a" name="q5" value="1" required />
+      <label for="q5a">while</label><br />
+      <input type="radio" id="q5b" name="q5" value="0" />
+      <label for="q5b">switch</label><br />
+      <input type="radio" id="q5c" name="q5" value="0" />
+      <label for="q5c">if</label>
+    </div>
+
+    <button type="button" onclick="verifierQuiz()">Valider</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function verifierQuiz() {
+    const form = document.getElementById('quizForm');
+    let score = 0;
+    const total = 5;
+
+    // Récupérer la valeur des réponses
+    const q1 = form.q1.value;
+    const q2 = form.q2.value;
+    const q3 = form.q3.value;
+    const q4 = form.q4.value;
+    const q5 = form.q5.value;
+
+    score += parseInt(q1);
+    score += parseInt(q2);
+    score += parseInt(q3);
+    score += parseInt(q4);
+    score += parseInt(q5);
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `Votre score est ${score} / ${total}`;
+
+    if (score === total) {
+      resultDiv.style.color = 'green';
+      resultDiv.textContent += " — Excellent, vous avez tout bon ! 🎉";
+    } else if (score >= total / 2) {
+      resultDiv.style.color = 'orange';
+      resultDiv.textContent += " — Pas mal, continuez à pratiquer.";
+    } else {
+      resultDiv.style.color = 'red';
+      resultDiv.textContent += " — Il faut revoir les notions, courage !";
+    }
+  }
+</script>
+
+</body>
+</html>

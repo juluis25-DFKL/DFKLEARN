@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Devoir CSS Chapitres 1 à 3</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #fafafa; }
+    h1, h2 { color: #2c3e50; }
+    .question, .exercice { background: #fff; padding: 15px; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 0 6px #ccc; }
+    button { background-color: #3498db; color: white; border: none; padding: 10px 18px; border-radius: 5px; cursor: pointer; }
+    button:disabled { background-color: #aaa; cursor: not-allowed; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; font-family: monospace; font-size: 14px; }
+    #resultats { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Devoir CSS Chapitres 1 à 3</h1>
+
+  <h2>Section QCM (15 questions)</h2>
+  <form id="qcmForm">
+    <div class="question">
+      <p>1. Quelle propriété CSS modifie la couleur du texte ?</p>
+      <label><input type="radio" name="q1" value="a"> background-color</label><br>
+      <label><input type="radio" name="q1" value="b"> color</label><br>
+      <label><input type="radio" name="q1" value="c"> font-size</label><br>
+    </div>
+    <div class="question">
+      <p>2. Quel code couleur est un code hexadécimal valide ?</p>
+      <label><input type="radio" name="q2" value="a"> #12AB34</label><br>
+      <label><input type="radio" name="q2" value="b"> 123456</label><br>
+      <label><input type="radio" name="q2" value="c"> rgb(255,255,255)</label><br>
+    </div>
+    <div class="question">
+      <p>3. Quelle propriété CSS contrôle la taille de la police ?</p>
+      <label><input type="radio" name="q3" value="a"> font-family</label><br>
+      <label><input type="radio" name="q3" value="b"> font-size</label><br>
+      <label><input type="radio" name="q3" value="c"> text-align</label><br>
+    </div>
+    <div class="question">
+      <p>4. Quelle partie du modèle boîte correspond à l'espace autour du contenu ?</p>
+      <label><input type="radio" name="q4" value="a"> padding</label><br>
+      <label><input type="radio" name="q4" value="b"> margin</label><br>
+      <label><input type="radio" name="q4" value="c"> border</label><br>
+    </div>
+    <div class="question">
+      <p>5. Quel mot-clé CSS est utilisé pour définir une police sans-serif ?</p>
+      <label><input type="radio" name="q5" value="a"> 'Arial'</label><br>
+      <label><input type="radio" name="q5" value="b"> 'Times New Roman'</label><br>
+      <label><input type="radio" name="q5" value="c"> 'Courier New'</label><br>
+    </div>
+    <div class="question">
+      <p>6. Quelle propriété CSS change la couleur de fond ?</p>
+      <label><input type="radio" name="q6" value="a"> background-color</label><br>
+      <label><input type="radio" name="q6" value="b"> color</label><br>
+      <label><input type="radio" name="q6" value="c"> border-color</label><br>
+    </div>
+    <div class="question">
+      <p>7. Quelle propriété CSS contrôle l'épaisseur de la police ?</p>
+      <label><input type="radio" name="q7" value="a"> font-weight</label><br>
+      <label><input type="radio" name="q7" value="b"> font-style</label><br>
+      <label><input type="radio" name="q7" value="c"> text-decoration</label><br>
+    </div>
+    <div class="question">
+      <p>8. Quelle est la bonne syntaxe pour appliquer une bordure noire de 1px ?</p>
+      <label><input type="radio" name="q8" value="a"> border: 1px solid black;</label><br>
+      <label><input type="radio" name="q8" value="b"> border: black 1px solid;</label><br>
+      <label><input type="radio" name="q8" value="c"> border-width: 1px; border-color: black;</label><br>
+    </div>
+    <div class="question">
+      <p>9. Quel est l'ordre correct du modèle de boîte CSS ?</p>
+      <label><input type="radio" name="q9" value="a"> margin > border > padding > content</label><br>
+      <label><input type="radio" name="q9" value="b"> content > padding > border > margin</label><br>
+      <label><input type="radio" name="q9" value="c"> border > padding > margin > content</label><br>
+    </div>
+    <div class="question">
+      <p>10. Quelle propriété CSS modifie la police du texte ?</p>
+      <label><input type="radio" name="q10" value="a"> font-family</label><br>
+      <label><input type="radio" name="q10" value="b"> font-size</label><br>
+      <label><input type="radio" name="q10" value="c"> text-align</label><br>
+    </div>
+    <div class="question">
+      <p>11. Quelle propriété CSS rend le texte en italique ?</p>
+      <label><input type="radio" name="q11" value="a"> font-style: italic;</label><br>
+      <label><input type="radio" name="q11" value="b"> font-weight: italic;</label><br>
+      <label><input type="radio" name="q11" value="c"> text-decoration: italic;</label><br>
+    </div>
+    <div class="question">
+      <p>12. Que fait la propriété padding ?</p>
+      <label><input type="radio" name="q12" value="a"> Ajoute de l’espace autour du contenu, à l’intérieur de la bordure</label><br>
+      <label><input type="radio" name="q12" value="b"> Ajoute de l’espace autour de la bordure</label><br>
+      <label><input type="radio" name="q12" value="c"> Définit la couleur du texte</label><br>
+    </div>
+    <div class="question">
+      <p>13. Quelle propriété CSS modifie la marge extérieure ?</p>
+      <label><input type="radio" name="q13" value="a"> margin</label><br>
+      <label><input type="radio" name="q13" value="b"> padding</label><br>
+      <label><input type="radio" name="q13" value="c"> border</label><br>
+    </div>
+    <div class="question">
+      <p>14. Quelle syntaxe est correcte pour appliquer plusieurs polices de secours ?</p>
+      <label><input type="radio" name="q14" value="a"> font-family: Arial, 'Times New Roman', sans-serif;</label><br>
+      <label><input type="radio" name="q14" value="b"> font-family: 'Arial' 'Times New Roman' sans-serif;</label><br>
+      <label><input type="radio" name="q14" value="c"> font-family: Arial 'Times New Roman', sans-serif;</label><br>
+    </div>
+    <div class="question">
+      <p>15. Quelle propriété modifie la couleur de la bordure ?</p>
+      <label><input type="radio" name="q15" value="a"> border-color</label><br>
+      <label><input type="radio" name="q15" value="b"> border-style</label><br>
+      <label><input type="radio" name="q15" value="c"> border-width</label><br>
+    </div>
+  </form>
+
+  <h2>Section Exercices (5 exercices pratiques)</h2>
+  <div class="exercice">
+    <p>1. Écrivez un code CSS pour changer la couleur du texte en bleu et la couleur de fond en gris clair.</p>
+    <textarea id="exo1"></textarea>
+  </div>
+  <div class="exercice">
+    <p>2. Écrivez un code CSS qui applique une bordure rouge de 2px et un padding de 15px à une div.</p>
+    <textarea id="exo2"></textarea>
+  </div>
+  <div class="exercice">
+    <p>3. Écrivez un code CSS pour que tous les paragraphes utilisent la police Arial et la taille 16px.</p>
+    <textarea id="exo3"></textarea>
+  </div>
+  <div class="exercice">
+    <p>4. Écrivez un code CSS qui ajoute une marge extérieure de 20px à un élément avec la classe <code>.box</code>.</p>
+    <textarea id="exo4"></textarea>
+  </div>
+  <div class="exercice">
+    <p>5. Écrivez un code CSS pour rendre le texte en italique dans un élément avec l'id <code>#titre</code>.</p>
+    <textarea id="exo5"></textarea>
+  </div>
+
+  <button onclick="corrigerDevoir()">Corriger le devoir</button>
+  <p id="resultats"></p>
+
+  <script>
+    const reponsesQCM = {
+      q1: "b",
+      q2: "a",
+      q3: "b",
+      q4: "b",
+      q5: "a",
+      q6: "a",
+      q7: "a",
+      q8: "a",
+      q9: "b",
+      q10: "a",
+      q11: "a",
+      q12: "a",
+      q13: "a",
+      q14: "a",
+      q15: "a",
+    };
+
+    function corrigerDevoir() {
+      // Corriger QCM
+      let scoreQCM = 0;
+      for(let i=1; i<=15; i++) {
+        const qName = "q"+i;
+        const reponse = document.querySelector(`input[name=${qName}]:checked`);
+        if(reponse && reponse.value === reponsesQCM[qName]) scoreQCM++;
+      }
+
+      // Corriger exercices simples (vérification mots-clés)
+      let scoreExos = 0;
+
+      const exo1 = document.getElementById("exo1").value.toLowerCase();
+      if(exo1.includes("color") && exo1.includes("blue") && exo1.includes("background")) scoreExos++;
+
+      const exo2 = document.getElementById("exo2").value.toLowerCase();
+      if(exo2.includes("border") && exo2.includes("2px") && exo2.includes("red") && exo2.includes("padding")) scoreExos++;
+
+      const exo3 = document.getElementById("exo3").value.toLowerCase();
+      if(exo3.includes("p") && exo3.includes("font-family") && (exo3.includes("arial") || exo3.includes("'arial'"))) scoreExos++;
+
+      const exo4 = document.getElementById("exo4").value.toLowerCase();
+      if(exo4.includes(".box") && exo4.includes("margin") && exo4.includes("20px")) scoreExos++;
+
+      const exo5 = document.getElementById("exo5").value.toLowerCase();
+      if(exo5.includes("#titre") && exo5.includes("italic") && exo5.includes("font-style")) scoreExos++;
+
+      const totalScore = scoreQCM + scoreExos;
+      const totalQuestions = 15 + 5;
+
+      document.getElementById("resultats").innerText = 
+        `Résultats : QCM = ${scoreQCM}/15, Exercices = ${scoreExos}/5, Total = ${totalScore}/${totalQuestions}`;
+    }
+  </script>
+</body>
+</html>

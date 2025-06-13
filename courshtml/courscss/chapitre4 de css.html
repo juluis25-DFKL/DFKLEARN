@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Chapitre 4 : Mise en page et positionnement en CSS</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f9f9f9;
+    color: #222;
+  }
+  h1, h2 {
+    color: #004080;
+  }
+  section {
+    background: white;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #ccc;
+  }
+  pre {
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  label {
+    display: block;
+    margin: 6px 0;
+    cursor: pointer;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  #result {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Chapitre 4 : Mise en page et positionnement en CSS</h1>
+
+<section>
+  <h2>Introduction</h2>
+  <p>En CSS, la mise en page est essentielle pour organiser le contenu d’une page web. Ce chapitre présente les concepts clés pour contrôler la disposition des éléments : le modèle de boîte, le positionnement, et les systèmes modernes comme Flexbox et Grid.</p>
+</section>
+
+<section>
+  <h2>1. Le modèle de boîte CSS (Box Model)</h2>
+  <p>Chaque élément HTML est une boîte composée de :</p>
+  <ul>
+    <li><strong>Contenu</strong> : texte ou images à l’intérieur</li>
+    <li><strong>Padding (remplissage)</strong> : espace entre le contenu et la bordure</li>
+    <li><strong>Border (bordure)</strong> : contour de la boîte</li>
+    <li><strong>Margin (marge)</strong> : espace entre cette boîte et les autres éléments</li>
+  </ul>
+  <p><em>Exemple visuel :</em></p>
+  <pre>
++----------------------------+
+|          Margin            |
+|  +----------------------+  |
+|  |      Border          |  |
+|  |  +----------------+  |  |
+|  |  |    Padding     |  |  |
+|  |  |  +----------+  |  |  |
+|  |  |  | Contenu  |  |  |  |
+|  |  |  +----------+  |  |  |
+|  |  +----------------+  |  |
+|  +----------------------+  |
++----------------------------+
+  </pre>
+  <p>Propriétés CSS liées :</p>
+  <pre>
+div {
+  margin: 20px;            /* marge extérieure */
+  padding: 10px;           /* espace intérieur */
+  border: 2px solid black; /* bordure */
+  width: 200px;            /* largeur du contenu */
+}
+  </pre>
+</section>
+
+<section>
+  <h2>2. Propriété <code>box-sizing</code></h2>
+  <p>Par défaut, la largeur et la hauteur concernent seulement le contenu, pas le padding ni la bordure. La propriété <code>box-sizing: border-box;</code> inclut padding et bordure dans la taille.</p>
+  <pre>
+div {
+  box-sizing: border-box;
+}
+  </pre>
+</section>
+
+<section>
+  <h2>3. Propriété <code>display</code></h2>
+  <p>Contrôle le type d’affichage d’un élément :</p>
+  <ul>
+    <li><code>block</code> : élément en bloc, prend toute la largeur, commence sur une nouvelle ligne</li>
+    <li><code>inline</code> : élément en ligne, ne commence pas une nouvelle ligne</li>
+    <li><code>inline-block</code> : mixte, comme inline mais on peut fixer taille</li>
+    <li><code>none</code> : élément caché</li>
+  </ul>
+  <pre>
+p {
+  display: block;
+}
+span {
+  display: inline;
+}
+button {
+  display: inline-block;
+}
+.hide {
+  display: none;
+}
+  </pre>
+</section>
+
+<section>
+  <h2>4. Positionnement des éléments</h2>
+  <h3>4.1 Position statique (par défaut)</h3>
+  <p>Position normale dans le flux.</p>
+  <pre>
+div {
+  position: static;
+}
+  </pre>
+
+  <h3>4.2 Position relative</h3>
+  <p>Décalage par rapport à la position normale, mais espace réservé.</p>
+  <pre>
+div {
+  position: relative;
+  top: 10px;
+  left: 20px;
+}
+  </pre>
+
+  <h3>4.3 Position absolute</h3>
+  <p>Positionné par rapport au premier ancêtre positionné, hors flux.</p>
+  <pre>
+div {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
+  </pre>
+
+  <h3>4.4 Position fixed</h3>
+  <p>Fixé par rapport à la fenêtre, ne bouge pas au scroll.</p>
+  <pre>
+div {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+  </pre>
+
+  <h3>4.5 Position sticky</h3>
+  <p>Comme relative jusqu’à atteindre un seuil, puis fixé.</p>
+  <pre>
+header {
+  position: sticky;
+  top: 0;
+  background: white;
+}
+  </pre>
+</section>
+
+<section>
+  <h2>5. Flexbox : Mise en page flexible</h2>
+  <p>Permet d’organiser les éléments en ligne ou colonne facilement.</p>
+  <pre>
+.container {
+  display: flex;
+  flex-direction: row; /* ou column */
+  justify-content: center; /* alignement horizontal */
+  align-items: center; /* alignement vertical */
+  gap: 10px; /* espace entre éléments */
+}
+  </pre>
+  <p>Enfants flex :</p>
+  <pre>
+.item {
+  flex: 1; /* chaque enfant prend la même place */
+}
+  </pre>
+</section>
+
+<section>
+  <h2>6. Grid Layout : mise en page en grille</h2>
+  <p>Crée facilement une grille en lignes et colonnes.</p>
+  <pre>
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+  gap: 20px;
+}
+  </pre>
+</section>
+
+<section>
+  <h2>7. Float et clear (ancienne méthode)</h2>
+  <p><code>float</code> fait flotter un élément à gauche ou droite, <code>clear</code> empêche le chevauchement.</p>
+  <pre>
+img {
+  float: left;
+  margin-right: 10px;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+  </pre>
+</section>
+
+<section>
+  <h2>Exemple pratique Flexbox</h2>
+  <div class="container" style="display:flex; gap:10px; justify-content:center; align-items:center;">
+    <div style="flex:1; padding:20px; border:2px solid black; text-align:center; background: lightblue;">Box 1</div>
+    <div style="flex:1; padding:20px; border:2px solid black; text-align:center; background: lightgreen;">Box 2</div>
+    <div style="flex:1; padding:20px; border:2px solid black; text-align:center; background: lightcoral;">Box 3</div>
+  </div>
+</section>
+
+<section>
+  <h2>QCM Chapitre 4</h2>
+  <form id="qcmForm">
+    <p>1. Quelle propriété CSS permet d’inclure la bordure et le padding dans la largeur totale d’un élément ?</p>
+    <label><input type="radio" name="q1" value="b" /> box-sizing: border-box;</label>
+    <label><input type="radio" name="q1" value="a" /> box-sizing: content-box;</label>
+    <label><input type="radio" name="q1" value="c" /> display: block;</label>
+    <label><input type="radio" name="q1" value="d" /> position: relative;</label>
+
+    <p>2. Que signifie display: inline-block; ?</p>
+    <label><input type="radio" name="q2" value="b" /> L’élément se comporte comme un bloc mais reste en ligne</label>
+    <label><input type="radio" name="q2" value="a" /> L’élément est invisible</label>
+    <label><input type="radio" name="q2" value="c" /> L’élément est un bloc qui prend toute la largeur</label>
+    <label><input type="radio" name="q2" value="d" /> L’élément est un élément inline sans possibilité de changer sa taille</label>
+
+    <p>3. Quelle propriété CSS positionne un élément par rapport à son premier ancêtre positionné ?</p>
+    <label><input type="radio" name="q3" value="c" /> position: absolute;</label>
+    <label><input type="radio" name="q3" value="a" /> position: static;</label>
+    <label><input type="radio" name="q3" value="b" /> position: relative;</label>
+    <label><input type="radio" name="q3" value="d" /> position: fixed;</label>
+
+    <p>4. Que fait position: fixed; ?</p>
+    <label><input type="radio" name="q4" value="b" /> Positionne un élément par rapport à la fenêtre du navigateur et le fixe même au scroll</label>
+    <label><input type="radio" name="q4" value="a" /> Positionne un élément dans le flux normal</label>
+    <label><input type="radio" name="q4" value="c" /> Positionne un élément relatif à son parent</label>
+    <label><input type="radio" name="q4" value="d" /> Positionne un élément comme un bloc</label>
+
+    <p>5. Quel système CSS organise les éléments en lignes et colonnes ?</p>
+    <label><input type="radio" name="q5" value="b" /> Grid Layout</label>
+    <label><input type="radio" name="q5" value="a" /> Flexbox</label>
+    <label><input type="radio" name="q5" value="c" /> Float</label>
+    <label><input type="radio" name="q5" value="d" /> Inline</label>
+
+    <button type="button" onclick="verifierQCM()">Vérifier mes réponses</button>
+  </form>
+
+  <div id="result"></div>
+</section>
+
+<script>
+  function verifierQCM() {
+    const reponsesCorrectes = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'c',
+      q4: 'b',
+      q5: 'b'
+    };
+    let score = 0;
+    const total = Object.keys(reponsesCorrectes).length;
+    for (const q in reponsesCorrectes) {
+      const radios = document.getElementsByName(q);
+      for (const radio of radios) {
+        if (radio.checked) {
+          if (radio.value === reponsesCorrectes[q]) score++;
+          break;
+        }
+      }
+    }
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `Votre score : ${score} / ${total} (${((score / total) * 100).toFixed(0)}%)`;
+    if (score === total) {
+      resultDiv.style.color = 'green';
+      resultDiv.textContent += ' — Excellent !';
+    } else if (score >= total / 2) {
+      resultDiv.style.color = 'orange';
+      resultDiv.textContent += ' — Bon travail, mais vous pouvez faire mieux.';
+    } else {
+      resultDiv.style.color = 'red';
+      resultDiv.textContent += ' — Vous devriez réviser ce chapitre.';
+    }
+  }
+</script>
+
+</body>
+</html>
