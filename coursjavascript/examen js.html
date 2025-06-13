@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen JavaScript Complet</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f5f7fa;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    section {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    label:hover {
+      background: #f0f8ff;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 14px;
+      margin-top: 8px;
+      resize: vertical;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 25px 0;
+      font-size: 16px;
+      display: block;
+      width: 100%;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #result {
+      padding: 20px;
+      background: #e8f4fc;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+    .correct {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: #e74c3c;
+    }
+    .score {
+      font-size: 24px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .section-title {
+      color: #3498db;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>Examen Final JavaScript</h1>
+
+<form id="examForm">
+  <!-- Section QCM -->
+  <section>
+    <h2 class="section-title">Partie 1 : Questions à Choix Multiple (40 points)</h2>
+    <div id="qcmSection"></div>
+  </section>
+
+  <!-- Section Code -->
+  <section>
+    <h2 class="section-title">Partie 2 : Exercices Pratiques (40 points)</h2>
+    <div id="codeSection"></div>
+  </section>
+
+  <button type="button" onclick="corrigerExamen()">Soumettre l'examen</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+// Questions QCM (40 questions)
+const questionsQCM = [
+  {
+    q: "1. Quel mot-clé permet de déclarer une variable modifiable en ES6 ?",
+    r: "let",
+    o: ["const", "let", "var", "static"]
+  },
+  {
+    q: "2. Quelle est la sortie de 'console.log(typeof null)' ?",
+    r: "object",
+    o: ["null", "undefined", "object", "string"]
+  },
+  {
+    q: "3. Quelle méthode permet de convertir une chaîne en nombre entier ?",
+    r: "parseInt",
+    o: ["parseInt", "toInt", "int", "Number"]
+  },
+  // Ajouter les 37 autres questions ici...
+  {
+    q: "40. Comment créer une promesse en JavaScript ?",
+    r: "new Promise()",
+    o: ["new Promise()", "Promise.create()", "makePromise()", "Promise()"]
+  }
+];
+
+// Exercices de code (8 questions)
+const questionsCode = [
+  {
+    q: "1. Écrivez une fonction 'somme' qui prend deux paramètres et retourne leur somme",
+    r: /function\s+somme\s*\(a\s*,\s*b\s*\)\s*\{[\s\S]*return\s+a\s*\+\s*b[\s\S]*\}/i,
+    solution: "function somme(a, b) {\n  return a + b;\n}"
+  },
+  {
+    q: "2. Créez un tableau 'fruits' avec 3 éléments et affichez le deuxième élément",
+    r: /const\s+fruits\s*=\s*\[.+\,.+\,.+\]\s*;\s*console\.log\(fruits\[1\]\)/i,
+    solution: "const fruits = ['pomme', 'banane', 'orange'];\nconsole.log(fruits[1]);"
+  },
+  // Ajouter les 6 autres exercices ici...
+  {
+    q: "8. Écrivez une fonction fléchée qui double un nombre",
+    r: /const\s+\w+\s*=\s*\(?\w+\)?\s*=>\s*\w+\s*\*\s*2/i,
+    solution: "const double = x => x * 2;"
+  }
+];
+
+// Génère l'examen
+function genererExamen() {
+  const qcmSection = document.getElementById('qcmSection');
+  questionsQCM.forEach((question, index) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `
+      <p><strong>${question.q}</strong> (1 point)</p>
+      ${question.o.map(option => `
+        <label>
+          <input type="radio" name="qcm${index}" value="${option}">
+          ${option}
+        </label>
+      `).join('')}
+    `;
+    qcmSection.appendChild(div);
+  });
+
+  const codeSection = document.getElementById('codeSection');
+  questionsCode.forEach((question, index) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `
+      <p><strong>${question.q}</strong> (5 points)</p>
+      <textarea id="code${index}" placeholder="Écrivez votre code ici..."></textarea>
+      <small>Astuce: ${question.solution.split('\n')[0]}...</small>
+    `;
+    codeSection.appendChild(div);
+  });
+}
+
+// Corrige l'examen
+function corrigerExamen() {
+  let scoreQCM = 0;
+  let scoreCode = 0;
+  let corrections = "<h2>Résultats détaillés</h2>";
+
+  // Correction QCM
+  corrections += "<h3>Partie QCM :</h3>";
+  questionsQCM.forEach((question, index) => {
+    const selected = document.querySelector(`input[name="qcm${index}"]:checked`);
+    const isCorrect = selected && selected.value === question.r;
+    
+    if (isCorrect) scoreQCM++;
+    
+    corrections += `
+      <div class="${isCorrect ? 'correct' : 'incorrect'}">
+        <p><strong>Question ${index + 1}:</strong> ${question.q}</p>
+        <p>Votre réponse: ${selected ? selected.value : 'Aucune'} | 
+        Bonne réponse: ${question.r} | 
+        ${isCorrect ? '✅ Correct' : '❌ Incorrect'}</p>
+      </div>
+    `;
+  });
+
+  // Correction Code
+  corrections += "<h3>Partie Code :</h3>";
+  questionsCode.forEach((question, index) => {
+    const reponse = document.getElementById(`code${index}`).value.trim();
+    const isCorrect = question.r.test(reponse);
+    
+    if (isCorrect) scoreCode += 5;
+    
+    corrections += `
+      <div class="${isCorrect ? 'correct' : 'incorrect'}">
+        <p><strong>Exercice ${index + 1}:</strong> ${question.q}</p>
+        <p><u>Votre réponse:</u></p>
+        <pre>${reponse || 'Aucune réponse'}</pre>
+        <p><u>Solution attendue:</u></p>
+        <pre>${question.solution}</pre>
+        <p>${isCorrect ? '✅ Correct (+5 points)' : '❌ Incorrect (0 point)'}</p>
+      </div>
+    `;
+  });
+
+  // Calcul du score total
+  const totalPoints = scoreQCM + scoreCode;
+  const pourcentage = Math.round((totalPoints / 80) * 100);
+  const isSuccess = pourcentage >= 75;
+
+  // Affichage des résultats
+  let resultHTML = `
+    <div class="score" style="color: ${isSuccess ? '#27ae60' : '#e74c3c'}">
+      <h2>Score Final: ${totalPoints}/80 (${pourcentage}%)</h2>
+      <p>${isSuccess ? '🎉 Félicitations ! Vous avez réussi.' : '😟 Malheureusement, vous n\'avez pas atteint le seuil de réussite.'}</p>
+    </div>
+    <p><strong>Détail des points:</strong></p>
+    <ul>
+      <li>Partie QCM: ${scoreQCM}/40</li>
+      <li>Partie Code: ${scoreCode}/40</li>
+    </ul>
+  `;
+
+  document.getElementById('result').innerHTML = resultHTML + corrections;
+}
+
+// Initialisation
+window.addEventListener('DOMContentLoaded', genererExamen);
+</script>
+</body>
+</html>

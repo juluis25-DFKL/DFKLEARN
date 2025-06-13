@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapitre 4 - Tableaux et Listes en HTML</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    line-height: 1.6;
+    background: #f9f9f9;
+    color: #333;
+  }
+  h1, h2 {
+    color: #2c3e50;
+  }
+  pre {
+    background: #eee;
+    border-left: 5px solid #3498db;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  table {
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  table, th, td {
+    border: 1px solid #3498db;
+    padding: 8px 12px;
+  }
+  th {
+    background-color: #2980b9;
+    color: white;
+  }
+  ul, ol {
+    margin-left: 20px;
+  }
+  .quiz {
+    margin-top: 20px;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  button {
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+  button:hover {
+    background: #1c5980;
+  }
+  #result {
+    margin-top: 12px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Chapitre 4 : Tableaux et Listes en HTML</h1>
+
+<h2>Les tableaux en HTML</h2>
+<p>Les tableaux permettent d’organiser des données sous forme de lignes et colonnes. Ils sont très utiles pour afficher des informations structurées comme des horaires, des tarifs, des listes comparatives, etc.</p>
+
+<h3>1. Les balises principales d'un tableau</h3>
+<ul>
+  <li><code>&lt;table&gt;</code> : définit le tableau</li>
+  <li><code>&lt;tr&gt;</code> (table row) : définit une ligne du tableau</li>
+  <li><code>&lt;th&gt;</code> (table header) : définit une cellule d’en-tête (titre de colonne ou ligne)</li>
+  <li><code>&lt;td&gt;</code> (table data) : définit une cellule de données</li>
+</ul>
+
+<h3>2. Exemple simple de tableau</h3>
+
+<pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Nom&lt;/th&gt;
+    &lt;th&gt;Âge&lt;/th&gt;
+    &lt;th&gt;Ville&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alice&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+    &lt;td&gt;Paris&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Bob&lt;/td&gt;
+    &lt;td&gt;30&lt;/td&gt;
+    &lt;td&gt;Lyon&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>Ce code crée un tableau avec 3 colonnes et 3 lignes (dont la ligne d’en-tête).</p>
+
+<h3>3. Exemple affiché</h3>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Âge</th>
+    <th>Ville</th>
+  </tr>
+  <tr>
+    <td>Alice</td>
+    <td>25</td>
+    <td>Paris</td>
+  </tr>
+  <tr>
+    <td>Bob</td>
+    <td>30</td>
+    <td>Lyon</td>
+  </tr>
+</table>
+
+<h3>4. Attributs utiles</h3>
+<ul>
+  <li><code>border="1"</code> : ajoute une bordure (ancien usage, on recommande CSS)</li>
+  <li><code>colspan="x"</code> : fusionne <em>x</em> colonnes dans une cellule</li>
+  <li><code>rowspan="x"</code> : fusionne <em>x</em> lignes dans une cellule</li>
+</ul>
+
+<h3>5. Exemple avec colspan et rowspan</h3>
+
+<pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Produit&lt;/th&gt;
+    &lt;th colspan="2"&gt;Prix&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;Pomme&lt;/td&gt;
+    &lt;td&gt;Au kilo&lt;/td&gt;
+    &lt;td&gt;2€&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;À la pièce&lt;/td&gt;
+    &lt;td&gt;0,50€&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<h3>6. Résultat affiché</h3>
+
+<table border="1" style="border-collapse: collapse;">
+  <tr>
+    <th>Produit</th>
+    <th colspan="2">Prix</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Pomme</td>
+    <td>Au kilo</td>
+    <td>2€</td>
+  </tr>
+  <tr>
+    <td>À la pièce</td>
+    <td>0,50€</td>
+  </tr>
+</table>
+
+<hr />
+
+<h2>Les listes en HTML</h2>
+<p>Les listes permettent d’organiser des éléments sous forme ordonnée ou non ordonnée.</p>
+
+<h3>1. Liste non ordonnée (puces)</h3>
+<p>On utilise la balise <code>&lt;ul&gt;</code> pour la liste non ordonnée, et chaque élément est défini avec <code>&lt;li&gt;</code>.</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Pommes&lt;/li&gt;
+  &lt;li&gt;Bananes&lt;/li&gt;
+  &lt;li&gt;Cerises&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3>2. Liste ordonnée (numérotée)</h3>
+<p>On utilise la balise <code>&lt;ol&gt;</code> pour la liste ordonnée.</p>
+
+<pre><code>&lt;ol&gt;
+  &lt;li&gt;Préparer la pâte&lt;/li&gt;
+  &lt;li&gt;Faire cuire au four&lt;/li&gt;
+  &lt;li&gt;Laisser refroidir&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<h3>3. Listes imbriquées</h3>
+<p>On peut imbriquer une liste dans une autre pour des sous-catégories :</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;Fruits
+    &lt;ul&gt;
+      &lt;li&gt;Pommes&lt;/li&gt;
+      &lt;li&gt;Bananes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Légumes&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3>4. Exemple affiché</h3>
+
+<ul>
+  <li>Fruits
+    <ul>
+      <li>Pommes</li>
+      <li>Bananes</li>
+    </ul>
+  </li>
+  <li>Légumes</li>
+</ul>
+
+<hr />
+
+<h2>Quiz rapide (QCM)</h2>
+<div class="quiz">
+  <form id="quizTableauxListes">
+    <p>1. Quelle balise HTML définit une ligne dans un tableau ?</p>
+    <label><input type="radio" name="q1" value="a"> &lt;td&gt;</label><br/>
+    <label><input type="radio" name="q1" value="b"> &lt;tr&gt;</label><br/>
+    <label><input type="radio" name="q1" value="c"> &lt;table&gt;</label>
+
+    <p>2. Quelle balise est utilisée pour une cellule d’en-tête ?</p>
+    <label><input type="radio" name="q2" value="a"> &lt;th&gt;</label><br/>
+    <label><input type="radio" name="q2" value="b"> &lt;td&gt;</label><br/>
+    <label><input type="radio" name="q2" value="c"> &lt;tr&gt;</label>
+
+    <p>3. Quel attribut fusionne plusieurs colonnes dans un tableau ?</p>
+    <label><input type="radio" name="q3" value="a"> rowspan</label><br/>
+    <label><input type="radio" name="q3" value="b"> colspan</label><br/>
+    <label><input type="radio" name="q3" value="c"> merge</label>
+
+    <p>4. Quelle balise crée une liste non ordonnée ?</p>
+    <label><input type="radio" name="q4" value="a"> &lt;ul&gt;</label><br/>
+    <label><input type="radio" name="q4" value="b"> &lt;ol&gt;</label><br/>
+    <label><input type="radio" name="q4" value="c"> &lt;li&gt;</label>
+
+    <p>5. Comment s’appelle un élément d’une liste en HTML ?</p>
+    <label><input type="radio" name="q5" value="a"> &lt;li&gt;</label><br/>
+    <label><input type="radio" name="q5" value="b"> &lt;ul&gt;</label><br/>
+    <label><input type="radio" name="q5" value="c"> &lt;ol&gt;</label>
+
+    <br/>
+    <button type="button" onclick="verifierQuiz()">Vérifier</button>
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+function verifierQuiz() {
+  const reponses = {
+    q1: 'b',
+    q2: 'a',
+    q3: 'b',
+    q4: 'a',
+    q5: 'a'
+  };
+
+  let score = 0;
+  let total = Object.keys(reponses).length;
+
+  for (let key in reponses) {
+    let radios = document.getElementsByName(key);
+    for (let radio of radios) {
+      if (radio.checked) {
+        if (radio.value === reponses[key]) {
+          score++;
+        }
+        break;
+      }
+    }
+  }
+
+  let resultDiv = document.getElementById('result');
+  resultDiv.textContent = `Votre score : ${score} / ${total}`;
+}
+</script>
+
+</body>
+</html>

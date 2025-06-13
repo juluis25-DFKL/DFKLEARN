@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen Final CSS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    h1 { color: #004080; }
+    section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
+    label { display: block; margin: 6px 0; cursor: pointer; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; }
+    button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Examen Final - CSS</h1>
+  <form id="examForm">
+    <!-- 40 QCM -->
+    <div id="qcm-container"></div>
+
+    <!-- 8 Questions ouvertes -->
+    <h2>Questions ouvertes</h2>
+    <div id="open-questions">
+      <section>
+        <p>41. Écrivez une règle CSS qui applique une couleur rouge au texte d’un élément avec la classe "erreur".</p>
+        <textarea id="q41"></textarea>
+      </section>
+      <section>
+        <p>42. Créez un conteneur <code>flex</code> avec trois éléments enfants disposés horizontalement.</p>
+        <textarea id="q42"></textarea>
+      </section>
+      <section>
+        <p>43. Donnez un exemple de règle CSS utilisant une pseudo-classe.</p>
+        <textarea id="q43"></textarea>
+      </section>
+      <section>
+        <p>44. Écrivez une règle CSS pour rendre un paragraphe centré horizontalement avec du padding intérieur de 20px.</p>
+        <textarea id="q44"></textarea>
+      </section>
+      <section>
+        <p>45. Créez une animation nommée "glisse" qui déplace un élément de la gauche vers la droite.</p>
+        <textarea id="q45"></textarea>
+      </section>
+      <section>
+        <p>46. Donnez un exemple d'utilisation de la propriété <code>z-index</code>.</p>
+        <textarea id="q46"></textarea>
+      </section>
+      <section>
+        <p>47. Donnez une règle CSS qui cache un élément avec <code>display</code>.</p>
+        <textarea id="q47"></textarea>
+      </section>
+      <section>
+        <p>48. Écrivez une règle CSS qui utilise un sélecteur d’attribut.</p>
+        <textarea id="q48"></textarea>
+      </section>
+    </div>
+
+    <button type="button" onclick="corriger()">Soumettre l'examen</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    const questionsQCM = [
+      {
+        question: "1. Quelle balise HTML est utilisée pour lier une feuille de style CSS externe ?",
+        options: ["<style>", "<script>", "<link>", "<css>"],
+        correct: 2
+      },
+      {
+        question: "2. Quelle propriété est utilisée pour changer la couleur du texte ?",
+        options: ["text-color", "font-color", "color", "text-style"],
+        correct: 2
+      },
+      {
+        question: "3. Quelle unité CSS est relative à la taille de la police de l’élément parent ?",
+        options: ["em", "px", "%", "vh"],
+        correct: 0
+      },
+      {
+        question: "4. Que signifie le sélecteur #menu en CSS ?",
+        options: ["Élément avec la classe menu", "Élément menu", "Élément avec l’identifiant menu", "Tous les éléments menu"],
+        correct: 2
+      },
+      {
+        question: "5. Quelle propriété CSS rend un texte gras ?",
+        options: ["font-weight", "font-style", "text-transform", "font-thickness"],
+        correct: 0
+      },
+      {
+        question: "6. Quel est le rôle de la propriété display: flex ?",
+        options: ["Cacher l’élément", "Créer un conteneur flexible", "Ajouter un effet", "Définir une animation"],
+        correct: 1
+      },
+      {
+        question: "7. Quelle propriété est utilisée pour ajouter de l’espace à l’intérieur d’un élément ?",
+        options: ["margin", "spacing", "padding", "border"],
+        correct: 2
+      },
+      {
+        question: "8. Que fait la propriété z-index ?",
+        options: ["Change la couleur", "Définit l'ordre d'empilement des éléments", "Augmente la taille", "Applique une ombre"],
+        correct: 1
+      },
+      {
+        question: "9. Quelle syntaxe est correcte pour une animation CSS ?",
+        options: ["animate: slide 3s;", "motion: move 2s;", "animation: slide 3s infinite;", "keyframe: slide 3s;"],
+        correct: 2
+      },
+      {
+        question: "10. Quelle pseudo-classe CSS est utilisée pour cibler un lien survolé ?",
+        options: [":visited", ":hover", ":focus", ":active"],
+        correct: 1
+      },
+      // Ajoutez ici les 30 autres questions similaires...
+    ];
+
+    function createQCM() {
+      const container = document.getElementById("qcm-container");
+      questionsQCM.forEach((q, i) => {
+        const section = document.createElement("section");
+        section.innerHTML = `<p>${i + 1}. ${q.question}</p>` +
+          q.options.map((opt, j) => `
+            <label><input type="radio" name="q${i + 1}" value="${j}"> ${opt}</label>
+          `).join('');
+        container.appendChild(section);
+      });
+    }
+
+    function corriger() {
+      let score = 0;
+      questionsQCM.forEach((q, i) => {
+        const radios = document.getElementsByName(`q${i + 1}`);
+        radios.forEach(r => {
+          if (r.checked && parseInt(r.value) === q.correct) score++;
+        });
+      });
+
+      // Vérification des questions ouvertes par mots-clés simples
+      const ouvertAttendus = {
+        q41: /\.erreur\s*{[^}]*color\s*:\s*red/i,
+        q42: /display\s*:\s*flex/i,
+        q43: /:[a-z]+\s*{/i,
+        q44: /text-align\s*:\s*center/i,
+        q45: /@keyframes\s+glisse/i,
+        q46: /z-index\s*:\s*\d+/i,
+        q47: /display\s*:\s*none/i,
+        q48: /\[.+?\]/
+      };
+      for (let id in ouvertAttendus) {
+        const val = document.getElementById(id).value;
+        if (ouvertAttendus[id].test(val)) score++;
+      }
+
+      const percent = (score / 48) * 100;
+      let message = `Score: ${score}/48 (${percent.toFixed(1)}%)`;
+      if (percent >= 80) {
+        message += ' - Réussi ✅';
+      } else {
+        message += ' - Échec ❌';
+      }
+      document.getElementById('result').textContent = message;
+    }
+
+    createQCM();
+  </script>
+</body>
+</html>

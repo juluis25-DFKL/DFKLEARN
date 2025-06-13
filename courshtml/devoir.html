@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Épreuve HTML - Chapitres 1 à 3 - Version avancée</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    color: #222;
+    line-height: 1.5;
+  }
+  h1, h2 {
+    color: #007acc;
+  }
+  section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #007acc;
+    border-radius: 8px;
+  }
+  label {
+    display: block;
+    margin: 6px 0;
+  }
+  button {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background: #005f99;
+  }
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+  #feedback {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Épreuve de validation - Chapitres 1 à 3</h1>
+<p>Tu disposes de <strong>3 tentatives</strong> pour réussir cette épreuve avec au moins <strong>60% de bonnes réponses</strong>. Bonne chance !</p>
+
+<section>
+  <h2>Partie 1 : QCM (15 questions)</h2>
+  <form id="qcm-form">
+
+    <!-- Question 1 -->
+    <div>
+      <p>1. Quelle balise est la racine d'une page HTML ?</p>
+      <label><input type="radio" name="q1" value="a"> &lt;head&gt;</label>
+      <label><input type="radio" name="q1" value="b"> &lt;html&gt;</label>
+      <label><input type="radio" name="q1" value="c"> &lt;body&gt;</label>
+    </div>
+
+    <!-- Question 2 -->
+    <div>
+      <p>2. Quelle balise HTML est orpheline ?</p>
+      <label><input type="radio" name="q2" value="a"> &lt;img&gt;</label>
+      <label><input type="radio" name="q2" value="b"> &lt;p&gt;</label>
+      <label><input type="radio" name="q2" value="c"> &lt;a&gt;</label>
+    </div>
+
+    <!-- Question 3 -->
+    <div>
+      <p>3. Quel attribut est obligatoire pour afficher une image ?</p>
+      <label><input type="radio" name="q3" value="a"> alt</label>
+      <label><input type="radio" name="q3" value="b"> src</label>
+      <label><input type="radio" name="q3" value="c"> href</label>
+    </div>
+
+    <!-- Question 4 -->
+    <div>
+      <p>4. Quelle balise sert à créer un lien hypertexte ?</p>
+      <label><input type="radio" name="q4" value="a"> &lt;a&gt;</label>
+      <label><input type="radio" name="q4" value="b"> &lt;link&gt;</label>
+      <label><input type="radio" name="q4" value="c"> &lt;href&gt;</label>
+    </div>
+
+    <!-- Question 5 -->
+    <div>
+      <p>5. Quel attribut permet d'ouvrir un lien dans un nouvel onglet ?</p>
+      <label><input type="radio" name="q5" value="a"> href</label>
+      <label><input type="radio" name="q5" value="b"> target="_blank"</label>
+      <label><input type="radio" name="q5" value="c"> alt</label>
+    </div>
+
+    <!-- Question 6 -->
+    <div>
+      <p>6. Quelle balise contient le contenu visible d'une page ?</p>
+      <label><input type="radio" name="q6" value="a"> &lt;head&gt;</label>
+      <label><input type="radio" name="q6" value="b"> &lt;body&gt;</label>
+      <label><input type="radio" name="q6" value="c"> &lt;html&gt;</label>
+    </div>
+
+    <!-- Question 7 -->
+    <div>
+      <p>7. Quelle balise permet d’ajouter un titre principal ?</p>
+      <label><input type="radio" name="q7" value="a"> &lt;h1&gt;</label>
+      <label><input type="radio" name="q7" value="b"> &lt;title&gt;</label>
+      <label><input type="radio" name="q7" value="c"> &lt;header&gt;</label>
+    </div>
+
+    <!-- Question 8 -->
+    <div>
+      <p>8. Laquelle de ces balises n’est pas orpheline ?</p>
+      <label><input type="radio" name="q8" value="a"> &lt;br&gt;</label>
+      <label><input type="radio" name="q8" value="b"> &lt;img&gt;</label>
+      <label><input type="radio" name="q8" value="c"> &lt;p&gt;</label>
+    </div>
+
+    <!-- Question 9 -->
+    <div>
+      <p>9. Quelle balise HTML est utilisée pour insérer une vidéo ?</p>
+      <label><input type="radio" name="q9" value="a"> &lt;video&gt;</label>
+      <label><input type="radio" name="q9" value="b"> &lt;media&gt;</label>
+      <label><input type="radio" name="q9" value="c"> &lt;source&gt;</label>
+    </div>
+
+    <!-- Question 10 -->
+    <div>
+      <p>10. Quelle balise HTML sert à insérer un fichier audio ?</p>
+      <label><input type="radio" name="q10" value="a"> &lt;audio&gt;</label>
+      <label><input type="radio" name="q10" value="b"> &lt;sound&gt;</label>
+      <label><input type="radio" name="q10" value="c"> &lt;music&gt;</label>
+    </div>
+
+    <!-- Question 11 -->
+    <div>
+      <p>11. Que signifie l’attribut <code>alt</code> dans la balise &lt;img&gt; ?</p>
+      <label><input type="radio" name="q11" value="a"> Un lien vers l’image</label>
+      <label><input type="radio" name="q11" value="b"> Le texte alternatif si l’image ne charge pas</label>
+      <label><input type="radio" name="q11" value="c"> La largeur de l’image</label>
+    </div>
+
+    <!-- Question 12 -->
+    <div>
+      <p>12. La balise &lt;title&gt; doit se trouver dans :</p>
+      <label><input type="radio" name="q12" value="a"> &lt;body&gt;</label>
+      <label><input type="radio" name="q12" value="b"> &lt;head&gt;</label>
+      <label><input type="radio" name="q12" value="c"> &lt;footer&gt;</label>
+    </div>
+
+    <!-- Question 13 -->
+    <div>
+      <p>13. Pour inclure une image avec une hauteur spécifique, on utilise :</p>
+      <label><input type="radio" name="q13" value="a"> <code>height="100"</code></label>
+      <label><input type="radio" name="q13" value="b"> <code>alt="100"</code></label>
+      <label><input type="radio" name="q13" value="c"> <code>width="100"</code></label>
+    </div>
+
+    <!-- Question 14 -->
+    <div>
+      <p>14. Quel est le rôle de la balise &lt;meta charset="UTF-8"&gt; ?</p>
+      <label><input type="radio" name="q14" value="a"> Définir la langue du document</label>
+      <label><input type="radio" name="q14" value="b"> Définir le codage des caractères</label>
+      <label><input type="radio" name="q14" value="c"> Définir le titre de la page</label>
+    </div>
+
+    <!-- Question 15 -->
+    <div>
+      <p>15. Quelle balise HTML permet d'inclure une feuille de style CSS externe ?</p>
+      <label><input type="radio" name="q15" value="a"> &lt;style&gt;</label>
+      <label><input type="radio" name="q15" value="b"> &lt;link&gt;</label>
+      <label><input type="radio" name="q15" value="c"> &lt;css&gt;</label>
+    </div>
+
+  </form>
+</section>
+
+<section>
+  <h2>Partie 2 : Exercices pratiques (5 exercices)</h2>
+
+  <h3>Exercice 1 :</h3>
+  <p>Écris la ligne HTML pour insérer une image nommée <code>photo.jpg</code> avec le texte alternatif "Une belle photo" et une largeur de 250 pixels.</p>
+  <textarea id="ex1" rows="3" placeholder="Écris ici ton code HTML..."></textarea>
+
+  <h3>Exercice 2 :</h3>
+  <p>Écris une balise lien vers <code>https://www.wikipedia.org</code> avec le texte cliquable "Aller à Wikipédia" qui s'ouvre dans un nouvel onglet.</p>
+  <textarea id="ex2" rows="3" placeholder="Écris ici ton code HTML..."></textarea>
+
+  <h3>Exercice 3 :</h3>
+  <p>Écris la balise HTML pour insérer une vidéo nommée <code>video.mp4</code> avec les contrôles visibles.</p>
+  <textarea id="ex3" rows="3" placeholder="Écris ici ton code HTML..."></textarea>
+
+  <h3>Exercice 4 :</h3>
+  <p>Écris la balise HTML pour insérer un fichier audio nommé <code>audio.mp3</code> avec les contrôles visibles.</p>
+  <textarea id="ex4" rows="3" placeholder="Écris ici ton code HTML..."></textarea>
+
+  <h3>Exercice 5 :</h3>
+  <p>Écris la balise HTML dans le <code>&lt;head&gt;</code> pour définir la page en UTF-8 (codage des caractères).</p>
+  <textarea id="ex5" rows="3" placeholder="Écris ici ton code HTML..."></textarea>
+</section>
+
+<button onclick="verifier()">Valider l'épreuve</button>
+
+<div id="feedback"></div>
+
+<script>
+  let essaisRestants = 3;
+
+  function verifier() {
+    if (essaisRestants <= 0) {
+      alert("Tu as épuisé tes 3 tentatives. Veuillez recommencer le cours.");
+      return;
+    }
+
+    const feedback = document.getElementById('feedback');
+    feedback.innerHTML = '';
+
+    // Correction QCM
+    const bonnesReponsesQCM = {
+      q1: 'b',
+      q2: 'a',
+      q3: 'b',
+      q4: 'a',
+      q5: 'b',
+      q6: 'b',
+      q7: 'a',
+      q8: 'c',
+      q9: 'a',
+      q10: 'a',
+      q11: 'b',
+      q12: 'b',
+      q13: 'a',
+      q14: 'b',
+      q15: 'b',
+    };
+
+    const formQCM = document.getElementById('qcm-form');
+    let scoreQCM = 0;
+    const totalQCM = Object.keys(bonnesReponsesQCM).length;
+
+    for (let i = 1; i <= totalQCM; i++) {
+      const reponse = formQCM['q' + i].value;
+      if (reponse === bonnesReponsesQCM['q' + i]) {
+        scoreQCM++;
+      }
+    }
+
+    // Correction Exercices pratiques
+    let scoreExos = 0;
+    const totalExos = 5;
+
+    const normalize = (str) => str.toLowerCase().replace(/\s+/g, '').replace(/"/g, "'");
+
+    // Exercice 1 attendu
+    const reponseEx1 = `<img src='photo.jpg' alt='Une belle photo' width='250' />`;
+    if (normalize(document.getElementById('ex1').value) === normalize(reponseEx1)) {
+      scoreExos++;
+    }
+
+    // Exercice 2 attendu
+    const reponseEx2 = `<a href='https://www.wikipedia.org' target='_blank'>Aller à Wikipédia</a>`;
+    if (normalize(document.getElementById('ex2').value) === normalize(reponseEx2)) {
+      scoreExos++;
+    }
+
+    // Exercice 3 attendu
+    const reponseEx3 = `<video src='video.mp4' controls></video>`;
+    if (normalize(document.getElementById('ex3').value) === normalize(reponseEx3)) {
+      scoreExos++;
+    }
+
+    // Exercice 4 attendu
+    const reponseEx4 = `<audio src='audio.mp3' controls></audio>`;
+    if (normalize(document.getElementById('ex4').value) === normalize(reponseEx4)) {
+      scoreExos++;
+    }
+
+    // Exercice 5 attendu
+    const reponseEx5 = `<meta charset='UTF-8'>`;
+    if (normalize(document.getElementById('ex5').value) === normalize(reponseEx5)) {
+      scoreExos++;
+    }
+
+    const scoreTotal = scoreQCM + scoreExos;
+    const totalPossible = totalQCM + totalExos;
+    const pourcentage = (scoreTotal / totalPossible) * 100;
+
+    essaisRestants--;
+
+    if (pourcentage >= 60) {
+      feedback.style.color = 'green';
+      feedback.innerHTML = `Bravo ! Tu as réussi avec ${pourcentage.toFixed(1)}% de bonnes réponses.<br>
+                            Tu peux passer au chapitre suivant.`;
+      document.querySelector('button').disabled = true;
+    } else {
+      feedback.style.color = 'red';
+      if (essaisRestants > 0) {
+        feedback.innerHTML = `Tu as obtenu ${pourcentage.toFixed(1)}% de bonnes réponses. Il te reste ${essaisRestants} tentative(s). Réessaie !`;
+      } else {
+        feedback.innerHTML = `Tu as obtenu ${pourcentage.toFixed(1)}% de bonnes réponses. Tu as épuisé tes 3 tentatives. Recommence le cours.`;
+        document.querySelector('button').disabled = true;
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

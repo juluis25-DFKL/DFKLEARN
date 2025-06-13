@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen Final HTML</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+    h1, h2 { color: #333; }
+    .question, .exercice { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 0 5px #ccc; }
+    button { margin-top: 10px; padding: 8px 16px; border: none; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer; }
+    .success { color: green; }
+    .error { color: red; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; }
+    #validerFinal, #verifierExercices { display: none; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Examen Final : HTML</h1>
+
+  <div id="qcm-section">
+    <h2>Section QCM (40 questions)</h2>
+    <div id="qcm-questions"></div>
+    <button onclick="corrigerQCM()">Corriger QCM</button>
+    <p id="qcm-resultat"></p>
+  </div>
+
+  <div id="exercice-section">
+    <h2>Section Exercices (10 exercices HTML)</h2>
+    <div id="exercices"></div>
+    <button id="verifierExercices" onclick="verifierSiPeutValider()">Vérifier Exercices</button>
+    <p id="exo-resultat"></p>
+  </div>
+
+  <button id="validerFinal" onclick="validerExamen()">Valider Examen Final</button>
+  <p id="finalResult"></p>
+
+  <script>
+    const qcmData = Array.from({ length: 40 }, (_, i) => ({
+      question: `Question ${i + 1} : Quel est le rôle de la balise <b>HTML</b> ?`,
+      options: ["Créer du style", "Structurer une page web", "Créer une base de données", "Envoyer un email"],
+      answer: 1
+    }));
+
+    const exercicesData = [
+      {id: 1, mots: ["<html>", "<body>"]},
+      {id: 2, mots: ["<img", "src"]},
+      {id: 3, mots: ["<a", "href"]},
+      {id: 4, mots: ["<table>", "<tr>", "<td>"]},
+      {id: 5, mots: ["<form>", "<input"]},
+      {id: 6, mots: ["<ul>", "<li>"]},
+      {id: 7, mots: ["<h1>", "<p>"]},
+      {id: 8, mots: ["<div>", "class"]},
+      {id: 9, mots: ["<br>", "<hr>"]},
+      {id: 10, mots: ["<!DOCTYPE", "<head>"]},
+    ];
+
+    let tentatives = 0;
+    let scoreQCM = 0;
+    let exercicesValides = 0;
+    const moyenneDevoirs = 75;
+
+    function afficherQCM() {
+      const container = document.getElementById("qcm-questions");
+      qcmData.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `<p>${q.question}</p>` +
+          q.options.map((opt, i) => `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`).join("");
+        container.appendChild(div);
+      });
+    }
+
+    function afficherExercices() {
+      const container = document.getElementById("exercices");
+      exercicesData.forEach((exo) => {
+        const div = document.createElement("div");
+        div.className = "exercice";
+        div.innerHTML = `
+          <p>Exercice ${exo.id} : Écrivez un code contenant ${exo.mots.join(", ")}</p>
+          <textarea id="ex${exo.id}"></textarea>
+        `;
+        container.appendChild(div);
+      });
+      document.getElementById("verifierExercices").style.display = "inline-block";
+    }
+
+    function corrigerQCM() {
+      const reponses = document.querySelectorAll("input[type=radio]:checked");
+      let bonnes = 0;
+      qcmData.forEach((q, i) => {
+        const val = document.querySelector(`input[name='q${i}']:checked`);
+        if (val && parseInt(val.value) === q.answer) bonnes++;
+      });
+      scoreQCM = (bonnes / qcmData.length) * 100;
+      document.getElementById("qcm-resultat").innerHTML = `Score QCM : <strong>${Math.round(scoreQCM)}%</strong>`;
+    }
+
+    function verifierSiPeutValider() {
+      let valides = 0;
+      exercicesData.forEach(ex => {
+        const contenu = document.getElementById(`ex${ex.id}`).value.toLowerCase();
+        if (ex.mots.every(mot => contenu.includes(mot.toLowerCase()))) valides++;
+      });
+      exercicesValides = valides;
+      document.getElementById("exo-resultat").innerHTML = `Exercices valides : <strong>${exercicesValides} / 10</strong>`;
+
+      if (scoreQCM >= 80 && exercicesValides === 10) {
+        document.getElementById("validerFinal").style.display = "inline-block";
+      } else {
+        document.getElementById("validerFinal").style.display = "none";
+      }
+    }
+
+    function validerExamen() {
+      tentatives++;
+      const moyenneFinale = (moyenneDevoirs + scoreQCM) / 2;
+      let message = "";
+
+      if (scoreQCM >= 80 && exercicesValides === 10 && moyenneFinale >= 70) {
+        message = `✅ Réussi ! Moyenne finale : ${Math.round(moyenneFinale)}%. Vous pouvez passer à CSS.`;
+        document.getElementById("finalResult").className = "success";
+      } else {
+        if (tentatives >= 3) {
+          message = `❌ Échec. Moyenne finale : ${Math.round(moyenneFinale)}%. Vous avez utilisé vos 3 tentatives.`;
+        } else {
+          message = `⚠️ Échec. Moyenne finale : ${Math.round(moyenneFinale)}%. Tentative ${tentatives}/3.`;
+        }
+        document.getElementById("finalResult").className = "error";
+      }
+
+      document.getElementById("finalResult").innerText = message;
+    }
+
+    afficherQCM();
+    afficherExercices();
+  </script>
+</body>
+</html>
