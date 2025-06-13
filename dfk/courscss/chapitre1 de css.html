@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS - Chapitre 1 : Introduction</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+    h1, h2, h3 { color: #2c3e50; }
+    .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
+    button { margin-top: 10px; padding: 8px 16px; border: none; border-radius: 5px; background-color: #3498db; color: white; cursor: pointer; }
+    .qcm-question { margin-bottom: 15px; }
+    .result { font-weight: bold; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 1 : Introduction au CSS</h1>
+
+  <div class="section">
+    <h2>1. Qu'est-ce que le CSS ?</h2>
+    <p>Le CSS (Cascading Style Sheets) est un langage qui permet de <strong>mettre en forme</strong> une page web HTML. Il sert à définir les couleurs, les polices, les tailles, les espacements, etc.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Historique</h2>
+    <p>Le CSS a été inventé par <strong>Håkon Wium Lie</strong> en <strong>1996</strong> alors qu'il travaillait au W3C (World Wide Web Consortium).</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Syntaxe de base</h2>
+    <p>La syntaxe CSS est simple :</p>
+    <pre>
+    sélecteur {
+      propriété: valeur;
+    }
+    </pre>
+    <p>Exemple :</p>
+    <pre>
+    p {
+      color: red;
+    }
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>4. Les trois méthodes d'intégration CSS</h2>
+    <ul>
+      <li><strong>En ligne :</strong> dans une balise HTML avec l'attribut <code>style</code></li>
+      <li><strong>Interne :</strong> dans la balise <code>&lt;style&gt;</code> du fichier HTML</li>
+      <li><strong>Externe :</strong> dans un fichier .css séparé lié via <code>&lt;link&gt;</code></li>
+    </ul>
+    <pre>
+    &lt;style&gt;
+      h1 { color: blue; }
+    &lt;/style&gt;
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>5. Exemple simple</h2>
+    <pre>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+      &lt;style&gt;
+        p {
+          color: green;
+          font-size: 18px;
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;p&gt;Ceci est un paragraphe stylisé avec CSS.&lt;/p&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>QCM : Testez vos connaissances</h2>
+    <div class="qcm-question">
+      <p>1. Qui est l'inventeur du CSS ?</p>
+      <label><input type="radio" name="q1" value="a"> Tim Berners-Lee</label><br>
+      <label><input type="radio" name="q1" value="b"> Brendan Eich</label><br>
+      <label><input type="radio" name="q1" value="c"> Håkon Wium Lie</label><br>
+    </div>
+    <div class="qcm-question">
+      <p>2. Que signifie CSS ?</p>
+      <label><input type="radio" name="q2" value="a"> Computer Style Sheets</label><br>
+      <label><input type="radio" name="q2" value="b"> Cascading Style Sheets</label><br>
+      <label><input type="radio" name="q2" value="c"> Creative Style Syntax</label><br>
+    </div>
+    <div class="qcm-question">
+      <p>3. Quel est le but principal du CSS ?</p>
+      <label><input type="radio" name="q3" value="a"> Ajouter de la logique à une page</label><br>
+      <label><input type="radio" name="q3" value="b"> Mettre en forme une page HTML</label><br>
+      <label><input type="radio" name="q3" value="c"> Créer des bases de données</label><br>
+    </div>
+    <button onclick="corrigerQCM()">Corriger QCM</button>
+    <p id="resultatQCM" class="result"></p>
+  </div>
+
+  <script>
+    function corrigerQCM() {
+      const reponses = {
+        q1: 'c',
+        q2: 'b',
+        q3: 'b'
+      };
+      let bonnes = 0;
+      for (let q in reponses) {
+        const selected = document.querySelector(`input[name='${q}']:checked`);
+        if (selected && selected.value === reponses[q]) bonnes++;
+      }
+      document.getElementById("resultatQCM").innerText = `Score : ${bonnes}/3`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript - Chapitre 5 : Fonctions</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; line-height: 1.6; }
+    h1, h2 { color: #2c3e50; }
+    code { background: #ecf0f1; padding: 2px 6px; border-radius: 4px; }
+    section { background: #fff; padding: 20px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; }
+    input, button { padding: 8px; margin-top: 10px; }
+    .qcm label { display: block; margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 5 : Fonctions en JavaScript</h1>
+  <section>
+    <h2>Introduction</h2>
+    <p>Les fonctions permettent d'organiser du code en blocs réutilisables. Une fonction est un groupe d'instructions exécutées lorsqu'on l'appelle.</p>
+  </section>
+
+  <section>
+    <h2>Déclaration d'une fonction</h2>
+    <pre><code>function saluer() {
+  alert("Bonjour !");
+}
+
+saluer(); // Appel de la fonction</code></pre>
+  </section>
+
+  <section>
+    <h2>Fonction avec paramètres</h2>
+    <pre><code>function direBonjour(nom) {
+  console.log("Bonjour " + nom);
+}
+
+direBonjour("Fatou");</code></pre>
+  </section>
+
+  <section>
+    <h2>Fonction avec valeur de retour</h2>
+    <pre><code>function addition(a, b) {
+  return a + b;
+}
+
+let resultat = addition(4, 7);
+console.log(resultat);</code></pre>
+  </section>
+
+  <section>
+    <h2>Fonction anonyme et fléchée</h2>
+    <pre><code>// Fonction anonyme
+let direHello = function() {
+  console.log("Hello");
+};
+
+direHello();
+
+// Fonction fléchée (ES6)
+let carre = (x) => x * x;
+console.log(carre(5));</code></pre>
+  </section>
+
+  <section>
+    <h2>Devoir</h2>
+    <ol>
+      <li>Créer une fonction <code>multiplier</code> qui prend deux nombres et retourne le produit.</li>
+      <li>Créer une fonction <code>estPair</code> qui vérifie si un nombre est pair.</li>
+      <li>Créer une fonction fléchée qui calcule le carré d’un nombre.</li>
+      <li>Créer une fonction qui affiche "Bienvenue [nom]" avec le nom passé en paramètre.</li>
+      <li>Créer une fonction qui calcule la moyenne de 3 notes.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>QCM</h2>
+    <form id="qcm">
+      <div class="qcm">
+        <p>1. Comment déclare-t-on une fonction en JavaScript ?</p>
+        <label><input type="radio" name="q1" value="a"> fonction maFonction() { }</label>
+        <label><input type="radio" name="q1" value="b"> function maFonction() { }</label>
+        <label><input type="radio" name="q1" value="c"> define maFonction() { }</label>
+      </div>
+
+      <div class="qcm">
+        <p>2. Que fait la commande <code>return</code> dans une fonction ?</p>
+        <label><input type="radio" name="q2" value="a"> Affiche une alerte</label>
+        <label><input type="radio" name="q2" value="b"> Arrête le programme</label>
+        <label><input type="radio" name="q2" value="c"> Renvoie une valeur</label>
+      </div>
+
+      <div class="qcm">
+        <p>3. Que retourne <code>function test() { return 5 + 2; }</code> ?</p>
+        <label><input type="radio" name="q3" value="a"> 52</label>
+        <label><input type="radio" name="q3" value="b"> 7</label>
+        <label><input type="radio" name="q3" value="c"> undefined</label>
+      </div>
+
+      <div class="qcm">
+        <p>4. Que fait une fonction fléchée ?</p>
+        <label><input type="radio" name="q4" value="a"> Crée un tableau</label>
+        <label><input type="radio" name="q4" value="b"> Définit une fonction de manière concise</label>
+        <label><input type="radio" name="q4" value="c"> Remplace les variables</label>
+      </div>
+
+      <div class="qcm">
+        <p>5. Quelle est la syntaxe correcte d’une fonction fléchée ?</p>
+        <label><input type="radio" name="q5" value="a"> let x => (a) x * x;</label>
+        <label><input type="radio" name="q5" value="b"> let x = (a) => a * a;</label>
+        <label><input type="radio" name="q5" value="c"> function x(a) => a * a;</label>
+      </div>
+
+      <button type="button" onclick="corrigerQCM()">Soumettre</button>
+      <p id="resultatQCM"></p>
+    </form>
+  </section>
+
+  <script>
+    function corrigerQCM() {
+      const reponses = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'b',
+        q4: 'b',
+        q5: 'b'
+      };
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const nom = 'q' + i;
+        const boutons = document.getElementsByName(nom);
+        for (const b of boutons) {
+          if (b.checked && b.value === reponses[nom]) {
+            score++;
+          }
+        }
+      }
+      let pourcentage = (score / 5) * 100;
+      let message = `Score: ${score}/5 (${pourcentage}%) - `;
+      message += (pourcentage >= 60) ? 'Réussi ✅' : 'Échec ❌';
+      document.getElementById('resultatQCM').textContent = message;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 3 : Couleurs, Polices et Boîtes</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f8f8f8; }
+    h1, h2 { color: #2c3e50; }
+    .exemple { background: #fff; padding: 15px; margin: 10px 0; border-left: 5px solid #3498db; }
+    .qcm { margin-top: 30px; }
+    .question { background: white; padding: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 0 5px #ccc; }
+    button { margin-top: 10px; padding: 8px 16px; border: none; background-color: #2ecc71; color: white; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 3 : Couleurs, Polices et Boîtes en CSS</h1>
+
+  <h2>1. Les couleurs</h2>
+  <p>On peut définir les couleurs avec des noms, des codes hexadécimaux (#RRGGBB), ou RGB().</p>
+  <div class="exemple">
+    <pre>
+p {
+  color: red;
+  background-color: #f2f2f2;
+}
+    </pre>
+  </div>
+
+  <h2>2. Les polices</h2>
+  <p>Les polices sont définies avec la propriété <code>font-family</code>. D'autres propriétés utiles sont : <code>font-size</code>, <code>font-weight</code> et <code>font-style</code>.</p>
+  <div class="exemple">
+    <pre>
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+    </pre>
+  </div>
+
+  <h2>3. Le modèle de boîte (Box Model)</h2>
+  <p>Chaque élément HTML peut être considéré comme une boîte composée de :</p>
+  <ul>
+    <li>Contenu (content)</li>
+    <li>Remplissage (padding)</li>
+    <li>Bordure (border)</li>
+    <li>Marge (margin)</li>
+  </ul>
+  <div class="exemple">
+    <pre>
+div {
+  padding: 10px;
+  border: 2px solid black;
+  margin: 20px;
+}
+    </pre>
+  </div>
+
+  <div class="qcm">
+    <h2>QCM - Vérifiez vos connaissances</h2>
+    <form id="qcmForm">
+      <div class="question">
+        <p>1. Quelle propriété CSS définit la taille du texte ?</p>
+        <label><input type="radio" name="q1" value="a"> font-family</label><br>
+        <label><input type="radio" name="q1" value="b"> font-size</label><br>
+        <label><input type="radio" name="q1" value="c"> color</label><br>
+      </div>
+      <div class="question">
+        <p>2. Que fait la propriété <code>background-color</code> ?</p>
+        <label><input type="radio" name="q2" value="a"> Change la couleur du texte</label><br>
+        <label><input type="radio" name="q2" value="b"> Change la police</label><br>
+        <label><input type="radio" name="q2" value="c"> Change la couleur de fond</label><br>
+      </div>
+      <div class="question">
+        <p>3. Quelle partie du modèle de boîte entoure immédiatement le contenu ?</p>
+        <label><input type="radio" name="q3" value="a"> margin</label><br>
+        <label><input type="radio" name="q3" value="b"> padding</label><br>
+        <label><input type="radio" name="q3" value="c"> border</label><br>
+      </div>
+      <button type="button" onclick="corrigerQCM()">Corriger</button>
+      <p id="resultat"></p>
+    </form>
+  </div>
+
+  <script>
+    function corrigerQCM() {
+      const reponses = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'b'
+      };
+      let score = 0;
+      for (let q in reponses) {
+        const r = document.querySelector(`input[name="${q}"]:checked`);
+        if (r && r.value === reponses[q]) score++;
+      }
+      document.getElementById("resultat").innerText = `Score : ${score}/3`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 4 - Tableaux en JavaScript</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+    h1, h2 { color: #333; }
+    pre { background: #eee; padding: 10px; border-radius: 5px; }
+    section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 0 8px #ccc; }
+    button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 4 : Les Tableaux en JavaScript</h1>
+
+  <section>
+    <h2>Introduction</h2>
+    <p>Un tableau en JavaScript est une structure de données utilisée pour stocker plusieurs valeurs dans une seule variable.</p>
+  </section>
+
+  <section>
+    <h2>Création d'un tableau</h2>
+    <pre><code>let fruits = ["Pomme", "Banane", "Orange"];</code></pre>
+    <p>On peut aussi créer un tableau vide puis y ajouter des éléments :</p>
+    <pre><code>let nombres = [];
+nombres[0] = 10;
+nombres[1] = 20;</code></pre>
+  </section>
+
+  <section>
+    <h2>Accès aux éléments</h2>
+    <p>On accède aux éléments du tableau à l'aide de leur index :</p>
+    <pre><code>let premierFruit = fruits[0]; // "Pomme"</code></pre>
+  </section>
+
+  <section>
+    <h2>Modifier un élément</h2>
+    <pre><code>fruits[1] = "Mangue";</code></pre>
+  </section>
+
+  <section>
+    <h2>Longueur du tableau</h2>
+    <pre><code>let longueur = fruits.length;</code></pre>
+  </section>
+
+  <section>
+    <h2>Itération à travers un tableau</h2>
+    <pre><code>for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}</code></pre>
+  </section>
+
+  <section>
+    <h2>Devoirs (5 exercices)</h2>
+    <ol>
+      <li>Crée un tableau contenant 5 noms d'amis.</li>
+      <li>Remplace le 2e élément par un autre nom.</li>
+      <li>Affiche tous les éléments du tableau avec une boucle.</li>
+      <li>Ajoute un nouvel élément à la fin du tableau.</li>
+      <li>Affiche la longueur totale du tableau.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>QCM (10 questions)</h2>
+    <form id="quiz">
+      <p>1. Quel est l’index du premier élément dans un tableau ?</p>
+      <label><input type="radio" name="q1" value="a"> 0</label><br>
+      <label><input type="radio" name="q1" value="b"> 1</label><br>
+      <label><input type="radio" name="q1" value="c"> -1</label><br>
+
+      <p>2. Quelle méthode ajoute un élément à la fin d’un tableau ?</p>
+      <label><input type="radio" name="q2" value="a"> push()</label><br>
+      <label><input type="radio" name="q2" value="b"> pop()</label><br>
+      <label><input type="radio" name="q2" value="c"> unshift()</label><br>
+
+      <p>3. Quelle propriété permet de connaître le nombre d’éléments ?</p>
+      <label><input type="radio" name="q3" value="a"> count</label><br>
+      <label><input type="radio" name="q3" value="b"> size</label><br>
+      <label><input type="radio" name="q3" value="c"> length</label><br>
+
+      <p>4. Quelle méthode supprime le dernier élément ?</p>
+      <label><input type="radio" name="q4" value="a"> shift()</label><br>
+      <label><input type="radio" name="q4" value="b"> pop()</label><br>
+      <label><input type="radio" name="q4" value="c"> remove()</label><br>
+
+      <p>5. Quelle méthode ajoute un élément au début ?</p>
+      <label><input type="radio" name="q5" value="a"> unshift()</label><br>
+      <label><input type="radio" name="q5" value="b"> push()</label><br>
+      <label><input type="radio" name="q5" value="c"> addFirst()</label><br>
+
+      <p>6. Quel est le bon mot-clé pour déclarer un tableau ?</p>
+      <label><input type="radio" name="q6" value="a"> var</label><br>
+      <label><input type="radio" name="q6" value="b"> array</label><br>
+      <label><input type="radio" name="q6" value="c"> let</label><br>
+
+      <p>7. Quel type est retourné par <code>typeof []</code> ?</p>
+      <label><input type="radio" name="q7" value="a"> array</label><br>
+      <label><input type="radio" name="q7" value="b"> object</label><br>
+      <label><input type="radio" name="q7" value="c"> list</label><br>
+
+      <p>8. Quelle méthode permet de fusionner deux tableaux ?</p>
+      <label><input type="radio" name="q8" value="a"> merge()</label><br>
+      <label><input type="radio" name="q8" value="b"> concat()</label><br>
+      <label><input type="radio" name="q8" value="c"> join()</label><br>
+
+      <p>9. Comment afficher le 3e élément d’un tableau appelé <code>data</code> ?</p>
+      <label><input type="radio" name="q9" value="a"> data[3]</label><br>
+      <label><input type="radio" name="q9" value="b"> data[2]</label><br>
+      <label><input type="radio" name="q9" value="c"> data[1]</label><br>
+
+      <p>10. Que retourne <code>fruits.pop()</code> ?</p>
+      <label><input type="radio" name="q10" value="a"> Le premier élément</label><br>
+      <label><input type="radio" name="q10" value="b"> Le dernier élément supprimé</label><br>
+      <label><input type="radio" name="q10" value="c"> La longueur</label><br>
+
+      <button type="button" onclick="validerQuiz()">Soumettre le quiz</button>
+    </form>
+    <div id="resultat"></div>
+  </section>
+
+  <script>
+    function validerQuiz() {
+      const bonnesReponses = {
+        q1: 'a', q2: 'a', q3: 'c', q4: 'b', q5: 'a',
+        q6: 'c', q7: 'b', q8: 'b', q9: 'b', q10: 'b'
+      };
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const q = "q" + i;
+        const val = document.querySelector(`input[name="${q}"]:checked`);
+        if (val && val.value === bonnesReponses[q]) score++;
+      }
+      const pourcentage = (score / 10) * 100;
+      let message = `Score: ${score}/10 (${pourcentage}%)`;
+      message += pourcentage >= 60 ? " - Validé ✅" : " - Échec ❌";
+      document.getElementById("resultat").innerText = message;
+    }
+  </script>
+</body>
+</html>

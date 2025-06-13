@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cours HTML - Chapitre 2 : Balises importantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px auto;
+            max-width: 800px;
+            background: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #0055a5;
+        }
+        pre {
+            background: #eee;
+            padding: 15px;
+            border-left: 5px solid #0055a5;
+            overflow-x: auto;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        .qcm {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .qcm h3 {
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+        }
+        button {
+            background: #0055a5;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #003d75;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 6px solid #ffeeba;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        code {
+            background: #f2f2f2;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chapitre 2 : Les balises HTML importantes pour structurer une page</h1>
+
+    <section>
+        <h2>Les balises de titre : <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code></h2>
+        <p>
+            HTML propose six niveaux de titres, de <code>&lt;h1&gt;</code> (le plus important) à <code>&lt;h6&gt;</code> (le moins important).
+            Ces balises servent à organiser le contenu en sections hiérarchiques.
+        </p>
+        <p>Exemple :</p>
+        <pre><code>&lt;h1&gt;Titre principal&lt;/h1&gt;
+&lt;h2&gt;Sous-titre&lt;/h2&gt;
+&lt;h3&gt;Titre de section&lt;/h3&gt;
+&lt;h4&gt;Titre de sous-section&lt;/h4&gt;
+</code></pre>
+        <p>Les moteurs de recherche et lecteurs d’écran utilisent cette hiérarchie pour comprendre la structure de la page.</p>
+    </section>
+
+    <section>
+        <h2>La balise <code>&lt;p&gt;</code> : paragraphe</h2>
+        <p>
+            La balise <code>&lt;p&gt;</code> sert à écrire des paragraphes de texte.
+            Elle encadre un bloc de texte indépendant.
+        </p>
+        <p>Exemple :</p>
+        <pre><code>&lt;p&gt;Ceci est un paragraphe de texte.&lt;/p&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>La balise <code>&lt;div&gt;</code> : division</h2>
+        <p>
+            La balise <code>&lt;div&gt;</code> est un conteneur générique qui sert à regrouper des éléments HTML.
+            Elle ne crée pas de mise en forme par défaut, mais est très utile pour organiser et styliser des parties de la page avec CSS.
+        </p>
+        <p>Exemple :</p>
+        <pre><code>&lt;div&gt;
+    &lt;h2&gt;Titre de section&lt;/h2&gt;
+    &lt;p&gt;Paragraphe dans la division.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+    </section>
+
+    <section>
+        <h2>La balise <code>&lt;span&gt;</code> : conteneur en ligne</h2>
+        <p>
+            <code>&lt;span&gt;</code> est un conteneur en ligne, utilisé pour appliquer un style à une partie de texte sans créer de saut de ligne.
+        </p>
+        <p>Exemple :</p>
+        <pre><code>&lt;p&gt;Ce texte est &lt;span style="color:red;"&gt;rouge&lt;/span&gt;.&lt;/p&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Les listes : <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code> et <code>&lt;li&gt;</code></h2>
+        <p>
+            Les listes permettent d’organiser des éléments sous forme ordonnée ou non ordonnée.
+        </p>
+        <ul>
+            <li><code>&lt;ul&gt;</code> : liste non ordonnée (avec des puces)</li>
+            <li><code>&lt;ol&gt;</code> : liste ordonnée (avec des numéros)</li>
+            <li><code>&lt;li&gt;</code> : élément de liste (obligatoire à l’intérieur de <code>ul</code> ou <code>ol</code>)</li>
+        </ul>
+        <p>Exemple :</p>
+        <pre><code>&lt;ul&gt;
+    &lt;li&gt;Pommes&lt;/li&gt;
+    &lt;li&gt;Bananes&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Préparer la pâte&lt;/li&gt;
+    &lt;li&gt;Ajouter la garniture&lt;/li&gt;
+    &lt;li&gt;Cuire au four&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+    </section>
+
+    <section>
+        <h2>Les liens : la balise <code>&lt;a&gt;</code></h2>
+        <p>
+            La balise <code>&lt;a&gt;</code> (ancre) sert à créer des liens hypertextes.
+            Elle utilise l’attribut <code>href</code> pour indiquer la cible du lien.
+        </p>
+        <p>Exemple :</p>
+        <pre><code>&lt;a href="https://www.example.com"&gt;Visitez Example.com&lt;/a&gt;</code></pre>
+    </section>
+
+    <section>
+        <h2>Exercice pratique</h2>
+        <p>Créez une page HTML qui contient :</p>
+        <ul>
+            <li>Un titre principal <code>&lt;h1&gt;</code></li>
+            <li>Un paragraphe <code>&lt;p&gt;</code></li>
+            <li>Une division <code>&lt;div&gt;</code> contenant un sous-titre <code>&lt;h2&gt;</code> et un paragraphe</li>
+            <li>Une liste ordonnée <code>&lt;ol&gt;</code> avec 3 étapes</li>
+            <li>Un lien vers un site internet</li>
+            <li>Un texte dans un paragraphe avec un mot en rouge grâce à <code>&lt;span&gt;</code></li>
+        </ul>
+        <p>Voici un modèle à adapter :</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Exercice Chapitre 2&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Mon site web&lt;/h1&gt;
+    &lt;p&gt;Bienvenue sur ma page.&lt;/p&gt;
+
+    &lt;div&gt;
+        &lt;h2&gt;À propos&lt;/h2&gt;
+        &lt;p&gt;Ceci est une section.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;ol&gt;
+        &lt;li&gt;Première étape&lt;/li&gt;
+        &lt;li&gt;Deuxième étape&lt;/li&gt;
+        &lt;li&gt;Troisième étape&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;p&gt;Voici un mot en &lt;span style="color:red;"&gt;rouge&lt;/span&gt;.&lt;/p&gt;
+
+    &lt;a href="https://www.openai.com"&gt;Visitez OpenAI&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    </section>
+
+    <section class="qcm">
+        <h3>QCM : Testez vos connaissances</h3>
+
+        <form id="quiz-form">
+            <div>
+                <p><strong>1. Quelle balise définit un paragraphe ?</strong></p>
+                <label><input type="radio" name="q1" value="a" /> &lt;div&gt;</label>
+                <label><input type="radio" name="q1" value="b" /> &lt;p&gt;</label>
+                <label><input type="radio" name="q1" value="c" /> &lt;span&gt;</label>
+            </div>
+
+            <div>
+                <p><strong>2. Quelle balise utilise-t-on pour créer une liste ordonnée ?</strong></p>
+                <label><input type="radio" name="q2" value="a" /> &lt;ul&gt;</label>
+                <label><input type="radio" name="q2" value="b" /> &lt;ol&gt;</label>
+                <label><input type="radio" name="q2" value="c" /> &lt;li&gt;</label>
+            </div>
+
+            <div>
+                <p><strong>3. Quelle balise permet de créer un lien hypertexte ?</strong></p>
+                <label><input type="radio" name="q3" value="a" /> &lt;a&gt;</label>
+                <label><input type="radio" name="q3" value="b" /> &lt;link&gt;</label>
+                <label><input type="radio" name="q3" value="c" /> &lt;href&gt;</label>
+            </div>
+
+            <div>
+                <p><strong>4. Quelle balise est un conteneur générique qui ne crée pas de mise en forme par défaut ?</strong></p>
+                <label><input type="radio" name="q4" value="a" /> &lt;div&gt;</label>
+                <label><input type="radio" name="q4" value="b" /> &lt;span&gt;</label>
+                <label><input type="radio" name="q4" value="c" /> &lt;p&gt;</label>
+            </div>
+
+            <div>
+                <p><strong>5. Quelle balise sert à mettre en forme une partie de texte en ligne ?</strong></p>
+                <label><input type="radio" name="q5" value="a" /> &lt;div&gt;</label>
+                <label><input type="radio" name="q5" value="b" /> &lt;span&gt;</label>
+                <label><input type="radio" name="q5" value="c" /> &lt;h1&gt;</label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Valider</button>
+        </form>
+
+        <div id="result"></div>
+    </section>
+
+    <script>
+        function checkAnswers() {
+            const form = document.getElementById('quiz-form');
+            const result = document.getElementById('result');
+            const answers = {
+q1: 'b',
+q2: 'b',
+q3: 'a',
+q4: 'a',
+q5: 'b'
+};
+let score = 0;
+for (const [key, value] of Object.entries(answers)) {
+if (form[key].value === value) score++;
+}
+result.innerText = "Vous avez obtenu " + score + " / 5 réponses correctes.";
+}
+</script>
+
+</body> </html> 

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Chapitre 5 : Animation et transitions en CSS</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f9f9f9;
+    color: #222;
+  }
+  h1, h2 {
+    color: #004080;
+  }
+  section {
+    background: white;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #ccc;
+  }
+  pre {
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  label {
+    display: block;
+    margin: 6px 0;
+    cursor: pointer;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+  #result {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  .box {
+    width: 100px;
+    height: 100px;
+    background: #3498db;
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Chapitre 5 : Animation et transitions en CSS</h1>
+
+<section>
+  <h2>Introduction</h2>
+  <p>Les animations et transitions CSS permettent d'ajouter des effets visuels fluides et dynamiques aux éléments d’une page web, améliorant ainsi l’expérience utilisateur.</p>
+</section>
+
+<section>
+  <h2>1. Transitions CSS</h2>
+  <p>Les transitions permettent d’animer en douceur le changement d’une propriété CSS lorsqu’un événement se produit (comme le passage de la souris).</p>
+  <pre>
+.element {
+  transition: propriété durée fonction_timing délai;
+}
+  </pre>
+  <p>Exemple :</p>
+  <pre>
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  transition: background-color 0.5s ease;
+}
+
+.box:hover {
+  background-color: red;
+}
+  </pre>
+  <div class="box" style="background-color: blue;" 
+       onmouseover="this.style.backgroundColor='red';" 
+       onmouseout="this.style.backgroundColor='blue';"></div>
+</section>
+
+<section>
+  <h2>2. Propriétés animables avec transitions</h2>
+  <p>Exemples : <code>color</code>, <code>background-color</code>, <code>width</code>, <code>height</code>, <code>opacity</code>, <code>transform</code>…</p>
+</section>
+
+<section>
+  <h2>3. Animation CSS avec @keyframes</h2>
+  <p>Permet de créer une animation plus complexe en définissant plusieurs étapes.</p>
+  <pre>
+@keyframes monAnimation {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(100px); }
+  100% { transform: translateX(0); }
+}
+
+.element {
+  animation-name: monAnimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+  </pre>
+</section>
+
+<section>
+  <h2>4. Propriétés d’animation importantes</h2>
+  <ul>
+    <li><code>animation-name</code> : nom de l’animation définie par @keyframes</li>
+    <li><code>animation-duration</code> : durée (ex : 2s)</li>
+    <li><code>animation-iteration-count</code> : nombre de répétitions (ex : infinite)</li>
+    <li><code>animation-timing-function</code> : fonction de vitesse (linear, ease, ease-in, ease-out)</li>
+    <li><code>animation-delay</code> : délai avant début de l’animation</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Exemple complet d’animation</h2>
+  <style>
+    .animated-box {
+      width: 100px;
+      height: 100px;
+      background-color: #e74c3c;
+      border-radius: 15px;
+      margin: 20px auto;
+      animation-name: bounce;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-50px);
+      }
+    }
+  </style>
+  <div class="animated-box"></div>
+</section>
+
+<section>
+  <h2>QCM Chapitre 5</h2>
+  <form id="qcmForm">
+    <p>1. Quelle propriété CSS définit la durée d’une transition ?</p>
+    <label><input type="radio" name="q1" value="a" /> transition-duration</label>
+    <label><input type="radio" name="q1" value="b" /> animation-duration</label>
+    <label><input type="radio" name="q1" value="c" /> transition-name</label>
+    <label><input type="radio" name="q1" value="d" /> animation-name</label>
+
+    <p>2. Que permet la règle CSS @keyframes ?</p>
+    <label><input type="radio" name="q2" value="c" /> Définir les étapes d’une animation</label>
+    <label><input type="radio" name="q2" value="a" /> Créer une transition simple</label>
+    <label><input type="radio" name="q2" value="b" /> Appliquer une couleur</label>
+    <label><input type="radio" name="q2" value="d" /> Modifier la taille d’un élément</label>
+
+    <p>3. Quelle valeur de <code>animation-iteration-count</code> permet une animation infinie ?</p>
+    <label><input type="radio" name="q3" value="b" /> infinite</label>
+    <label><input type="radio" name="q3" value="a" /> 0</label>
+    <label><input type="radio" name="q3" value="c" /> once</label>
+    <label><input type="radio" name="q3" value="d" /> repeat</label>
+
+    <p>4. Laquelle de ces propriétés CSS n’est pas une propriété d’animation ?</p>
+    <label><input type="radio" name="q4" value="c" /> transition-timing-function</label>
+    <label><input type="radio" name="q4" value="a" /> animation-delay</label>
+    <label><input type="radio" name="q4" value="b" /> animation-name</label>
+    <label><input type="radio" name="q4" value="d" /> font-size</label>
+
+    <p>5. Quelle propriété permet d’animer le changement d’une propriété CSS lors d’un survol ?</p>
+    <label><input type="radio" name="q5" value="a" /> transition</label>
+    <label><input type="radio" name="q5" value="b" /> animation</label>
+    <label><input type="radio" name="q5" value="c" /> keyframes</label>
+    <label><input type="radio" name="q5" value="d" /> transform</label>
+
+    <button type="button" onclick="verifierQCM()">Vérifier mes réponses</button>
+  </form>
+
+  <div id="result"></div>
+</section>
+
+<script>
+  function verifierQCM() {
+    const reponsesCorrectes = {
+      q1: 'a',
+      q2: 'c',
+      q3: 'b',
+      q4: 'd',
+      q5: 'a'
+    };
+    let score = 0;
+    const total = Object.keys(reponsesCorrectes).length;
+    for (const q in reponsesCorrectes) {
+      const radios = document.getElementsByName(q);
+      for (const radio of radios) {
+        if (radio.checked) {
+          if (radio.value === reponsesCorrectes[q]) score++;
+          break;
+        }
+      }
+    }
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `Votre score : ${score} / ${total} (${((score / total) * 100).toFixed(0)}%)`;
+    if (score === total) {
+      resultDiv.style.color = 'green';
+      resultDiv.textContent += ' — Excellent !';
+    } else if (score >= total / 2) {
+      resultDiv.style.color = 'orange';
+      resultDiv.textContent += ' — Bon travail, mais vous pouvez faire mieux.';
+    } else {
+      resultDiv.style.color = 'red';
+      resultDiv.textContent += ' — Vous devriez réviser ce chapitre.';
+    }
+  }
+</script>
+
+</body>
+</html>

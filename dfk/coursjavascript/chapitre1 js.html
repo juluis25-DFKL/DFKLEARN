@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 1 : Introduction à JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    h2 {
+      color: #2980b9;
+    }
+    code {
+      background-color: #e1e1e1;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .quiz, .a-propos {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .result {
+      font-weight: bold;
+      color: green;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 1 : Introduction à JavaScript</h1>
+
+  <h2>📘 Qu’est-ce que JavaScript ?</h2>
+  <p>JavaScript est un langage de programmation utilisé pour rendre les pages web interactives. Il permet par exemple d’ajouter :</p>
+  <ul>
+    <li>des animations,</li>
+    <li>des boutons interactifs,</li>
+    <li>des formulaires dynamiques,</li>
+    <li>des jeux dans le navigateur, etc.</li>
+  </ul>
+
+  <h2>🔧 Où écrire du JavaScript ?</h2>
+  <p>Tu peux écrire JavaScript directement dans un fichier HTML en utilisant la balise <code>&lt;script&gt;</code>.</p>
+
+  <h2>💡 Exemple simple :</h2>
+  <p>Ce code affiche "Bonjour tout le monde !" dans la console du navigateur.</p>
+  <pre><code>
+&lt;script&gt;
+  console.log("Bonjour tout le monde !");
+&lt;/script&gt;
+  </code></pre>
+
+  <p>Ouvre l’outil développeur de ton navigateur (touche F12) et va dans l’onglet Console pour voir le message s’afficher.</p>
+
+  <h2>📚 À retenir</h2>
+  <ul>
+    <li>JavaScript fonctionne dans tous les navigateurs web.</li>
+    <li>Il est exécuté côté client (dans le navigateur, pas sur le serveur).</li>
+    <li>Il est sensible à la casse (ex: <code>Nom</code> ≠ <code>nom</code>).</li>
+  </ul>
+
+  <div class="quiz">
+    <h2>🧠 Quiz - QCM</h2>
+
+    <div class="question">
+      <p><strong>1. À quoi sert JavaScript ?</strong></p>
+      <input type="radio" name="q1" value="0"> A. À styliser les pages web<br>
+      <input type="radio" name="q1" value="1"> B. À rendre les pages web interactives<br>
+      <input type="radio" name="q1" value="0"> C. À stocker des bases de données<br>
+    </div>
+
+    <div class="question">
+      <p><strong>2. Quelle balise HTML permet d’écrire du JavaScript ?</strong></p>
+      <input type="radio" name="q2" value="0"> A. &lt;style&gt;<br>
+      <input type="radio" name="q2" value="1"> B. &lt;script&gt;<br>
+      <input type="radio" name="q2" value="0"> C. &lt;js&gt;<br>
+    </div>
+
+    <div class="question">
+      <p><strong>3. Quel est le résultat de ce code : <code>console.log("Salut !")</code> ?</strong></p>
+      <input type="radio" name="q3" value="0"> A. Il affiche une boîte d’alerte<br>
+      <input type="radio" name="q3" value="1"> B. Il affiche "Salut !" dans la console<br>
+      <input type="radio" name="q3" value="0"> C. Il crée une variable<br>
+    </div>
+
+    <button onclick="corriger()">Vérifier mes réponses</button>
+    <div id="resultat" class="result"></div>
+  </div>
+
+  <div class="a-propos">
+    <h2>ℹ️ À propos de JavaScript</h2>
+    <p><strong>Créateur :</strong> Brendan Eich</p>
+    <p><strong>Année de création :</strong> 1995</p>
+    <p>JavaScript a été créé en seulement 10 jours au sein de l’entreprise Netscape. Aujourd’hui, c’est l’un des langages les plus utilisés au monde.</p>
+  </div>
+
+  <script>
+    function corriger() {
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value == "1") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value == "1") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value == "1") score++;
+      document.getElementById("resultat").innerText = `Votre score : ${score} / 3`;
+    }
+  </script>
+
+</body>
+</html>
