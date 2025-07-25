@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 4 - Les Boucles | Algorithme</title>
+  <style>
+    body {
+      background: #e8f0ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #1a237e;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .qcm label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      background-color: #1976d2;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    input[type="number"] {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 4 : Les Boucles</h1>
+
+  <div class="box">
+    <h2>🔁 Introduction aux boucles</h2>
+    <p>Une boucle permet de répéter une série d’instructions plusieurs fois. En algorithme, les deux types de boucles les plus courants sont :</p>
+    <ul>
+      <li><strong>Tant que</strong> (while) : répète tant qu’une condition est vraie.</li>
+      <li><strong>Répéter...jusqu’à</strong> (do...until) : répète jusqu’à ce qu’une condition soit vraie.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>🔄 La boucle "Tant que"</h2>
+    <pre>
+i ← 1
+Tant que i ≤ 5
+   Afficher i
+   i ← i + 1
+FinTantQue
+    </pre>
+    <p>👉 Ce programme affiche les nombres de 1 à 5.</p>
+  </div>
+
+  <div class="box">
+    <h2>🔁 La boucle "Répéter...jusqu’à"</h2>
+    <pre>
+i ← 1
+Répéter
+   Afficher i
+   i ← i + 1
+Jusqu’à i > 5
+    </pre>
+    <p>👉 Même résultat que précédemment, mais la condition est vérifiée à la fin.</p>
+  </div>
+
+  <div class="box qcm">
+    <h2>🧠 Quiz : Compréhension des boucles</h2>
+    <p><strong>1. Que fait une boucle ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> Elle exécute une instruction une seule fois.</label>
+    <label><input type="radio" name="q1" value="b"> Elle répète des instructions tant qu'une condition est vraie.</label>
+    <label><input type="radio" name="q1" value="c"> Elle exécute le programme deux fois seulement.</label>
+
+    <p><strong>2. Dans quelle boucle la condition est-elle testée à la fin ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> Tant que</label>
+    <label><input type="radio" name="q2" value="b"> Répéter...jusqu’à</label>
+    <label><input type="radio" name="q2" value="c"> Pour</label>
+
+    <button onclick="corrigerQCM()">Valider les réponses</button>
+    <p class="result" id="qcmResult"></p>
+  </div>
+
+  <div class="box">
+    <h2>✍️ Exercice interactif</h2>
+    <p>Écris un programme qui affiche les 10 premiers nombres pairs à partir de 0 :</p>
+    <p><strong>Combien de nombres pairs seront affichés si on utilise une boucle Tant que avec :</strong></p>
+    <pre>
+i ← 0
+Tant que i &lt; 20
+   Afficher i
+   i ← i + 2
+FinTantQue
+    </pre>
+    <label>Ta réponse : <input type="number" id="reponsePair" /></label>
+    <button onclick="verifierExercice()">Vérifier</button>
+    <p class="result" id="exoResult"></p>
+  </div>
+
+  <script>
+    let essais = 3;
+
+    function corrigerQCM() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+
+      if (q1 && q1.value === 'b') score += 1;
+      if (q2 && q2.value === 'b') score += 1;
+
+      document.getElementById("qcmResult").textContent = "Score : " + score + "/2";
+    }
+
+    function verifierExercice() {
+      const reponse = parseInt(document.getElementById("reponsePair").value);
+      const message = document.getElementById("exoResult");
+
+      if (essais > 0) {
+        if (reponse === 10) {
+          message.textContent = "✅ Bonne réponse ! Il y a 10 nombres pairs entre 0 et 18.";
+          message.style.color = "green";
+        } else {
+          essais--;
+          message.textContent = `❌ Incorrect. Il te reste ${essais} essai(s).`;
+          message.style.color = "red";
+        }
+      } else {
+        message.textContent = "⛔ Plus de tentatives restantes.";
+        message.style.color = "gray";
+      }
+    }
+  </script>
+
+</body>
+</html>

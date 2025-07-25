@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 3 : Structures conditionnelles</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #3498db;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #3498db;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+    }
+    .quiz, .exercice {
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2e86c1;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+    textarea {
+      width: 100%;
+      height: 70px;
+      font-family: monospace;
+      font-size: 0.95em;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 3 : Les structures conditionnelles</h1>
+  <p>Comprendre l'utilisation de Si...Alors...Sinon dans un algorithme</p>
+</header>
+
+<section>
+  <h2>1. Instruction conditionnelle simple</h2>
+  <p>Permet d'exécuter une action seulement si une condition est vraie :</p>
+  <pre><code>SI âge &gt;= 18 ALORS
+  afficher("Majeur")
+FIN SI</code></pre>
+</section>
+
+<section>
+  <h2>2. Structure Si...Alors...Sinon</h2>
+  <p>Permet de choisir entre deux blocs selon la condition :</p>
+  <pre><code>SI âge &gt;= 18 ALORS
+  afficher("Majeur")
+SINON
+  afficher("Mineur")
+FIN SI</code></pre>
+</section>
+
+<section>
+  <h2>3. Conditions multiples (SI...SINON SI...SINON)</h2>
+  <pre><code>SI note &gt;= 16 ALORS
+  afficher("Très bien")
+SINON SI note &gt;= 14 ALORS
+  afficher("Bien")
+SINON SI note &gt;= 10 ALORS
+  afficher("Passable")
+SINON
+  afficher("Insuffisant")
+FIN SI</code></pre>
+</section>
+
+<section>
+  <h2>4. Conditions imbriquées</h2>
+  <pre><code>SI sexe = "F" ALORS
+  SI âge &gt;= 18 ALORS
+    afficher("Femme majeure")
+  SINON
+    afficher("Fille mineure")
+  FIN SI
+SINON
+  afficher("Homme")
+FIN SI</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle syntaxe est correcte pour une structure conditionnelle ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) SI x =&gt; 5 ALORS</label><br>
+    <label><input type="radio" name="q1" value="b"> b) SI x &gt;= 5 ALORS</label><br>
+    <label><input type="radio" name="q1" value="c"> c) SI x =! 5 ALORS</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Que fait l'instruction SINON ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) Elle vérifie une autre condition</label><br>
+    <label><input type="radio" name="q2" value="b"> b) Elle exécute une action quand la condition précédente est fausse</label><br>
+    <label><input type="radio" name="q2" value="c"> c) Elle arrête le programme</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Une structure SI imbriquée signifie :</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) Deux conditions dans une seule ligne</label><br>
+    <label><input type="radio" name="q3" value="b"> b) Une structure SI à l'intérieur d'une autre</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Un test logique avec ET/OU</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercice</h2>
+
+  <div class="exo-question">
+    <p><strong>Écris un algorithme qui :</strong><br>
+    - demande à l'utilisateur d'entrer une note (sur 20)<br>
+    - affiche "Réussi" si la note est supérieure ou égale à 10, sinon "Échoué"</p>
+    <textarea id="exo1" placeholder="Écris ton pseudo-code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercice()">Soumettre ma réponse</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<script>
+function corrigerQuiz() {
+  let score = 0;
+  const total = 3;
+  const reponses = {
+    q1: 'b',
+    q2: 'b',
+    q3: 'b'
+  };
+  for(let i = 1; i <= total; i++) {
+    const q = document.querySelector(`input[name="q${i}"]:checked`);
+    if(q && q.value === reponses[`q${i}`]) score++;
+  }
+  document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+}
+
+function corrigerExercice() {
+  const reponse = document.getElementById("exo1").value.replace(/\s/g, '').toLowerCase();
+  const correct = reponse.includes("si") && reponse.includes(">=10") && (reponse.includes("reussi") || reponse.includes("afficher("))
+    && reponse.includes("sinon") && (reponse.includes("echoue") || reponse.includes("afficher("));
+  document.getElementById("resultExo").innerText = correct ? "Bonne réponse !" : "Réponse incorrecte ou incomplète.";
+}
+</script>
+
+</body>
+</html>

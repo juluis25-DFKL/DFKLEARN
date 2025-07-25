@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chapitre 5 - Les Tableaux | DFKLearn</title>
+  <style>
+    body {
+      background-color: #0d1b2a;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #00b4d8;
+    }
+    .section {
+      margin-bottom: 30px;
+      background-color: #1b263b;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0096c7;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 5 : Les Tableaux</h1>
+
+  <div class="section">
+    <h2>1. Déclaration et remplissage</h2>
+    <p>Un tableau est une structure qui permet de stocker plusieurs valeurs dans une seule variable. On peut déclarer un tableau comme ceci :</p>
+    <pre>tableau[5]</pre>
+    <p>Cela crée un tableau de 5 éléments. On peut remplir un tableau comme suit :</p>
+    <pre>
+Pour i allant de 0 à 4 faire
+    Saisir tableau[i]
+FinPour
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>2. Parcours avec boucles</h2>
+    <p>Pour accéder aux valeurs d’un tableau, on utilise une boucle :</p>
+    <pre>
+Pour i allant de 0 à 4 faire
+    Afficher tableau[i]
+FinPour
+    </pre>
+    <p>On peut aussi faire des calculs comme la somme des éléments :</p>
+    <pre>
+somme ← 0
+Pour i allant de 0 à 4 faire
+    somme ← somme + tableau[i]
+FinPour
+Afficher somme
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>3. QCM interactif</h2>
+
+    <h3>Q1. Comment déclare-t-on un tableau de 10 entiers ?</h3>
+    <label><input type="radio" name="q1" value="0"> entier[10]</label><br>
+    <label><input type="radio" name="q1" value="1"> tableau[10]</label><br>
+    <label><input type="radio" name="q1" value="0"> liste(10)</label><br>
+
+    <h3>Q2. Quelle boucle permet de parcourir un tableau ?</h3>
+    <label><input type="radio" name="q2" value="0"> TantQue</label><br>
+    <label><input type="radio" name="q2" value="1"> Pour</label><br>
+    <label><input type="radio" name="q2" value="0"> Si</label><br>
+
+    <h3>Q3. Que fait la variable "i" dans la boucle Pour i allant de 0 à 4 ?</h3>
+    <label><input type="radio" name="q3" value="1"> Elle sert d’index pour accéder aux éléments du tableau</label><br>
+    <label><input type="radio" name="q3" value="0"> Elle est la taille du tableau</label><br>
+    <label><input type="radio" name="q3" value="0"> Elle contient les valeurs du tableau</label><br>
+
+    <button onclick="corrigerQCM()">Soumettre les réponses</button>
+    <div class="result" id="qcmResult"></div>
+  </div>
+
+  <div class="section">
+    <h2>4. Exercice pratique</h2>
+    <p>Demande à l'utilisateur de saisir 5 nombres, les stocker dans un tableau, puis afficher la somme et la moyenne.</p>
+    <textarea placeholder="Écris ton algorithme ici..."></textarea>
+  </div>
+
+  <script>
+    function corrigerQCM() {
+      const bonnesReponses = ['1', '1', '1'];
+      let score = 0;
+      for (let i = 1; i <= 3; i++) {
+        const radios = document.getElementsByName("q" + i);
+        for (const r of radios) {
+          if (r.checked && r.value === bonnesReponses[i - 1]) {
+            score++;
+          }
+        }
+      }
+      const pourcentage = (score / 3) * 100;
+      const resultat = document.getElementById("qcmResult");
+      if (pourcentage >= 60) {
+        resultat.textContent = `✅ Bravo ! Vous avez obtenu ${pourcentage.toFixed(0)}%.`;
+        resultat.style.color = "lightgreen";
+      } else {
+        resultat.textContent = `❌ Vous avez obtenu ${pourcentage.toFixed(0)}%. Recommencez.`;
+        resultat.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

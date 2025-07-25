@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Devoir - Algorithme (Chapitres 1 à 3)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4fc;
+      margin: 20px;
+      padding: 0;
+    }
+    h1, h2 {
+      color: #3b3b98;
+    }
+    .question {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #fff;
+      border-left: 4px solid #3b3b98;
+      border-radius: 5px;
+    }
+    .open-question {
+      background-color: #e9f0ff;
+    }
+    button {
+      background-color: #3b3b98;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #score {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Devoir - Algorithme (Chapitres 1 à 3)</h1>
+  <p>Répondez aux questions ci-dessous. Vous avez 3 tentatives. Il faut au moins 60% pour réussir.</p>
+
+  <form id="quizForm">
+    <h2>1. QCM (20 questions - 4 points chacun)</h2>
+
+    <div class="question">
+      <p>1. Que signifie "algorithme" ?</p>
+      <label><input type="radio" name="q1" value="a"> Une langue</label><br>
+      <label><input type="radio" name="q1" value="b"> Une méthode pour résoudre un problème</label><br>
+      <label><input type="radio" name="q1" value="c"> Une base de données</label>
+    </div>
+
+    <div class="question">
+      <p>2. Une variable peut contenir :</p>
+      <label><input type="radio" name="q2" value="a"> Un seul type d'information</label><br>
+      <label><input type="radio" name="q2" value="b"> Des valeurs fixes</label><br>
+      <label><input type="radio" name="q2" value="c"> Différentes valeurs pendant l’exécution</label>
+    </div>
+
+    <div class="question">
+      <p>3. Le type booléen permet de :</p>
+      <label><input type="radio" name="q3" value="a"> Stocker du texte</label><br>
+      <label><input type="radio" name="q3" value="b"> Faire des calculs complexes</label><br>
+      <label><input type="radio" name="q3" value="c"> Représenter vrai ou faux</label>
+    </div>
+
+    <!-- Ajoutez jusqu’à q20 ici comme les exemples ci-dessus -->
+
+    <!-- QUESTIONS OUVERTES -->
+    <h2>2. Questions ouvertes (5 questions - 4 points chacune)</h2>
+
+    <div class="question open-question">
+      <p>21. Donnez une définition simple d'un algorithme.</p>
+      <textarea name="open1" rows="3" cols="60"></textarea>
+    </div>
+
+    <div class="question open-question">
+      <p>22. Quelle est la différence entre une variable et une constante ?</p>
+      <textarea name="open2" rows="3" cols="60"></textarea>
+    </div>
+
+    <div class="question open-question">
+      <p>23. Donnez un exemple d’expression conditionnelle avec SI…ALORS…SINON.</p>
+      <textarea name="open3" rows="3" cols="60"></textarea>
+    </div>
+
+    <div class="question open-question">
+      <p>24. À quoi sert une condition dans un algorithme ?</p>
+      <textarea name="open4" rows="3" cols="60"></textarea>
+    </div>
+
+    <div class="question open-question">
+      <p>25. Donnez un exemple d’opération arithmétique et logique dans un algorithme.</p>
+      <textarea name="open5" rows="3" cols="60"></textarea>
+    </div>
+
+    <button type="button" onclick="corriger()">Soumettre</button>
+    <div id="score"></div>
+  </form>
+
+  <script>
+    let tentative = 0;
+
+    function corriger() {
+      if (tentative >= 3) {
+        document.getElementById("score").innerText = "❌ Nombre de tentatives dépassé.";
+        return;
+      }
+
+      let total = 0;
+
+      // Clé des bonnes réponses QCM
+      const bonnesReponses = {
+        q1: "b",
+        q2: "c",
+        q3: "c",
+        // Ajoutez les autres bonnes réponses ici jusqu’à q20
+      };
+
+      for (let key in bonnesReponses) {
+        const radios = document.getElementsByName(key);
+        for (let radio of radios) {
+          if (radio.checked && radio.value === bonnesReponses[key]) {
+            total += 4;
+          }
+        }
+      }
+
+      // Total pour 20 QCM = 20 * 4 = 80
+      // Ajoutez +20 pour les 5 questions ouvertes (notées manuellement)
+      const totalFinal = total; // + 20 après correction manuelle
+
+      tentative++;
+      if (totalFinal >= 60) {
+        document.getElementById("score").innerText = `✅ Bravo ! Vous avez obtenu ${totalFinal}/100. Devoir validé !`;
+      } else if (tentative < 3) {
+        document.getElementById("score").innerText = `❌ Vous avez obtenu ${totalFinal}/100. Tentative ${tentative}/3. Réessayez.`;
+      } else {
+        document.getElementById("score").innerText = `❌ Échec ! Score : ${totalFinal}/100. Tentatives épuisées.`;
+      }
+    }
+  </script>
+
+</body>
+</html>

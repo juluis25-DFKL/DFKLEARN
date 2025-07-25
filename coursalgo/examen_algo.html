@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen final - Module Algorithmes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f6ff;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #003366;
+    }
+    .question {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #ffffff;
+      border-left: 5px solid #0066cc;
+      border-radius: 5px;
+    }
+    .question.open {
+      background-color: #eef5ff;
+      border-left-color: #3366cc;
+    }
+    button {
+      background-color: #0066cc;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004d99;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Examen Final - Module Algorithmes</h1>
+  <p>L'examen contient 40 QCM (corrigés automatiquement) et 8 questions ouvertes à répondre manuellement. <strong>2 tentatives</strong> sont autorisées. Vous devez obtenir <strong>80 %</strong> pour valider.</p>
+
+  <form id="examForm">
+    <div id="qcm-questions"></div>
+
+    <h2>Questions ouvertes (à corriger manuellement)</h2>
+    <div class="question open">
+      1. Écrivez un algorithme qui calcule la moyenne de 3 notes.
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      2. Que signifie le mot-clé "Sinon" dans un algorithme ?
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      3. Donnez un exemple de boucle "Pour".
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      4. Comment déclare-t-on un tableau de 10 entiers ?
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      5. Quelle est la différence entre fonction et procédure ?
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      6. Écrivez un pseudocode pour chercher le plus grand nombre d’une liste.
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      7. Quelle est l’utilité d’un sous-algorithme ?
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+    <div class="question open">
+      8. Citez une méthode de résolution algorithmique.
+      <br><textarea rows="4" cols="80"></textarea>
+    </div>
+
+    <button type="button" onclick="corriger()">Soumettre l'examen</button>
+  </form>
+
+  <div class="result" id="resultat"></div>
+
+  <script>
+    const questions = [
+      {
+        question: "1. Que signifie l'instruction 'Si ... Alors' ?",
+        options: ["Une boucle", "Une condition", "Un tableau", "Un affichage"],
+        answer: "Une condition"
+      },
+      {
+        question: "2. Quel mot permet de répéter une action ?",
+        options: ["Si", "Sinon", "TantQue", "Affiche"],
+        answer: "TantQue"
+      },
+      {
+        question: "3. Quel type représente une valeur vraie ou fausse ?",
+        options: ["Entier", "Booléen", "Chaîne", "Caractère"],
+        answer: "Booléen"
+      },
+      {
+        question: "4. Que fait l'instruction 'Lire' ?",
+        options: ["Affiche un texte", "Ajoute un nombre", "Demande une saisie", "Crée une boucle"],
+        answer: "Demande une saisie"
+      },
+      {
+        question: "5. Quel est le symbole de l’opérateur logique 'ET' ?",
+        options: ["+", "OU", "&&", "ET"],
+        answer: "ET"
+      },
+      {
+        question: "6. Quel type contient des lettres ?",
+        options: ["Entier", "Booléen", "Chaîne", "Réel"],
+        answer: "Chaîne"
+      },
+      {
+        question: "7. Que fait une fonction ?",
+        options: ["Exécute une tâche sans résultat", "Retourne un résultat", "Affiche un texte", "Arrête le programme"],
+        answer: "Retourne un résultat"
+      },
+      {
+        question: "8. Une procédure ...",
+        options: ["Retourne toujours une valeur", "Ne retourne rien", "Est un type", "Est une variable"],
+        answer: "Ne retourne rien"
+      },
+      {
+        question: "9. L’instruction 'Pour i de 1 à 10' est ...",
+        options: ["Une condition", "Une boucle", "Un test", "Une fonction"],
+        answer: "Une boucle"
+      },
+      {
+        question: "10. Le pseudocode sert à ...",
+        options: ["Programmer", "Écrire un algorithme sans syntaxe stricte", "Créer un site", "Compiler"],
+        answer: "Écrire un algorithme sans syntaxe stricte"
+      }
+      // Ajoutez jusqu’à 40 QCM en copiant ce bloc et en modifiant les numéros.
+    ];
+
+    function corriger() {
+      let score = 0;
+      const form = document.forms['examForm'];
+      const total = questions.length;
+      for (let i = 0; i < total; i++) {
+        const radios = form['qcm' + i];
+        if (radios) {
+          for (let j = 0; j < radios.length; j++) {
+            if (radios[j].checked && radios[j].value === questions[i].answer) {
+              score++;
+            }
+          }
+        }
+      }
+
+      const pourcentage = (score / total) * 100;
+      let message = `Votre score QCM est de ${score}/${total} soit ${pourcentage.toFixed(2)}%.<br>`;
+
+      if (pourcentage >= 80) {
+        message += "<span style='color:green'>Félicitations ! Vous avez validé l'examen.</span>";
+      } else {
+        message += "<span style='color:red'>Échec. Vous devez obtenir au moins 80%. Vous avez encore une tentative.</span>";
+      }
+
+      document.getElementById("resultat").innerHTML = message;
+    }
+
+    // Génération dynamique des questions QCM
+    const container = document.getElementById("qcm-questions");
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<strong>${q.question}</strong><br>` +
+        q.options.map(opt => `<label><input type="radio" name="qcm${index}" value="${opt}"> ${opt}</label><br>`).join('');
+      container.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>

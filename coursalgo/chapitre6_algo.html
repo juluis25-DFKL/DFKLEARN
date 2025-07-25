@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapitre 6 - Sous-algorithmes (fonctions et procédures)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      margin: 20px;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #1e90ff;
+    }
+    .section {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 10px;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #1e90ff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0c7cd5;
+    }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 6 : Les sous-algorithmes (fonctions et procédures)</h1>
+
+  <div class="section">
+    <h2>🔎 Introduction</h2>
+    <p>
+      Un sous-algorithme est un bloc de code réutilisable qui effectue une tâche spécifique. On les appelle aussi :
+    </p>
+    <ul>
+      <li><strong>Fonctions</strong> : elles retournent un résultat.</li>
+      <li><strong>Procédures</strong> : elles ne retournent pas de résultat, elles exécutent juste une action.</li>
+    </ul>
+    <p>
+      Cela permet de rendre les programmes plus clairs, plus courts et plus faciles à corriger.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>🧠 Syntaxe générale</h2>
+    <h3>Fonction</h3>
+    <pre>
+Fonction nom_de_la_fonction(paramètres): TypeRetour
+    // instructions
+    Retourner résultat
+FinFonction
+    </pre>
+
+    <h3>Procédure</h3>
+    <pre>
+Procédure nom_de_la_procédure(paramètres)
+    // instructions
+FinProcédure
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>✅ Exemple de fonction</h2>
+    <pre>
+Fonction carré(x: Entier): Entier
+    Retourner x * x
+FinFonction
+    </pre>
+    <p>Appel : <code>carré(4)</code> retourne <code>16</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2>📌 QCM interactif</h2>
+    <div class="question">
+      <label>1. Quelle est la différence entre une fonction et une procédure ?</label><br />
+      <select id="q1">
+        <option value="">-- Choisir --</option>
+        <option value="1">Aucune, ce sont deux mots pour la même chose</option>
+        <option value="2">Une fonction retourne une valeur, une procédure non</option>
+        <option value="3">Une procédure retourne une valeur, une fonction non</option>
+      </select>
+    </div>
+    <div class="question">
+      <label>2. Quel mot-clé est utilisé pour une fonction ?</label><br />
+      <select id="q2">
+        <option value="">-- Choisir --</option>
+        <option value="1">Procédure</option>
+        <option value="2">Début</option>
+        <option value="3">Fonction</option>
+      </select>
+    </div>
+    <button onclick="corrigerQCM()">Corriger</button>
+    <p id="resultatQCM"></p>
+  </div>
+
+  <div class="section">
+    <h2>🧪 Exercices pratiques</h2>
+
+    <h3>Exercice 1 : Créer une fonction</h3>
+    <p>Créez une fonction <code>double(n)</code> qui retourne le double d’un nombre entier.</p>
+    <p><strong>Entrée :</strong> l’utilisateur saisit un entier</p>
+    <p><strong>Sortie attendue :</strong> double du nombre</p>
+    <input type="text" id="ex1" placeholder="Entrez un nombre" />
+    <button onclick="doubleNombre()">Afficher le double</button>
+    <p id="resEx1"></p>
+
+    <h3>Exercice 2 : Créer une procédure</h3>
+    <p>Créez une procédure qui affiche "Bonjour [nom]" où <code>nom</code> est une entrée utilisateur.</p>
+    <input type="text" id="ex2" placeholder="Entrez votre nom" />
+    <button onclick="direBonjour()">Afficher</button>
+    <p id="resEx2"></p>
+  </div>
+
+  <script>
+    function corrigerQCM() {
+      const rep1 = document.getElementById("q1").value;
+      const rep2 = document.getElementById("q2").value;
+      let score = 0;
+      if (rep1 === "2") score++;
+      if (rep2 === "3") score++;
+      const total = 2;
+      const message = score === total
+        ? "✅ Très bien, toutes les réponses sont correctes !"
+        : `🧐 Vous avez ${score}/${total} bonnes réponses.`;
+      document.getElementById("resultatQCM").innerText = message;
+    }
+
+    function doubleNombre() {
+      const val = parseInt(document.getElementById("ex1").value);
+      if (isNaN(val)) {
+        document.getElementById("resEx1").innerText = "❌ Veuillez entrer un nombre valide.";
+      } else {
+        document.getElementById("resEx1").innerText = `✅ Le double est : ${val * 2}`;
+      }
+    }
+
+    function direBonjour() {
+      const nom = document.getElementById("ex2").value.trim();
+      if (nom === "") {
+        document.getElementById("resEx2").innerText = "❌ Entrez un nom.";
+      } else {
+        document.getElementById("resEx2").innerText = `👋 Bonjour ${nom} !`;
+      }
+    }
+  </script>
+</body>
+</html>

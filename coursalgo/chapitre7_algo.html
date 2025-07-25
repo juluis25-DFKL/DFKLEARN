@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 7 - Méthodologie de résolution et pseudocode</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      background-color: #0077cc;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #0077cc;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .exercice, .qcm {
+      background-color: #e6f2ff;
+      border-left: 5px solid #0077cc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input[type="text"] {
+      padding: 5px;
+      width: 80%;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 7 : Méthodologie de résolution et pseudocode</h1>
+
+  <div class="section">
+    <h2>🔍 Objectifs</h2>
+    <ul>
+      <li>Comprendre les étapes de résolution d'un problème en algorithmique</li>
+      <li>Savoir écrire un pseudocode clair avant d'implémenter un programme</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🧠 Étapes pour résoudre un problème</h2>
+    <ol>
+      <li>Comprendre et analyser le problème</li>
+      <li>Identifier les données d'entrée et les résultats attendus</li>
+      <li>Élaborer une stratégie (ex: boucle, condition, tableau, etc.)</li>
+      <li>Écrire le pseudocode</li>
+      <li>Traduire en code (Python, C, etc.)</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>📋 Exemple de pseudocode</h2>
+    <p><strong>Problème :</strong> Écrire un algorithme qui calcule la somme de 5 nombres saisis par l’utilisateur.</p>
+    <pre style="background-color:#eef;padding:10px;border-radius:8px;">
+Début
+    somme ← 0
+    Pour i de 1 à 5 faire
+        Écrire "Entrez un nombre :"
+        Lire nombre
+        somme ← somme + nombre
+    FinPour
+    Écrire "La somme est :", somme
+Fin
+    </pre>
+  </div>
+
+  <div class="section">
+    <h2>🧪 Exercice interactif : Trouver l'erreur dans le pseudocode</h2>
+    <div class="exercice">
+      <p>Corrigez ce pseudocode :</p>
+      <pre style="background-color:#fffbe6;padding:10px;border-radius:8px;">
+Début
+    Pour i de 1 à 5
+        Lire nombre
+        somme = somme + nombre
+    Écrire somme
+Fin
+      </pre>
+      <p><strong>Question :</strong> Quelle est la principale erreur dans ce pseudocode ?</p>
+      <label for="correction">Votre réponse :</label>
+      <input type="text" id="correction" placeholder="Entrez votre réponse ici...">
+      <button onclick="verifierCorrection()">Vérifier</button>
+      <div class="result" id="resultatCorrection"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📝 QCM de révision</h2>
+    <div class="qcm">
+      <p><strong>1. Quelle est la première étape pour résoudre un problème ?</strong></p>
+      <label><input type="radio" name="q1" value="a"> Écrire le code Python</label>
+      <label><input type="radio" name="q1" value="b"> Identifier les variables</label>
+      <label><input type="radio" name="q1" value="c"> Comprendre et analyser le problème</label>
+
+      <p><strong>2. À quoi sert le pseudocode ?</strong></p>
+      <label><input type="radio" name="q2" value="a"> Tester un programme</label>
+      <label><input type="radio" name="q2" value="b"> Écrire une version simplifiée de l'algorithme</label>
+      <label><input type="radio" name="q2" value="c"> Créer des interfaces graphiques</label>
+
+      <button onclick="corrigerQCM()">Corriger</button>
+      <div class="result" id="resultatQCM"></div>
+    </div>
+  </div>
+
+  <script>
+    function verifierCorrection() {
+      const reponse = document.getElementById("correction").value.toLowerCase();
+      const result = document.getElementById("resultatCorrection");
+      if (reponse.includes("initialisation") || reponse.includes("somme ← 0")) {
+        result.innerText = "✅ Bonne réponse ! Il manque l'initialisation de la variable 'somme'.";
+      } else {
+        result.innerText = "❌ Ce n’est pas tout à fait ça. Essayez de penser à ce qui manque avant la boucle.";
+      }
+    }
+
+    function corrigerQCM() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const result = document.getElementById("resultatQCM");
+      let score = 0;
+
+      if (q1 && q1.value === "c") score++;
+      if (q2 && q2.value === "b") score++;
+
+      result.innerText = `✅ Vous avez obtenu ${score}/2 réponses correctes.`;
+    }
+  </script>
+
+</body>
+</html>

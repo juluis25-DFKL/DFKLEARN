@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Devoir sur les 5 chapitres - Algorithme</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 20px;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #005f73;
+    }
+    .question {
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .question h3 {
+      color: #0a9396;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0a9396;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #007f81;
+    }
+    #result {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #005f73;
+    }
+  </style>
+</head>
+<body>
+  <h1>Devoir final : Chapitres 1 à 5 - Algorithme</h1>
+  <p>Répondez aux 40 QCM. Vous avez 3 tentatives pour réussir. Le score minimum pour valider est de 60 %.</p>
+
+  <form id="quizForm">
+    <div id="quizContainer"></div>
+    <button type="submit">Soumettre</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        q: "1. Qu'est-ce qu'un algorithme ?",
+        options: [
+          "Une recette ou suite d'étapes pour résoudre un problème",
+          "Un langage de programmation",
+          "Un ordinateur",
+          "Un tableau"
+        ],
+        answer: 0
+      },
+      {
+        q: "2. Un algorithme bien écrit doit être :",
+        options: [
+          "Long et compliqué",
+          "Ambigu",
+          "Clair et précis",
+          "Toujours en langage naturel"
+        ],
+        answer: 2
+      },
+      {
+        q: "3. Quelle est la structure de base d’un algorithme ?",
+        options: [
+          "Titre, variables, étapes",
+          "Début, traitement, fin",
+          "Nom, boucle, condition",
+          "Constantes, fonctions"
+        ],
+        answer: 1
+      },
+      {
+        q: "4. Une variable permet de :",
+        options: [
+          "Stocker une information temporaire",
+          "Afficher uniquement des résultats",
+          "Écrire des commentaires",
+          "Créer un fichier"
+        ],
+        answer: 0
+      },
+      {
+        q: "5. Une constante est :",
+        options: [
+          "Une variable qui change tout le temps",
+          "Une valeur fixe qu’on ne modifie pas",
+          "Une boucle",
+          "Un tableau"
+        ],
+        answer: 1
+      },
+      {
+        q: "6. Quel type de donnée représente un vrai ou faux ?",
+        options: [
+          "Entier",
+          "Chaîne",
+          "Booléen",
+          "Décimal"
+        ],
+        answer: 2
+      },
+      {
+        q: "7. Le résultat de l’opération 5 % 2 est :",
+        options: [
+          "2",
+          "1",
+          "0",
+          "7"
+        ],
+        answer: 1
+      },
+      {
+        q: "8. Quelle est l'opération pour vérifier l'égalité ?",
+        options: [
+          "=",
+          "==",
+          "!=",
+          "><"
+        ],
+        answer: 1
+      },
+      {
+        q: "9. Dans une condition, l'opérateur logique ET s’écrit :",
+        options: [
+          "||",
+          "&&",
+          "**",
+          "%%"
+        ],
+        answer: 1
+      },
+      {
+        q: "10. La structure conditionnelle permet de :",
+        options: [
+          "Faire une boucle",
+          "Créer un tableau",
+          "Choisir entre plusieurs actions",
+          "Afficher du texte uniquement"
+        ],
+        answer: 2
+      },
+      {
+        q: "11. Quel mot utilise-t-on pour commencer une condition ?",
+        options: [
+          "Pour",
+          "TantQue",
+          "Si",
+          "Fin"
+        ],
+        answer: 2
+      },
+      {
+        q: "12. Quel mot termine une structure Si…Alors…Sinon ?",
+        options: [
+          "Fin",
+          "FinSi",
+          "Terminer",
+          "Stop"
+        ],
+        answer: 1
+      },
+      {
+        q: "13. Une structure imbriquée signifie :",
+        options: [
+          "Une condition seule",
+          "Une condition à l’intérieur d’une autre",
+          "Une boucle dans une condition",
+          "Une erreur de syntaxe"
+        ],
+        answer: 1
+      },
+      {
+        q: "14. Une boucle 'Pour' est utilisée pour :",
+        options: [
+          "Afficher des erreurs",
+          "Répéter une action un nombre de fois",
+          "Faire une seule opération",
+          "Tester une condition"
+        ],
+        answer: 1
+      },
+      {
+        q: "15. Une boucle 'Tant que' s’arrête :",
+        options: [
+          "Quand l'utilisateur clique",
+          "Quand la condition est fausse",
+          "Après 100 itérations",
+          "Jamais"
+        ],
+        answer: 1
+      },
+      {
+        q: "16. Dans une boucle, on utilise souvent une :",
+        options: [
+          "Variable compteur",
+          "Chaîne",
+          "Constante",
+          "Condition imbriquée"
+        ],
+        answer: 0
+      },
+      {
+        q: "17. L'instruction 'i ← i + 1' signifie :",
+        options: [
+          "Décrémenter i",
+          "Initialiser i",
+          "Incrémenter i",
+          "Comparer i"
+        ],
+        answer: 2
+      },
+      {
+        q: "18. Les tableaux permettent de :",
+        options: [
+          "Faire des calculs",
+          "Stocker plusieurs valeurs du même type",
+          "Créer des boucles",
+          "Afficher un texte"
+        ],
+        answer: 1
+      },
+      {
+        q: "19. Un tableau commence toujours à l’indice :",
+        options: [
+          "1",
+          "0",
+          "2",
+          "-1"
+        ],
+        answer: 1
+      },
+      {
+        q: "20. Pour parcourir un tableau on utilise souvent :",
+        options: [
+          "Une condition",
+          "Une constante",
+          "Une boucle",
+          "Une fonction"
+        ],
+        answer: 2
+      },
+
+      // Ajoutez jusqu'à 40 questions au total...
+    ];
+
+    let attempts = 0;
+
+    function renderQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = "";
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.classList.add("question");
+        div.innerHTML = `<h3>${q.q}</h3>` + q.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>`
+        ).join("");
+        container.appendChild(div);
+      });
+    }
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      if (attempts >= 3) {
+        document.getElementById("result").innerHTML = "❌ Vous avez dépassé les 3 tentatives.";
+        return;
+      }
+
+      let score = 0;
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && parseInt(selected.value) === q.answer) {
+          score++;
+        }
+      });
+
+      const percent = Math.round((score / questions.length) * 100);
+      attempts++;
+
+      let resultText = `Tentative ${attempts}/3 — Vous avez obtenu ${score} / ${questions.length} (${percent}%)<br>`;
+      if (percent >= 60) {
+        resultText += "✅ Bravo, vous avez réussi le devoir.";
+      } else if (attempts < 3) {
+        resultText += "❌ Échec. Réessayez.";
+      } else {
+        resultText += "❌ Vous avez échoué les 3 tentatives.";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    });
+
+    renderQuiz();
+  </script>
+</body>
+</html>
