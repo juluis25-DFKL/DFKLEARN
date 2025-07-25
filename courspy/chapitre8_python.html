@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 8 : Dictionnaires et ensembles en Python</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #27ae60;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 70px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 8 : Dictionnaires et ensembles en Python</h1>
+  <p>Apprendre à manipuler les dictionnaires et ensembles</p>
+</header>
+
+<section>
+  <h2>1. Les dictionnaires</h2>
+  <p>Un dictionnaire est une collection non ordonnée de paires clé-valeur.</p>
+  <pre><code>mon_dict = {"nom": "Alice", "age": 30, "ville": "Paris"}</code></pre>
+</section>
+
+<section>
+  <h2>2. Accéder à une valeur</h2>
+  <pre><code>print(mon_dict["nom"])  # affiche "Alice"</code></pre>
+</section>
+
+<section>
+  <h2>3. Ajouter ou modifier une entrée</h2>
+  <pre><code>mon_dict["age"] = 31
+mon_dict["pays"] = "France"</code></pre>
+</section>
+
+<section>
+  <h2>4. Supprimer une entrée</h2>
+  <pre><code>del mon_dict["ville"]</code></pre>
+</section>
+
+<section>
+  <h2>5. Les ensembles (sets)</h2>
+  <p>Un ensemble est une collection non ordonnée d’éléments uniques.</p>
+  <pre><code>mon_ensemble = {1, 2, 3, 3, 4}
+print(mon_ensemble)  # affiche {1, 2, 3, 4}</code></pre>
+</section>
+
+<section>
+  <h2>6. Opérations sur les ensembles</h2>
+  <pre><code>A = {1, 2, 3}
+B = {2, 3, 4}
+print(A.union(B))      # {1, 2, 3, 4}
+print(A.intersection(B))  # {2, 3}
+print(A.difference(B))  # {1}</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle syntaxe crée un dictionnaire ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) mon_dict = ["nom": "Alice"]</label><br>
+    <label><input type="radio" name="q1" value="b"> b) mon_dict = {"nom": "Alice"}</label><br>
+    <label><input type="radio" name="q1" value="c"> c) mon_dict = ("nom", "Alice")</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Que fait la commande <code>del mon_dict["age"]</code> ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) Supprime la clé "age" et sa valeur</label><br>
+    <label><input type="radio" name="q2" value="b"> b) Supprime seulement la valeur de "age"</label><br>
+    <label><input type="radio" name="q2" value="c"> c) Modifie la valeur de "age"</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Quel est le résultat de <code>{1, 2, 2, 3}</code> ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) {1, 2, 2, 3}</label><br>
+    <label><input type="radio" name="q3" value="b"> b) {1, 2, 3}</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Erreur</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Crée un dictionnaire <code>etudiant</code> avec les clés "nom" = "Jean", "age" = 22, "ville" = "Lomé".</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Ajoute la clé "pays" avec la valeur "Togo" au dictionnaire <code>etudiant</code>.</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Crée un ensemble <code>nombres</code> contenant 4, 5, 5, 6.</strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>4. Affiche l'intersection entre <code>A = {1,2,3}</code> et <code>B = {2,3,4}</code>.</strong></p>
+    <textarea id="exo4" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Créateur de Python :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'b',
+      q2: 'a',
+      q3: 'b'
+    };
+    for(let i = 1; i <= total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+    let total = 4;
+    let results = [];
+
+    let exo1 = document.getElementById("exo1").value.replace(/\s/g, '').toLowerCase();
+    if (/etudiant=\{"nom":"jean","age":22,"ville":"lomé"\}/.test(exo1) || /etudiant=\{"nom":"jean","age":22,"ville":"lome"\}/.test(exo1)) {
+      score++;
+      results.push("Exercice 1 : Correct");
+    } else {
+      results.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    let exo2 = document.getElementById("exo2").value.replace(/\s/g, '').toLowerCase();
+    if (/etudiant\["pays"\]="togo"/.test(exo2)) {
+      score++;
+      results.push("Exercice 2 : Correct");
+    } else {
+      results.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    let exo3 = document.getElementById("exo3").value.replace(/\s/g, '').toLowerCase();
+    if (/nombres=\{4,5,6\}/.test(exo3) || /nombres=\{4,5,5,6\}/.test(exo3)) {
+      score++;
+      results.push("Exercice 3 : Correct");
+    } else {
+      results.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    let exo4 = document.getElementById("exo4").value.replace(/\s/g, '').toLowerCase();
+    if (/print\(a\.intersection\(b\)\)/.test(exo4)) {
+      score++;
+      results.push("Exercice 4 : Correct");
+    } else {
+      results.push("Exercice 4 : Incorrect ou incomplet");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / ${total}\n\n${results.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

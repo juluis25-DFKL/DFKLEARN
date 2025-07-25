@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DFKLearn - Algorithmes - Chapitre 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f9ff;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      color: #1a73e8;
+    }
+    .quiz {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .question {
+      margin-bottom: 10px;
+    }
+    .btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 1 : Introduction aux algorithmes</h1>
+
+  <h2>1. Qu’est-ce qu’un algorithme ?</h2>
+  <p>Un algorithme est une suite d’instructions permettant de résoudre un problème ou d’accomplir une tâche. C’est comme une recette de cuisine : il faut suivre les étapes dans l’ordre.</p>
+
+  <h2>2. Pourquoi apprendre les algorithmes ?</h2>
+  <ul>
+    <li>Ils permettent de structurer la pensée logique.</li>
+    <li>Ils sont essentiels pour programmer en langage informatique.</li>
+    <li>Ils aident à résoudre des problèmes efficacement.</li>
+  </ul>
+
+  <h2>3. Comment représenter un algorithme ?</h2>
+  <p>On peut représenter un algorithme de plusieurs manières :</p>
+  <ul>
+    <li><strong>Texte</strong> : description simple en langage naturel.</li>
+    <li><strong>Organigramme</strong> : schéma graphique avec des symboles.</li>
+    <li><strong>Pseudocode</strong> : langage proche du code, mais simplifié.</li>
+  </ul>
+
+  <h3>Exemple simple (texte) :</h3>
+  <p><em>Faire bouillir de l’eau :</em></p>
+  <ol>
+    <li>Remplir une casserole d’eau.</li>
+    <li>Allumer le feu.</li>
+    <li>Mettre la casserole sur le feu.</li>
+    <li>Attendre que l’eau bouille.</li>
+  </ol>
+
+  <div class="quiz">
+    <h2>Quiz rapide</h2>
+    <div class="question">
+      <p>1. Un algorithme est :</p>
+      <label><input type="radio" name="q1" value="faux"> Une langue de programmation</label><br>
+      <label><input type="radio" name="q1" value="vrai"> Une suite d’instructions pour résoudre un problème</label><br>
+      <label><input type="radio" name="q1" value="faux"> Un type de calculateur</label>
+    </div>
+    <div class="question">
+      <p>2. Le pseudocode est :</p>
+      <label><input type="radio" name="q2" value="vrai"> Une façon simplifiée de décrire un algorithme</label><br>
+      <label><input type="radio" name="q2" value="faux"> Un programme compilé</label><br>
+      <label><input type="radio" name="q2" value="faux"> Une langue humaine</label>
+    </div>
+    <button class="btn" onclick="corrigerQuiz()">Soumettre</button>
+    <div id="resultat" class="result"></div>
+  </div>
+
+  <script>
+    function corrigerQuiz() {
+      let score = 0;
+      const total = 2;
+      const reponses = ["q1", "q2"];
+      const bonnesReponses = ["vrai", "vrai"];
+
+      for (let i = 0; i < total; i++) {
+        const choix = document.querySelector(`input[name="${reponses[i]}"]:checked`);
+        if (choix && choix.value === bonnesReponses[i]) {
+          score++;
+        }
+      }
+      document.getElementById("resultat").innerText = `Vous avez ${score} / ${total}`;
+    }
+  </script>
+
+</body>
+</html>

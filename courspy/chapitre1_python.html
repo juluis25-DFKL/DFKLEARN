@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python - Chapitre 1 : Introduction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #27ae60;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 12px;
+      border-left: 5px solid #27ae60;
+      overflow-x: auto;
+    }
+    .quiz {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #219150;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .meta-info {
+      font-size: 0.9em;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 1 : Introduction à Python</h1>
+  <p>Découvre le langage Python et fais ton premier programme !</p>
+</header>
+
+<section>
+  <h2>1. C’est quoi Python ?</h2>
+  <p>Python est un langage de programmation très populaire, utilisé dans de nombreux domaines : développement web, intelligence artificielle, analyse de données, automatisation, etc. Il est apprécié pour sa simplicité et sa lisibilité.</p>
+</section>
+
+<section>
+  <h2>2. Pourquoi apprendre Python ?</h2>
+  <ul>
+    <li>Facile à lire et à écrire</li>
+    <li>Langage polyvalent</li>
+    <li>Très demandé dans le monde professionnel</li>
+    <li>Parfait pour débuter la programmation</li>
+  </ul>
+</section>
+
+<section>
+  <h2>3. Comment exécuter du Python ?</h2>
+  <p>Tu peux utiliser :</p>
+  <ul>
+    <li>Un éditeur comme <strong>Thonny</strong>, <strong>VS Code</strong> ou <strong>PyCharm</strong></li>
+    <li>Le terminal (avec <code>python</code> ou <code>python3</code>)</li>
+    <li>Des sites en ligne comme <a href="https://replit.com" target="_blank">Replit</a> ou <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank">Programiz</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Ton premier programme Python</h2>
+  <p>Voici comment afficher un message avec Python :</p>
+  <pre><code>print("Bonjour, bienvenue dans le monde de Python !")</code></pre>
+  <p>Ce programme affiche simplement le texte entre les guillemets.</p>
+</section>
+
+<section>
+  <h2>5. Installation de Python</h2>
+  <p>Avant de commencer à programmer, il te faut installer Python sur ton ordinateur. Voici les étapes :</p>
+  <ol>
+    <li>Va sur le site officiel de Python : <a href="https://www.python.org/downloads/" target="_blank">Python Downloads</a>.</li>
+    <li>Télécharge la dernière version adaptée à ton système d'exploitation.</li>
+    <li>Installe Python en suivant les instructions à l'écran (pense à cocher l'option "Ajouter Python au PATH" pendant l'installation).</li>
+  </ol>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Qui a créé Python ?</strong></p>
+    <input type="radio" name="q1" value="1"> A. Guido van Rossum<br>
+    <input type="radio" name="q1" value="0"> B. Tim Berners-Lee<br>
+    <input type="radio" name="q1" value="0"> C. Elon Musk<br>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Que fait la commande <code>print()</code> ?</strong></p>
+    <input type="radio" name="q2" value="0"> A. Elle additionne deux nombres<br>
+    <input type="radio" name="q2" value="1"> B. Elle affiche un message à l’écran<br>
+    <input type="radio" name="q2" value="0"> C. Elle exécute un jeu<br>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Pourquoi Python est-il populaire ?</strong></p>
+    <input type="radio" name="q3" value="1"> A. Il est facile à apprendre<br>
+    <input type="radio" name="q3" value="0"> B. Il coûte très cher<br>
+    <input type="radio" name="q3" value="0"> C. Il est uniquement pour les experts<br>
+  </div>
+
+  <button onclick="corriger()">Vérifier mes réponses</button>
+  <div id="resultat" class="result"></div>
+</section>
+
+<div class="meta-info">
+  <p><strong>Créateur :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corriger() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value == "1") score++;
+    document.getElementById("resultat").innerText = `Votre score : ${score} / 3`;
+  }
+</script>
+
+</body>
+</html>

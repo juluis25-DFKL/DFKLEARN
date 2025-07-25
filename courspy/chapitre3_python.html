@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python - Chapitre 3 : Les opérateurs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #9b59b6;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 12px;
+      border-left: 5px solid #9b59b6;
+      overflow-x: auto;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .quiz {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #8e44ad;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .meta-info {
+      font-size: 0.9em;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 3 : Les opérateurs en Python</h1>
+  <p>Réaliser des calculs et des comparaisons</p>
+</header>
+
+<section>
+  <h2>1. Les opérateurs arithmétiques</h2>
+  <ul>
+    <li><code>+</code> : addition</li>
+    <li><code>-</code> : soustraction</li>
+    <li><code>*</code> : multiplication</li>
+    <li><code>/</code> : division</li>
+    <li><code>%</code> : modulo (reste de la division)</li>
+    <li><code>**</code> : puissance</li>
+    <li><code>//</code> : division entière</li>
+  </ul>
+  <pre><code>a = 10
+b = 3
+print(a + b)   # 13
+print(a % b)   # 1
+print(a ** b)  # 1000</code></pre>
+</section>
+
+<section>
+  <h2>2. Les opérateurs de comparaison</h2>
+  <p>Ils renvoient <code>True</code> ou <code>False</code> selon la condition :</p>
+  <ul>
+    <li><code>==</code> : égal à</li>
+    <li><code>!=</code> : différent de</li>
+    <li><code>&gt;</code> : supérieur à</li>
+    <li><code>&lt;</code> : inférieur à</li>
+    <li><code>&gt;=</code> : supérieur ou égal</li>
+    <li><code>&lt;=</code> : inférieur ou égal</li>
+  </ul>
+  <pre><code>print(5 == 5)    # True
+print(5 != 3)    # True
+print(7 &lt; 2)     # False</code></pre>
+</section>
+
+<section>
+  <h2>3. Les opérateurs logiques</h2>
+  <ul>
+    <li><code>and</code> : les deux conditions doivent être vraies</li>
+    <li><code>or</code> : au moins une des deux conditions doit être vraie</li>
+    <li><code>not</code> : inverse la condition</li>
+  </ul>
+  <pre><code>x = 5
+print(x &gt; 2 and x &lt; 10)  # True
+print(not(x &gt; 2))        # False</code></pre>
+</section>
+
+<section>
+  <h2>4. Exemple combiné</h2>
+  <pre><code>age = 18
+pays = "France"
+print(age &gt;= 18 and pays == "France")  # True</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Que donne <code>5 % 2</code> ?</strong></p>
+    <input type="radio" name="q1" value="1"> A. 1<br>
+    <input type="radio" name="q1" value="0"> B. 2<br>
+    <input type="radio" name="q1" value="0"> C. 0<br>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quel opérateur vérifie si deux valeurs sont égales ?</strong></p>
+    <input type="radio" name="q2" value="1"> A. ==<br>
+    <input type="radio" name="q2" value="0"> B. =<br>
+    <input type="radio" name="q2" value="0"> C. !=<br>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que renvoie <code>not(True)</code> ?</strong></p>
+    <input type="radio" name="q3" value="1"> A. False<br>
+    <input type="radio" name="q3" value="0"> B. True<br>
+    <input type="radio" name="q3" value="0"> C. None<br>
+  </div>
+
+  <button onclick="corriger()">Vérifier mes réponses</button>
+  <div id="resultat" class="result"></div>
+</section>
+
+<div class="meta-info">
+  <p><strong>Créateur :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corriger() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value == "1") score++;
+    document.getElementById("resultat").innerText = `Votre score : ${score} / 3`;
+  }
+</script>
+
+</body>
+</html>

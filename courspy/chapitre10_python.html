@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chapitre 9 : Gestion des erreurs et exceptions en Python</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 25px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #2c3e50;
+  }
+  header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+  }
+  h1, h2, h3 {
+    color: #2c3e50;
+  }
+  section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  pre {
+    background: #f8f8f8;
+    padding: 15px;
+    border-left: 4px solid #3498db;
+    overflow-x: auto;
+    line-height: 1.4;
+    border-radius: 0 5px 5px 0;
+  }
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    background: #f0f0f0;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  .quiz {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  button:hover {
+    background-color: #2980b9;
+  }
+  .result {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+  }
+  .meta-info {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 10 : Gestion des erreurs et exceptions en Python</h1>
+  <p>Comprendre et gérer les erreurs dans vos programmes Python</p>
+</header>
+
+<section>
+  <h2>1. Qu’est-ce qu’une exception ?</h2>
+  <p>Une exception est une erreur détectée pendant l’exécution du programme, par exemple une division par zéro ou une tentative d’accès à un fichier inexistant. Sans gestion, l’exception arrête le programme brutalement.</p>
+</section>
+
+<section>
+  <h2>2. Le bloc <code>try</code> / <code>except</code></h2>
+  <p>On place le code pouvant provoquer une erreur dans un bloc <code>try</code>. Le bloc <code>except</code> permet de gérer l’erreur pour éviter l’arrêt du programme.</p>
+  <pre><code>try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Erreur : division par zéro impossible.")</code></pre>
+</section>
+
+<section>
+  <h2>3. Capturer plusieurs exceptions</h2>
+  <p>Plusieurs types d’erreurs peuvent être gérés avec plusieurs blocs <code>except</code> :</p>
+  <pre><code>try:
+    nombre = int(input("Entrez un nombre : "))
+    resultat = 10 / nombre
+except ZeroDivisionError:
+    print("Erreur : division par zéro.")
+except ValueError:
+    print("Erreur : entrée invalide, ce n’est pas un nombre.")</code></pre>
+</section>
+
+<section>
+  <h2>4. Le bloc <code>else</code></h2>
+  <p>Le bloc <code>else</code> s’exécute uniquement si aucune exception n’est levée :</p>
+  <pre><code>try:
+    nombre = int(input("Entrez un nombre : "))
+    resultat = 10 / nombre
+except ZeroDivisionError:
+    print("Erreur : division par zéro.")
+except ValueError:
+    print("Erreur : entrée invalide.")
+else:
+    print("Résultat =", resultat)</code></pre>
+</section>
+
+<section>
+  <h2>5. Le bloc <code>finally</code></h2>
+  <p>Le bloc <code>finally</code> s’exécute toujours, qu’il y ait une exception ou non, utile pour fermer des fichiers ou libérer des ressources :</p>
+  <pre><code>try:
+    fichier = open("test.txt", "r")
+    contenu = fichier.read()
+except FileNotFoundError:
+    print("Fichier non trouvé.")
+finally:
+    fichier.close()
+    print("Fichier fermé.")</code></pre>
+</section>
+
+<section>
+  <h2>6. Lever une exception avec <code>raise</code></h2>
+  <p>On peut générer une exception volontairement avec <code>raise</code> :</p>
+  <pre><code>def division(a, b):
+    if b == 0:
+        raise ValueError("Le dénominateur ne peut pas être zéro.")
+    return a / b
+
+try:
+    print(division(10, 0))
+except ValueError as e:
+    print("Erreur détectée :", e)</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle exception Python lance-t-il lors d’une division par zéro ?</strong></p>
+    <label><input type="radio" name="q1" value="0"> a) ValueError</label><br/>
+    <label><input type="radio" name="q1" value="1"> b) ZeroDivisionError</label><br/>
+    <label><input type="radio" name="q1" value="0"> c) TypeError</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Que fait le bloc <code>finally</code> ?</strong></p>
+    <label><input type="radio" name="q2" value="0"> a) Il s’exécute uniquement si une erreur est levée.</label><br/>
+    <label><input type="radio" name="q2" value="1"> b) Il s’exécute toujours, même sans erreur.</label><br/>
+    <label><input type="radio" name="q2" value="0"> c) Il remplace le bloc <code>except</code>.</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Quelle commande permet de lever une exception ?</strong></p>
+    <label><input type="radio" name="q3" value="0"> a) throw</label><br/>
+    <label><input type="radio" name="q3" value="1"> b) raise</label><br/>
+    <label><input type="radio" name="q3" value="0"> c) error</label>
+  </div>
+
+  <button onclick="corriger()">Vérifier mes réponses</button>
+  <div id="resultat" class="result"></div>
+</section>
+
+<div class="meta-info">
+  <p><strong>Créateur :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corriger() {
+    let score = 0;
+    if(document.querySelector('input[name="q1"]:checked')?.value === "1") score++;
+    if(document.querySelector('input[name="q2"]:checked')?.value === "1") score++;
+    if(document.querySelector('input[name="q3"]:checked')?.value === "1") score++;
+    document.getElementById('resultat').innerText = `Votre score : ${score} / 3`;
+  }
+</script>
+
+</body>
+</html>

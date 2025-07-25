@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Devoir Python - Chapitres 1 à 4</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #2980b9;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .question, .exercice {
+      margin-bottom: 15px;
+    }
+    label {
+      cursor: pointer;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      font-family: monospace;
+      font-size: 1em;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1f618d;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .passed {
+      color: green;
+    }
+    .failed {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Devoir Python - Chapitres 1 à 4</h1>
+<p>Tu as <strong>3 tentatives</strong> pour obtenir au moins <strong>60 %</strong> au QCM. Les exercices ouverts comptent pour 25 % de la note finale.</p>
+
+<section id="qcm-section">
+  <h2>QCM - 10 questions (75 %)</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle instruction permet d’afficher un message à l’écran en Python ?</strong></p>
+    <label><input type="radio" name="q1" value="1"> print()</label><br>
+    <label><input type="radio" name="q1" value="0"> echo()</label><br>
+    <label><input type="radio" name="q1" value="0"> display()</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Comment créer une variable contenant le nombre 10 ?</strong></p>
+    <label><input type="radio" name="q2" value="1"> x = 10</label><br>
+    <label><input type="radio" name="q2" value="0"> var x = 10</label><br>
+    <label><input type="radio" name="q2" value="0"> int x = 10</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Quelle est la bonne syntaxe pour un commentaire ?</strong></p>
+    <label><input type="radio" name="q3" value="1"> # Ceci est un commentaire</label><br>
+    <label><input type="radio" name="q3" value="0"> // Ceci est un commentaire</label><br>
+    <label><input type="radio" name="q3" value="0"> <!-- Ceci est un commentaire --></label>
+  </div>
+
+  <div class="question">
+    <p><strong>4. Quel type de données correspond à "Bonjour" ?</strong></p>
+    <label><input type="radio" name="q4" value="1"> str (chaîne de caractères)</label><br>
+    <label><input type="radio" name="q4" value="0"> int (entier)</label><br>
+    <label><input type="radio" name="q4" value="0"> bool (booléen)</label>
+  </div>
+
+  <div class="question">
+    <p><strong>5. Quelle structure permet d’exécuter du code plusieurs fois ?</strong></p>
+    <label><input type="radio" name="q5" value="1"> boucle (for ou while)</label><br>
+    <label><input type="radio" name="q5" value="0"> condition (if)</label><br>
+    <label><input type="radio" name="q5" value="0"> fonction (def)</label>
+  </div>
+
+  <div class="question">
+    <p><strong>6. Quel opérateur sert à vérifier l’égalité ?</strong></p>
+    <label><input type="radio" name="q6" value="1"> ==</label><br>
+    <label><input type="radio" name="q6" value="0"> =</label><br>
+    <label><input type="radio" name="q6" value="0"> !=</label>
+  </div>
+
+  <div class="question">
+    <p><strong>7. Quel mot-clé commence une fonction ?</strong></p>
+    <label><input type="radio" name="q7" value="1"> def</label><br>
+    <label><input type="radio" name="q7" value="0"> func</label><br>
+    <label><input type="radio" name="q7" value="0"> function</label>
+  </div>
+
+  <div class="question">
+    <p><strong>8. Quelle est la bonne syntaxe pour une condition ?</strong></p>
+    <label><input type="radio" name="q8" value="1"> if x > 5:</label><br>
+    <label><input type="radio" name="q8" value="0"> if (x > 5)</label><br>
+    <label><input type="radio" name="q8" value="0"> if x > 5 then</label>
+  </div>
+
+  <div class="question">
+    <p><strong>9. Comment obtient-on la longueur d’une chaîne <code>texte</code> ?</strong></p>
+    <label><input type="radio" name="q9" value="1"> len(texte)</label><br>
+    <label><input type="radio" name="q9" value="0"> texte.length()</label><br>
+    <label><input type="radio" name="q9" value="0"> texte.size()</label>
+  </div>
+
+  <div class="question">
+    <p><strong>10. Quel type de boucle répète le code tant que la condition est vraie ?</strong></p>
+    <label><input type="radio" name="q10" value="1"> while</label><br>
+    <label><input type="radio" name="q10" value="0"> for</label><br>
+    <label><input type="radio" name="q10" value="0"> repeat</label>
+  </div>
+
+  <button onclick="corriger()">Vérifier mes réponses</button>
+  <div id="resultat" class="result"></div>
+</section>
+
+<section id="exercices-section">
+  <h2>Exercices ouverts (25 %)</h2>
+
+  <div class="exercice">
+    <p><strong>1. Crée une variable <code>age</code> et affiche un message si la personne est majeure.</strong></p>
+    <textarea id="ex1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exercice">
+    <p><strong>2. Demande à l’utilisateur deux nombres et affiche leur somme.</strong></p>
+    <textarea id="ex2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exercice">
+    <p><strong>3. Programme qui affiche si un nombre est pair ou impair.</strong></p>
+    <textarea id="ex3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exercice">
+    <p><strong>4. Affiche si un nombre est positif, négatif ou zéro.</strong></p>
+    <textarea id="ex4" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="soumettreExercices()">Soumettre les exercices</button>
+  <div id="exerciceMessage" class="result"></div>
+</section>
+
+<script>
+  let tentatives = 0;
+
+  function corriger() {
+    if (tentatives >= 3) {
+      document.getElementById("resultat").innerHTML = "<span class='failed'>❌ Vous avez dépassé les 3 tentatives. Recommencez le devoir.</span>";
+      return;
+    }
+
+    // Correction QCM
+    let scoreQCM = 0;
+    for (let i = 1; i <= 10; i++) {
+      const reponse = document.querySelector(`input[name="q${i}"]:checked`);
+      if (reponse && reponse.value === "1") scoreQCM += 10;
+    }
+
+    tentatives++;
+
+    if (scoreQCM < 60) {
+      let msg = `❌ Échec QCM : ${scoreQCM}%. Tentative ${tentatives}/3. Essayez encore.`;
+      if (tentatives === 3) msg = `❌ Échec QCM : ${scoreQCM}%. Vous avez épuisé vos 3 tentatives. Recommencez le devoir.`;
+      document.getElementById("resultat").innerHTML = `<span class='failed'>${msg}</span>`;
+      return;
+    }
+
+    // Correction Exercices
+    let scoreExos = corrigerExercices();
+
+    // Calcul note finale pondérée
+    let total = (scoreQCM * 0.75) + (scoreExos * 0.25);
+
+    document.getElementById("resultat").innerHTML = 
+      `<span class='passed'>✅ QCM réussi avec ${scoreQCM}%.<br>Score exercices : ${scoreExos.toFixed(1)}%.<br><strong>Note finale :</strong> ${total.toFixed(1)}%.</span>`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+
+    let ex1 = document.getElementById("ex1").value.toLowerCase();
+    if (ex1.includes("age") && ex1.includes("if")) score += 6;
+
+    let ex2 = document.getElementById("ex2").value.toLowerCase();
+    if (ex2.includes("input") && (ex2.includes("+") || ex2.includes("sum") || ex2.includes("int"))) score += 6;
+
+    let ex3 = document.getElementById("ex3").value.toLowerCase();
+    if ((ex3.includes("pair") || ex3.includes("impair")) && ex3.includes("%")) score += 6;
+
+    let ex4 = document.getElementById("ex4").value.toLowerCase();
+    if (ex4.includes("positif") && (ex4.includes("negatif") || ex4.includes("négatif")) && ex4.includes("zero") && ex4.includes("if")) score += 7;
+
+    return (score / 25) * 100;
+  }
+
+  function soumettreExercices() {
+    const ex1 = document.getElementById("ex1").value.trim();
+    const ex2 = document.getElementById("ex2").value.trim();
+    const ex3 = document.getElementById("ex3").value.trim();
+    const ex4 = document.getElementById("ex4").value.trim();
+
+    if (ex1 && ex2 && ex3 && ex4) {
+      document.getElementById("exerciceMessage").innerHTML =
+        "<span class='passed'>✅ Exercices remplis. Cliquez sur <strong>Vérifier mes réponses</strong> pour obtenir votre note finale.</span>";
+    } else {
+      document.getElementById("exerciceMessage").innerHTML =
+        "<span class='failed'>⚠️ Veuillez remplir tous les exercices avant de soumettre.</span>";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Devoir Python Chapitres 1 à 8</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #2c3e50;
+  }
+  h1, h2 {
+    color: #34495e;
+  }
+  section {
+    background: white;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .question {
+    margin-bottom: 15px;
+  }
+  label {
+    cursor: pointer;
+  }
+  button {
+    padding: 10px 18px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  button:hover {
+    background: #2980b9;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .attempt-info {
+    margin-top: 10px;
+    font-style: italic;
+  }
+  textarea {
+    width: 100%;
+    height: 70px;
+    font-family: monospace;
+    font-size: 1rem;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+</style>
+</head>
+<body>
+
+<h1>Devoir Python - Chapitres 1 à 8</h1>
+<p>Vous avez 3 tentatives pour valider ce devoir. Le score minimum requis est de 60 % (QCM + questions ouvertes).</p>
+
+<form id="devoirForm">
+
+  <section>
+    <h2>QCM - Questions à choix multiples</h2>
+
+    <!-- Exemple question QCM -->
+    <div class="question">
+      <p><strong>1. Quelle est la bonne façon de déclarer une variable en Python ?</strong></p>
+      <label><input type="radio" name="q1" value="1"> x = 10</label><br />
+      <label><input type="radio" name="q1" value="0"> var x = 10</label><br />
+      <label><input type="radio" name="q1" value="0"> int x = 10</label>
+    </div>
+
+    <div class="question">
+      <p><strong>2. Que retourne l'expression <code>5 % 2</code> ?</strong></p>
+      <label><input type="radio" name="q2" value="1"> 1</label><br />
+      <label><input type="radio" name="q2" value="0"> 2</label><br />
+      <label><input type="radio" name="q2" value="0"> 0</label>
+    </div>
+
+    <div class="question">
+      <p><strong>3. Comment s’écrit une condition en Python ?</strong></p>
+      <label><input type="radio" name="q3" value="1"> if x &gt; 5:</label><br />
+      <label><input type="radio" name="q3" value="0"> if (x &gt; 5)</label><br />
+      <label><input type="radio" name="q3" value="0"> if x &gt; 5 then</label>
+    </div>
+
+    <div class="question">
+      <p><strong>4. Quelle boucle répète un bloc tant que la condition est vraie ?</strong></p>
+      <label><input type="radio" name="q4" value="1"> while</label><br />
+      <label><input type="radio" name="q4" value="0"> for</label><br />
+      <label><input type="radio" name="q4" value="0"> loop</label>
+    </div>
+
+    <!-- ... -->
+
+    <!-- Ajouter jusqu'à 40 questions QCM ici -->
+    <!-- Pour exemple, je mets 10 questions QCM, tu peux en rajouter ou me demander de générer tout -->
+
+    <div class="question">
+      <p><strong>5. Comment définit-on une fonction en Python ?</strong></p>
+      <label><input type="radio" name="q5" value="1"> def ma_fonction():</label><br />
+      <label><input type="radio" name="q5" value="0"> function ma_fonction()</label><br />
+      <label><input type="radio" name="q5" value="0"> fun ma_fonction()</label>
+    </div>
+
+    <div class="question">
+      <p><strong>6. Quel type Python utilise-t-il pour une liste ?</strong></p>
+      <label><input type="radio" name="q6" value="1"> list</label><br />
+      <label><input type="radio" name="q6" value="0"> array</label><br />
+      <label><input type="radio" name="q6" value="0"> tuple</label>
+    </div>
+
+    <div class="question">
+      <p><strong>7. Quel est le symbole pour accéder à une clé dans un dictionnaire ?</strong></p>
+      <label><input type="radio" name="q7" value="1"> []</label><br />
+      <label><input type="radio" name="q7" value="0"> ()</label><br />
+      <label><input type="radio" name="q7" value="0"> {}</label>
+    </div>
+
+    <div class="question">
+      <p><strong>8. Que fait la méthode <code>.append()</code> sur une liste ?</strong></p>
+      <label><input type="radio" name="q8" value="1"> Ajoute un élément à la fin</label><br />
+      <label><input type="radio" name="q8" value="0"> Supprime un élément</label><br />
+      <label><input type="radio" name="q8" value="0"> Trie la liste</label>
+    </div>
+
+    <div class="question">
+      <p><strong>9. Que retourne <code>len("Python")</code> ?</strong></p>
+      <label><input type="radio" name="q9" value="1"> 6</label><br />
+      <label><input type="radio" name="q9" value="0"> 5</label><br />
+      <label><input type="radio" name="q9" value="0"> 7</label>
+    </div>
+
+    <div class="question">
+      <p><strong>10. Quelle syntaxe accède au premier élément d'une liste <code>ma_liste</code> ?</strong></p>
+      <label><input type="radio" name="q10" value="1"> ma_liste[0]</label><br />
+      <label><input type="radio" name="q10" value="0"> ma_liste[1]</label><br />
+      <label><input type="radio" name="q10" value="0"> ma_liste.first()</label>
+    </div>
+
+    <!-- ... -->
+
+    <!-- Note : il faut compléter jusqu'à 40 questions QCM pour un devoir complet -->
+  </section>
+
+  <section>
+    <h2>Questions ouvertes</h2>
+
+    <div class="question">
+      <p><strong>1. Expliquez ce qu'est une fonction en Python et donnez un exemple simple.</strong></p>
+      <textarea name="open1" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>2. Qu'est-ce qu'une liste en Python et comment l'utilise-t-on ?</strong></p>
+      <textarea name="open2" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>3. Comment utilise-t-on une boucle <code>for</code> en Python ? Donnez un exemple.</strong></p>
+      <textarea name="open3" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>4. Quelle différence y a-t-il entre une liste et un tuple ?</strong></p>
+      <textarea name="open4" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>5. Expliquez ce qu'est un dictionnaire et comment y accéder à une valeur.</strong></p>
+      <textarea name="open5" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>6. Comment modifier une chaîne de caractères en Python ? Donnez un exemple.</strong></p>
+      <textarea name="open6" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>7. Qu'est-ce qu'une condition en Python et comment l'écrit-on ?</strong></p>
+      <textarea name="open7" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>8. Décrivez l'utilisation des opérateurs arithmétiques en Python.</strong></p>
+      <textarea name="open8" placeholder="Votre réponse ici..."></textarea>
+    </div>
+
+  </section>
+
+  <button type="button" onclick="soumettreDevoir()">Soumettre le devoir</button>
+
+  <div id="result"></div>
+  <div class="attempt-info" id="attemptInfo"></div>
+</form>
+
+<script>
+  const maxAttempts = 3;
+  const minScore = 60; // en pourcentage
+  let attempts = 0;
+
+  function soumettreDevoir() {
+    attempts++;
+    if (attempts > maxAttempts) {
+      alert("Vous avez dépassé le nombre maximal de tentatives.");
+      return;
+    }
+
+    const form = document.getElementById('devoirForm');
+    const formData = new FormData(form);
+
+    // Calcul score QCM
+    let totalQCM = 10; // A adapter si tu ajoutes plus de questions QCM
+    let scoreQCM = 0;
+    for (let i = 1; i <= totalQCM; i++) {
+      if (formData.get('q' + i) === "1") {
+        scoreQCM++;
+      }
+    }
+
+    // Questions ouvertes : on considère qu'elles valent 0 par défaut.
+    // Pour la correction manuelle, on affiche un message pour l'enseignant.
+    // Ici on prend le score QCM / totalQCM * 100 comme score partiel.
+
+    // Affichage du résultat QCM
+    let scorePercent = (scoreQCM / totalQCM) * 100;
+
+    // Affichage résultat
+    const resultDiv = document.getElementById('result');
+    const attemptDiv = document.getElementById('attemptInfo');
+
+    if (scorePercent >= minScore) {
+      resultDiv.innerHTML = `Bravo ! Vous avez obtenu <strong>${scorePercent.toFixed(2)}%</strong> au QCM. <br />
+      <em>Les questions ouvertes seront corrigées manuellement.</em><br />
+      Tentative ${attempts} sur ${maxAttempts}.`;
+      attemptDiv.innerHTML = "En attente de correction des questions ouvertes pour la validation finale.";
+    } else {
+      resultDiv.innerHTML = `Score QCM : <strong>${scorePercent.toFixed(2)}%</strong>. Vous devez obtenir au moins ${minScore}% pour valider.<br />
+      Tentative ${attempts} sur ${maxAttempts}.`;
+      attemptDiv.innerHTML = "";
+      if (attempts === maxAttempts) {
+        alert("Dernière tentative effectuée. Vous devez revoir vos cours.");
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

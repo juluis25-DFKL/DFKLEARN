@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 9 : Manipulation des chaînes de caractères en Python</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #2980b9;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #2980b9;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2980b9;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1c5980;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 70px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 9 : Manipulation des chaînes de caractères en Python</h1>
+  <p>Comprendre et manipuler les chaînes de caractères</p>
+</header>
+
+<section>
+  <h2>1. Création d'une chaîne</h2>
+  <pre><code>texte = "Bonjour, monde!"
+print(texte)</code></pre>
+</section>
+
+<section>
+  <h2>2. Accès aux caractères</h2>
+  <pre><code>print(texte[0])    # B
+print(texte[-1])   # !</code></pre>
+</section>
+
+<section>
+  <h2>3. Slicing (tranchage)</h2>
+  <pre><code>print(texte[0:7])  # Bonjour
+print(texte[:7])    # Bonjour
+print(texte[8:])    # monde!</code></pre>
+</section>
+
+<section>
+  <h2>4. Méthodes utiles</h2>
+  <ul>
+    <li><code>texte.lower()</code> - tout en minuscules</li>
+    <li><code>texte.upper()</code> - tout en majuscules</li>
+    <li><code>texte.strip()</code> - supprime espaces début/fin</li>
+    <li><code>texte.replace("Bonjour", "Salut")</code> - remplace substring</li>
+    <li><code>texte.split(",")</code> - divise en liste</li>
+    <li><code>len(texte)</code> - longueur de la chaîne</li>
+  </ul>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Que fait <code>texte[1:4]</code> ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) Affiche le premier caractère</label><br>
+    <label><input type="radio" name="q1" value="b"> b) Affiche les caractères d'indice 1 à 3</label><br>
+    <label><input type="radio" name="q1" value="c"> c) Affiche tous les caractères sauf le dernier</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Que retourne <code>len("Python")</code> ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) 5</label><br>
+    <label><input type="radio" name="q2" value="b"> b) 6</label><br>
+    <label><input type="radio" name="q2" value="c"> c) 7</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que fait <code>texte.replace("monde", "tout le monde")</code> ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) Remplace "monde" par "tout le monde"</label><br>
+    <label><input type="radio" name="q3" value="b"> b) Supprime "monde"</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Ajoute "tout le monde" à la fin</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Crée une variable <code>phrase</code> avec la valeur "Apprendre Python est fun".</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Affiche les 9 premiers caractères de <code>phrase</code>.</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Remplace "fun" par "génial" dans <code>phrase</code> et affiche le résultat.</strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>4. Transforme <code>phrase</code> en majuscules puis affiche-la.</strong></p>
+    <textarea id="exo4" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Créateur de Python :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'a'
+    };
+    for(let i=1; i<=total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+    let total = 4;
+    let results = [];
+
+    let exo1 = document.getElementById("exo1").value.replace(/\s/g, '');
+    if (/phrase="?ApprendrePythonestfun"?/.test(exo1)) {
+      score++;
+      results.push("Exercice 1 : Correct");
+    } else {
+      results.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    let exo2 = document.getElementById("exo2").value.replace(/\s/g, '');
+    if (/print\(phrase\[0:9\]\)/.test(exo2) || /print\(phrase\[0:8\]\)/.test(exo2)) {
+      score++;
+      results.push("Exercice 2 : Correct");
+    } else {
+      results.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    let exo3 = document.getElementById("exo3").value.replace(/\s/g, '');
+    if (/print\(phrase\.replace\("fun","génial"\)\)/.test(exo3)) {
+      score++;
+      results.push("Exercice 3 : Correct");
+    } else {
+      results.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    let exo4 = document.getElementById("exo4").value.replace(/\s/g, '');
+    if (/print\(phrase\.upper\(\)\)/.test(exo4)) {
+      score++;
+      results.push("Exercice 4 : Correct");
+    } else {
+      results.push("Exercice 4 : Incorrect ou incomplet");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / ${total}\n\n${results.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

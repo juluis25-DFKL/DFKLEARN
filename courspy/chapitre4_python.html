@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python - Chapitre 4 : Les conditions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #e67e22;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 12px;
+      border-left: 5px solid #e67e22;
+      overflow-x: auto;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .quiz {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #d35400;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .meta-info {
+      font-size: 0.9em;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 4 : Les conditions en Python</h1>
+  <p>Prendre des décisions avec if, elif, else</p>
+</header>
+
+<section>
+  <h2>1. Pourquoi les conditions ?</h2>
+  <p>Les conditions permettent de vérifier si une affirmation est vraie ou fausse et d'exécuter des instructions selon le résultat.</p>
+</section>
+
+<section>
+  <h2>2. Structure de base avec if</h2>
+  <pre><code>age = 18
+if age >= 18:
+    print("Vous êtes majeur.")</code></pre>
+  <p>Le code à l’intérieur du bloc <code>if</code> est exécuté uniquement si la condition est vraie.</p>
+</section>
+
+<section>
+  <h2>3. Ajouter un sinon avec else</h2>
+  <pre><code>age = 16
+if age >= 18:
+    print("Vous êtes majeur.")
+else:
+    print("Vous êtes mineur.")</code></pre>
+</section>
+
+<section>
+  <h2>4. Ajouter plusieurs cas avec elif</h2>
+  <pre><code>note = 15
+if note >= 16:
+    print("Très bien")
+elif note >= 12:
+    print("Assez bien")
+elif note >= 10:
+    print("Passable")
+else:
+    print("Échec")</code></pre>
+</section>
+
+<section>
+  <h2>5. Astuce : Indentation</h2>
+  <p>En Python, l’indentation (les espaces au début de la ligne) est très importante. Elle indique quel code appartient à quelle condition.</p>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Que fait l'instruction <code>if</code> ?</strong></p>
+    <input type="radio" name="q1" value="1"> A. Elle vérifie une condition<br>
+    <input type="radio" name="q1" value="0"> B. Elle affiche toujours un texte<br>
+    <input type="radio" name="q1" value="0"> C. Elle exécute du code sans condition<br>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quelle instruction permet de gérer plusieurs cas ?</strong></p>
+    <input type="radio" name="q2" value="0"> A. if<br>
+    <input type="radio" name="q2" value="1"> B. elif<br>
+    <input type="radio" name="q2" value="0"> C. loop<br>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que se passe-t-il si aucune condition n’est vraie et qu’il n’y a pas de <code>else</code> ?</strong></p>
+    <input type="radio" name="q3" value="1"> A. Rien ne se passe<br>
+    <input type="radio" name="q3" value="0"> B. Python affiche une erreur<br>
+    <input type="radio" name="q3" value="0"> C. Python s'arrête<br>
+  </div>
+
+  <button onclick="corriger()">Vérifier mes réponses</button>
+  <div id="resultat" class="result"></div>
+</section>
+
+<div class="meta-info">
+  <p><strong>Créateur :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corriger() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value == "1") score++;
+    document.getElementById("resultat").innerText = `Votre score : ${score} / 3`;
+  }
+</script>
+
+</body>
+</html>

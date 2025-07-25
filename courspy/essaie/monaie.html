@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Convertisseur de Monnaie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      text-align: center;
+      padding: 20px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      margin: 10px 0;
+      padding: 10px;
+      width: 90%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Convertisseur de Monnaie</h2>
+    
+    <label>Devise de départ :</label><br>
+    <select id="from">
+      <option value="FCFA">FCFA</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="NGN">NGN</option>
+    </select><br>
+
+    <label>Devise d’arrivée :</label><br>
+    <select id="to">
+      <option value="FCFA">FCFA</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="NGN">NGN</option>
+    </select><br>
+
+    <label>Montant :</label><br>
+    <input type="number" id="amount" placeholder="Entrez le montant"><br>
+
+    <button onclick="convertir()">Convertir</button><br>
+    
+    <p id="resultat"></p>
+  </div>
+
+  <script>
+    const taux = {
+      FCFA: 1,
+      USD: 600,
+      EUR: 655,
+      NGN: 1.5
+    };
+
+    function convertir() {
+      let from = document.getElementById("from").value;
+      let to = document.getElementById("to").value;
+      let amount = parseFloat(document.getElementById("amount").value);
+
+      if (isNaN(amount) || amount <= 0) {
+        document.getElementById("resultat").innerText = "Veuillez entrer un montant valide.";
+        return;
+      }
+
+      if (!(from in taux) || !(to in taux)) {
+        document.getElementById("resultat").innerText = "Devise non reconnue.";
+        return;
+      }
+
+      let montant_en_fcfa = amount * taux[from];
+      let montant_converti = montant_en_fcfa / taux[to];
+
+      document.getElementById("resultat").innerText =
+        `${amount} ${from} = ${montant_converti.toFixed(2)} ${to}`;
+    }
+  </script>
+</body>
+</html>

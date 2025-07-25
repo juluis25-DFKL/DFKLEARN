@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 5 : Les boucles en Python</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #3498db;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #3498db;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 70px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 5 : Les boucles en Python</h1>
+  <p>Comprendre et maîtriser les boucles <code>for</code> et <code>while</code></p>
+</header>
+
+<section>
+  <h2>1. Qu'est-ce qu'une boucle ?</h2>
+  <p>Une boucle permet de répéter un bloc d'instructions plusieurs fois, ce qui est utile pour automatiser des tâches répétitives.</p>
+</section>
+
+<section>
+  <h2>2. La boucle <code>for</code></h2>
+  <p>La boucle <code>for</code> parcourt une séquence (liste, chaîne, range, etc.) :</p>
+  <pre><code>for element in sequence:
+    # instructions répétées</code></pre>
+  <p>Exemple :</p>
+  <pre><code>for i in range(5):
+    print(i)</code></pre>
+  <p>Affiche : 0 1 2 3 4</p>
+</section>
+
+<section>
+  <h2>3. La boucle <code>while</code></h2>
+  <p>Répète tant qu'une condition est vraie :</p>
+  <pre><code>i = 0
+while i &lt; 5:
+    print(i)
+    i += 1</code></pre>
+</section>
+
+<section>
+  <h2>4. Instructions <code>break</code> et <code>continue</code></h2>
+  <ul>
+    <li><code>break</code> interrompt la boucle immédiatement.</li>
+    <li><code>continue</code> saute l'itération en cours et passe à la suivante.</li>
+  </ul>
+  <pre><code>for i in range(10):
+    if i == 5:
+        break  # stoppe la boucle dès que i vaut 5
+    print(i)</code></pre>
+</section>
+
+<section>
+  <h2>5. Boucles imbriquées</h2>
+  <pre><code>for i in range(3):
+    for j in range(2):
+        print(f"i={i}, j={j}")</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle boucle utilise-t-on pour parcourir une liste ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) for</label><br>
+    <label><input type="radio" name="q1" value="b"> b) while</label><br>
+    <label><input type="radio" name="q1" value="c"> c) if</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Que fait <code>break</code> dans une boucle ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) saute une étape</label><br>
+    <label><input type="radio" name="q2" value="b"> b) interrompt la boucle</label><br>
+    <label><input type="radio" name="q2" value="c"> c) continue normalement</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que fait <code>continue</code> dans une boucle ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) interrompt la boucle</label><br>
+    <label><input type="radio" name="q3" value="b"> b) saute l'itération en cours</label><br>
+    <label><input type="radio" name="q3" value="c"> c) redémarre la boucle</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Écris une boucle <code>for</code> qui affiche les nombres de 1 à 10.</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Écris une boucle <code>while</code> qui affiche les nombres pairs de 0 à 10.</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Utilise <code>break</code> dans une boucle <code>for</code> pour arrêter la boucle quand i vaut 7 (affiche i à chaque étape).</strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>4. Crée une boucle imbriquée qui affiche toutes les combinaisons de i de 0 à 2 et j de 0 à 1.</strong></p>
+    <textarea id="exo4" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Créateur de Python :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  // Correction Quiz
+  function corrigerQuiz() {
+    let score = 0;
+    let total = 3;
+
+    const reponses = {
+      q1: 'a', // for pour parcourir liste
+      q2: 'b', // break interrompt
+      q3: 'b'  // continue saute itération
+    };
+
+    for(let i=1; i<=total; i++) {
+      let q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) {
+        score++;
+      }
+    }
+
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  // Correction Exercices
+  function corrigerExercices() {
+    let score = 0;
+    let total = 4;
+    let results = [];
+
+    // Exo 1 : for i in range 1 to 10 and print i
+    let exo1 = document.getElementById('exo1').value.replace(/\s/g, '');
+    if(/for.*in.*range\(1,11\)/.test(exo1) && /print\(.*i.*\)/.test(exo1)) {
+      score++; results.push('Exercice 1 : Correct');
+    } else {
+      results.push('Exercice 1 : Incorrect ou incomplet');
+    }
+
+    // Exo 2 : while loop from 0 to 10 with even numbers printed
+    let exo2 = document.getElementById('exo2').value.replace(/\s/g, '');
+    if(/while.*i<=[0-9]+/.test(exo2) && /print\(.*i.*\)/.test(exo2) && /i\+=2/.test(exo2)) {
+      score++; results.push('Exercice 2 : Correct');
+    } else {
+      results.push('Exercice 2 : Incorrect ou incomplet');
+    }
+
+    // Exo 3 : for loop with break when i==7
+    let exo3 = document.getElementById('exo3').value.replace(/\s/g, '');
+    if(/for.*in.*range/.test(exo3) && /if.*i==7/.test(exo3) && /break/.test(exo3)) {
+      score++; results.push('Exercice 3 : Correct');
+    } else {
+      results.push('Exercice 3 : Incorrect ou incomplet');
+    }
+
+    // Exo 4 : nested loops with i in range(3), j in range(2)
+    let exo4 = document.getElementById('exo4').value.replace(/\s/g, '');
+    if(/for.*in.*range\(3\)/.test(exo4) && /for.*in.*range\(2\)/.test(exo4) && /print/.test(exo4)) {
+      score++; results.push('Exercice 4 : Correct');
+    } else {
+      results.push('Exercice 4 : Incorrect ou incomplet');
+    }
+
+    let resHTML = `Votre score : ${score} / ${total}\n\n`;
+    resHTML += results.join('\n');
+
+    document.getElementById('resultExo').innerText = resHTML;
+  }
+</script>
+
+</body>
+</html>

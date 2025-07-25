@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 6 : Les fonctions en Python</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #27ae60;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 70px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 6 : Les fonctions en Python</h1>
+  <p>Définir, appeler et utiliser des fonctions</p>
+</header>
+
+<section>
+  <h2>1. Qu'est-ce qu'une fonction ?</h2>
+  <p>Une fonction est un bloc de code réutilisable qui réalise une tâche spécifique.</p>
+</section>
+
+<section>
+  <h2>2. Définir une fonction</h2>
+  <pre><code>def ma_fonction():
+    print("Bonjour")</code></pre>
+</section>
+
+<section>
+  <h2>3. Appeler une fonction</h2>
+  <pre><code>ma_fonction()</code></pre>
+</section>
+
+<section>
+  <h2>4. Paramètres et arguments</h2>
+  <pre><code>def saluer(nom):
+    print("Bonjour", nom)
+
+saluer("Alice")</code></pre>
+</section>
+
+<section>
+  <h2>5. Valeur de retour</h2>
+  <pre><code>def addition(a, b):
+    return a + b
+
+resultat = addition(3, 5)
+print(resultat)  # affiche 8</code></pre>
+</section>
+
+<section>
+  <h2>6. Fonctions avec valeurs par défaut</h2>
+  <pre><code>def saluer(nom="inconnu"):
+    print("Bonjour", nom)
+
+saluer()         # Bonjour inconnu
+saluer("Bob")    # Bonjour Bob</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Comment déclare-t-on une fonction en Python ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) function</label><br>
+    <label><input type="radio" name="q1" value="b"> b) def</label><br>
+    <label><input type="radio" name="q1" value="c"> c) func</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quelle instruction utilise-t-on pour retourner une valeur ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) stop</label><br>
+    <label><input type="radio" name="q2" value="b"> b) return</label><br>
+    <label><input type="radio" name="q2" value="c"> c) break</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que se passe-t-il si une fonction n’a pas de <code>return</code> ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) Elle renvoie None</label><br>
+    <label><input type="radio" name="q3" value="b"> b) Erreur</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Elle renvoie 0</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Définis une fonction <code>bonjour</code> qui affiche "Bonjour tout le monde".</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Définis une fonction <code>carre</code> qui prend un nombre en paramètre et retourne son carré.</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Appelle la fonction <code>carre</code> avec l’argument 4 et affiche le résultat.</strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>4. Crée une fonction <code>saluer</code> avec un paramètre <code>nom</code> ayant "inconnu" par défaut, qui affiche "Bonjour" suivi du nom.</strong></p>
+    <textarea id="exo4" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Créateur de Python :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'a'
+    };
+    for(let i = 1; i <= total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+    let total = 4;
+    let results = [];
+
+    let exo1 = document.getElementById("exo1").value.replace(/\s/g, '');
+    if (/defbonjour\(\):print\("Bonjourtoutlemonde"\)/.test(exo1)) {
+      score++;
+      results.push("Exercice 1 : Correct");
+    } else {
+      results.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    let exo2 = document.getElementById("exo2").value.replace(/\s/g, '');
+    if (/defcarre\(.*\):.*return.*\1\*\*2/.test(exo2) || /defcarre\(.*\):.*return.*\1\*\*/.test(exo2) || /defcarre\(.*\):.*return.*\1\*\1/.test(exo2)) {
+      score++;
+      results.push("Exercice 2 : Correct");
+    } else {
+      results.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    let exo3 = document.getElementById("exo3").value.replace(/\s/g, '');
+    if (/print\(carre\(4\)\)/.test(exo3) || /resultat=carre\(4\);print\(resultat\)/.test(exo3) || /print\(.*carre\(4\).*\)/.test(exo3)) {
+      score++;
+      results.push("Exercice 3 : Correct");
+    } else {
+      results.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    let exo4 = document.getElementById("exo4").value.replace(/\s/g, '');
+    if (/defsaluer\(nom="inconnu"\):print\("Bonjour".*nom\)/.test(exo4) || /defsaluer\(nom="inconnu"\):print\("Bonjour",nom\)/.test(exo4)) {
+      score++;
+      results.push("Exercice 4 : Correct");
+    } else {
+      results.push("Exercice 4 : Incorrect ou incomplet");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / ${total}\n\n${results.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

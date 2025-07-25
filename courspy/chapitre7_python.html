@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 7 : Listes et tuples en Python</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #2980b9;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #2980b9;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2980b9;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1c5980;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 70px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 7 : Listes et tuples en Python</h1>
+  <p>Comprendre et utiliser les listes et tuples</p>
+</header>
+
+<section>
+  <h2>1. Les listes</h2>
+  <p>Une liste est une collection ordonnée, modifiable, d’éléments.</p>
+  <pre><code>ma_liste = [1, 2, 3, "quatre", 5]</code></pre>
+</section>
+
+<section>
+  <h2>2. Accéder aux éléments d'une liste</h2>
+  <pre><code>print(ma_liste[0])  # premier élément
+print(ma_liste[-1]) # dernier élément</code></pre>
+</section>
+
+<section>
+  <h2>3. Modifier une liste</h2>
+  <pre><code>ma_liste[1] = 10
+ma_liste.append(6)   # ajoute 6 à la fin
+ma_liste.remove(3)   # supprime la valeur 3</code></pre>
+</section>
+
+<section>
+  <h2>4. Les tuples</h2>
+  <p>Un tuple est similaire à une liste, mais il est <strong>immuable</strong> (non modifiable).</p>
+  <pre><code>mon_tuple = (1, 2, 3, "quatre")</code></pre>
+</section>
+
+<section>
+  <h2>5. Différences clés</h2>
+  <ul>
+    <li>Listes modifiables (ajout, suppression, modification)</li>
+    <li>Tuples immuables</li>
+    <li>Les tuples sont souvent utilisés pour des données fixes</li>
+  </ul>
+</section>
+
+<section>
+  <h2>6. Parcourir une liste ou un tuple</h2>
+  <pre><code>for element in ma_liste:
+    print(element)</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Comment déclare-t-on une liste ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) ma_liste = (1, 2, 3)</label><br>
+    <label><input type="radio" name="q1" value="b"> b) ma_liste = [1, 2, 3]</label><br>
+    <label><input type="radio" name="q1" value="c"> c) ma_liste = {1, 2, 3}</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quel type de collection est immuable ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) liste</label><br>
+    <label><input type="radio" name="q2" value="b"> b) tuple</label><br>
+    <label><input type="radio" name="q2" value="c"> c) dictionnaire</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Quelle méthode ajoute un élément à la fin d'une liste ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) add()</label><br>
+    <label><input type="radio" name="q3" value="b"> b) append()</label><br>
+    <label><input type="radio" name="q3" value="c"> c) insert()</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Crée une liste <code>fruits</code> avec les éléments : "pomme", "banane", "cerise".</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Ajoute "orange" à la liste <code>fruits</code>.</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Crée un tuple <code>coordonnees</code> contenant 10 et 20.</strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>4. Affiche le deuxième élément de la liste <code>fruits</code>.</strong></p>
+    <textarea id="exo4" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Créateur de Python :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'b'
+    };
+    for(let i = 1; i <= total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+    let total = 4;
+    let results = [];
+
+    let exo1 = document.getElementById("exo1").value.replace(/\s/g, '').toLowerCase();
+    if (/fruits=\["pomme","banane","cerise"\]/.test(exo1) || /fruits=\['pomme','banane','cerise'\]/.test(exo1)) {
+      score++;
+      results.push("Exercice 1 : Correct");
+    } else {
+      results.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    let exo2 = document.getElementById("exo2").value.replace(/\s/g, '').toLowerCase();
+    if (/fruits\.append\("orange"\)/.test(exo2) || /fruits\.append\('orange'\)/.test(exo2)) {
+      score++;
+      results.push("Exercice 2 : Correct");
+    } else {
+      results.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    let exo3 = document.getElementById("exo3").value.replace(/\s/g, '').toLowerCase();
+    if (/coordonnees=\(10,20\)/.test(exo3)) {
+      score++;
+      results.push("Exercice 3 : Correct");
+    } else {
+      results.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    let exo4 = document.getElementById("exo4").value.replace(/\s/g, '').toLowerCase();
+    if (/print\(fruits\[1\]\)/.test(exo4)) {
+      score++;
+      results.push("Exercice 4 : Correct");
+    } else {
+      results.push("Exercice 4 : Incorrect ou incomplet");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / ${total}\n\n${results.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

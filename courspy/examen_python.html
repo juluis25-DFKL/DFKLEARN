@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Examen Final - Python (DFKLearn)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .question {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    }
+    .result {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #219150;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Examen Final Python - DFKLearn</h1>
+<p>Répondez aux 40 QCM et aux 8 exercices ouverts. Vous avez 3 tentatives pour obtenir au moins 80 %.</p>
+
+<div id="qcm-section">
+  <h2>Partie 1 : QCM (40 questions × 2,5 pts)</h2>
+  <div id="qcm-container"></div>
+</div>
+
+<div id="open-section">
+  <h2>Partie 2 : Questions ouvertes (8 questions × 5 pts)</h2>
+  <div id="open-container"></div>
+</div>
+
+<button onclick="corrigerExamen()">Soumettre l'examen</button>
+<div class="result" id="resultatFinal"></div>
+
+<script>
+const qcmQuestions = [
+  { q: "1. Quelle est l'extension d'un fichier Python ?", r: ["A. .py", "B. .pt", "C. .java"], a: 0 },
+  { q: "2. Quel mot-clé permet de créer une fonction en Python ?", r: ["A. func", "B. function", "C. def"], a: 2 },
+  { q: "3. Que renvoie print(3 // 2) ?", r: ["A. 1.5", "B. 1", "C. 2"], a: 1 },
+  { q: "4. Quelle structure permet de répéter un bloc tant qu'une condition est vraie ?", r: ["A. for", "B. while", "C. if"], a: 1 },
+  { q: "5. Quelle méthode transforme une chaîne en majuscules ?", r: ["A. upper()", "B. maj()", "C. caps()"], a: 0 },
+  { q: "6. Quel type retourne input() ?", r: ["A. int", "B. str", "C. float"], a: 1 },
+  { q: "7. Comment déclarer une liste vide ?", r: ["A. []", "B. {}", "C. ()"], a: 0 },
+  { q: "8. Quel opérateur vérifie l’égalité ?", r: ["A. =", "B. ==", "C. !="], a: 1 },
+  { q: "9. Que fait len([1,2,3]) ?", r: ["A. 2", "B. 3", "C. 4"], a: 1 },
+  { q: "10. Quel mot permet de gérer les erreurs ?", r: ["A. try", "B. if", "C. error"], a: 0 },
+  { q: "11. Que retourne type(5) ?", r: ["A. 'int'", "B. int", "C. <class 'int'>"], a: 2 },
+  { q: "12. Que fait break dans une boucle ?", r: ["A. saute une itération", "B. arrête la boucle", "C. continue"], a: 1 },
+  { q: "13. Quel symbole utilise-t-on pour les commentaires ?", r: ["A. //", "B. #", "C. <!--"], a: 1 },
+  { q: "14. Quel est le résultat de 2 ** 3 ?", r: ["A. 5", "B. 6", "C. 8"], a: 2 },
+  { q: "15. Que fait la méthode append() ?", r: ["A. Supprime", "B. Ajoute", "C. Trie"], a: 1 },
+  { q: "16. Un tuple est :", r: ["A. Modifiable", "B. Non modifiable", "C. Ordonné mais modifiable"], a: 1 },
+  { q: "17. Que fait open('f.txt', 'r') ?", r: ["A. Écrit dans un fichier", "B. Lit un fichier", "C. Supprime un fichier"], a: 1 },
+  { q: "18. Que fait la méthode split() sur une chaîne ?", r: ["A. Fusionne", "B. Coupe", "C. Supprime"], a: 1 },
+  { q: "19. Un dictionnaire est composé de :", r: ["A. Paires clé-valeur", "B. Valeurs uniquement", "C. Clés uniquement"], a: 0 },
+  { q: "20. Que retourne len('Python') ?", r: ["A. 5", "B. 6", "C. 7"], a: 1 },
+  // Ajoute ici les 20 questions restantes...
+];
+
+const openQuestions = [
+  "1. Crée une fonction qui calcule la factorielle d’un nombre.",
+  "2. Écris une boucle qui affiche les nombres de 1 à 10.",
+  "3. Déclare une liste avec 5 éléments et affiche le 3e élément.",
+  "4. Demande à l'utilisateur d’entrer son nom, puis affiche une salutation.",
+  "5. Crée un dictionnaire avec 3 personnes et leur âge.",
+  "6. Ouvre un fichier texte en écriture et écris une phrase dedans.",
+  "7. Gère une division par zéro avec try / except.",
+  "8. Crée un tuple de 4 éléments et affiche le dernier."
+];
+
+let tentatives = 0;
+
+function chargerQuestions() {
+  const qcmContainer = document.getElementById("qcm-container");
+  qcmQuestions.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p><strong>${q.q}</strong></p>` +
+      q.r.map((rep, j) =>
+        `<input type="radio" name="q${i}" value="${j}"> ${rep}<br>`
+      ).join("");
+    qcmContainer.appendChild(div);
+  });
+
+  const openContainer = document.getElementById("open-container");
+  openQuestions.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.innerHTML = `<p><strong>${q}</strong></p><textarea placeholder="Ta réponse ici..."></textarea>`;
+    openContainer.appendChild(div);
+  });
+}
+
+function corrigerExamen() {
+  if (tentatives >= 3) {
+    document.getElementById("resultatFinal").innerText = "Tu as épuisé tes 3 tentatives. 😢";
+    return;
+  }
+
+  let score = 0;
+  qcmQuestions.forEach((q, i) => {
+    const rep = document.querySelector(`input[name="q${i}"]:checked`);
+    if (rep && parseInt(rep.value) === q.a) {
+      score += 2.5;
+    }
+  });
+
+  let total = score + (openQuestions.length * 5); // En supposant que l'élève a bien répondu aux questions ouvertes
+  let pourcentage = Math.round((total / 100) * 100);
+
+  tentatives++;
+
+  let message = `Tentative ${tentatives} - Score estimé : ${pourcentage}% (${total}/100)`;
+  message += (pourcentage >= 80) ? " ✅ Bravo ! Examen validé !" : " ❌ Échec. Essaie encore.";
+
+  document.getElementById("resultatFinal").innerText = message;
+}
+
+chargerQuestions();
+</script>
+
+</body>
+</html>

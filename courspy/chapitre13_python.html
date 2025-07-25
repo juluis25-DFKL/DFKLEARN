@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 13 : Jeu Snake avec Python et Pygame</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #f8f9fa;
+      padding: 20px;
+      color: #2d3436;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #0984e3;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f1f2f6;
+      padding: 12px;
+      border-left: 4px solid #0984e3;
+      overflow-x: auto;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    .quiz {
+      margin-top: 30px;
+    }
+    .quiz input[type="radio"] {
+      margin-right: 5px;
+    }
+    button {
+      background-color: #0984e3;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #0652dd;
+    }
+    #resultat {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .code-explication {
+      background: #dfe6e9;
+      padding: 12px;
+      border-left: 4px solid #0984e3;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-style: italic;
+      color: #2d3436;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 13 : Création d'un jeu Snake avec Python et Pygame</h1>
+  <p>Dans ce chapitre, tu vas apprendre à créer un jeu classique : le serpent (Snake) en Python, en utilisant la bibliothèque <code>pygame</code>. Ce projet pratique te permettra de comprendre les bases de la gestion d'événements, du dessin graphique, des boucles de jeu, et plus.</p>
+
+  <section>
+    <h2>1. Importer les bibliothèques nécessaires</h2>
+    <pre><code>import pygame
+import time
+import random</code></pre>
+    <div class="code-explication">
+      <p><strong>Explication :</strong>  
+      - <code>pygame</code> est une bibliothèque pour créer des jeux et gérer l'affichage graphique.  
+      - <code>time</code> est utile pour gérer le temps (ici on ne l'utilise pas directement mais il peut servir).  
+      - <code>random</code> sert à générer des nombres aléatoires, ici pour placer la nourriture du serpent.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Initialiser Pygame et configurer la fenêtre du jeu</h2>
+    <pre><code>pygame.init()
+
+largeur = 600
+hauteur = 400
+fenetre = pygame.display.set_mode((largeur, hauteur))
+pygame.display.set_caption("Jeu Snake - DFKLearn")</code></pre>
+    <div class="code-explication">
+      <p><strong>Explication :</strong>  
+      - <code>pygame.init()</code> initialise tous les modules Pygame nécessaires.  
+      - On définit la taille de la fenêtre du jeu (largeur x hauteur).  
+      - <code>pygame.display.set_mode()</code> crée la fenêtre d’affichage.  
+      - <code>pygame.display.set_caption()</code> met un titre à la fenêtre.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Définir les couleurs et variables de base</h2>
+    <pre><code>noir = (0, 0, 0)
+vert = (0, 255, 0)
+rouge = (255, 0, 0)
+blanc = (255, 255, 255)
+
+taille_bloc = 20
+horloge = pygame.time.Clock()
+vitesse_serpent = 15
+
+police = pygame.font.SysFont("arial", 25)</code></pre>
+    <div class="code-explication">
+      <p><strong>Explication :</strong>  
+      - Les couleurs sont définies en RGB (rouge, vert, bleu).  
+      - <code>taille_bloc</code> est la taille en pixels d'un segment du serpent.  
+      - <code>horloge</code> sert à contrôler la vitesse de rafraîchissement du jeu (FPS).  
+      - <code>vitesse_serpent</code> indique la vitesse du serpent (nombre de frames par seconde).  
+      - <code>police</code> est la police utilisée pour afficher le score.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Fonction pour afficher le score</h2>
+    <pre><code>def afficher_score(score):
+    texte = police.render("Score : " + str(score), True, blanc)
+    fenetre.blit(texte, [0, 0])</code></pre>
+    <div class="code-explication">
+      <p><strong>Explication :</strong>  
+      Cette fonction dessine le score en haut à gauche de la fenêtre, avec la couleur blanche.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. Fonction principale du jeu</h2>
+    <p>Voici la fonction principale qui contient la boucle du jeu :</p>
+    <pre><code>def jeu_snake():
+    game_over = False
+    game_close = False
+
+    x = largeur / 2
+    y = hauteur / 2
+
+    dx = 0
+    dy = 0
+
+    serpent = []
+    longueur_serpent = 1
+
+    nourriture_x = round(random.randrange(0, largeur - taille_bloc) / 20.0) * 20.0
+    nourriture_y = round(random.randrange(0, hauteur - taille_bloc) / 20.0) * 20.0
+
+    while not game_over:
+        while game_close:
+            fenetre.fill(noir)
+            message = police.render("Tu as perdu ! R = Recommencer | Q = Quitter", True, rouge)
+            fenetre.blit(message, [largeur / 6, hauteur / 3])
+            afficher_score(longueur_serpent - 1)
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        game_over = True
+                        game_close = False
+                    if event.key == pygame.K_r:
+                        jeu_snake()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game_over = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    dx = -taille_bloc
+                    dy = 0
+                elif event.key == pygame.K_RIGHT:
+                    dx = taille_bloc
+                    dy = 0
+                elif event.key == pygame.K_UP:
+                    dy = -taille_bloc
+                    dx = 0
+                elif event.key == pygame.K_DOWN:
+                    dy = taille_bloc
+                    dx = 0
+
+        if x >= largeur or x < 0 or y >= hauteur or y < 0:
+            game_close = True
+
+        x += dx
+        y += dy
+
+        fenetre.fill(noir)
+
+        pygame.draw.rect(fenetre, rouge, [nourriture_x, nourriture_y, taille_bloc, taille_bloc])
+
+        tete = [x, y]
+        serpent.append(tete)
+
+        if len(serpent) > longueur_serpent:
+            del serpent[0]
+
+        for bloc in serpent[:-1]:
+            if bloc == tete:
+                game_close = True
+
+        for bloc in serpent:
+            pygame.draw.rect(fenetre, vert, [bloc[0], bloc[1], taille_bloc, taille_bloc])
+
+        afficher_score(longueur_serpent - 1)
+
+        pygame.display.update()
+
+        if x == nourriture_x and y == nourriture_y:
+            nourriture_x = round(random.randrange(0, largeur - taille_bloc) / 20.0) * 20.0
+            nourriture_y = round(random.randrange(0, hauteur - taille_bloc) / 20.0) * 20.0
+            longueur_serpent += 1
+
+        horloge.tick(vitesse_serpent)
+
+    pygame.quit()
+    quit()
+
+jeu_snake()</code></pre>
+    <div class="code-explication">
+      <p><strong>Explication pas à pas :</strong></p>
+      <ul>
+        <li><strong>Variables de contrôle :</strong> <code>game_over</code> termine le jeu, <code>game_close</code> affiche l'écran de fin.</li>
+        <li><strong>Position et mouvement :</strong> Le serpent commence au centre, avec vitesse initiale nulle (<code>dx=dy=0</code>).</li>
+        <li><strong>Serpent :</strong> Une liste <code>serpent</code> stocke les coordonnées de chaque segment.</li>
+        <li><strong>Nourriture :</strong> Placée aléatoirement sur la grille (multiples de 20 pixels).</li>
+        <li><strong>Boucle principale :</strong>  
+          - Gestion des événements clavier (flèches pour déplacer le serpent).  
+          - Vérification collision avec les bords ou soi-même (fin de partie).  
+          - Mise à jour de la position du serpent et affichage.  
+          - Détection de la nourriture mangée : la taille du serpent augmente et la nourriture est repositionnée.</li>
+        <li><strong>Rafraîchissement et vitesse :</strong>  
+          - L'écran est nettoyé à chaque boucle.  
+          - Le serpent et la nourriture sont dessinés.  
+          - Le score est affiché.  
+          - La vitesse du jeu est contrôlée avec <code>horloge.tick()</code>.</li>
+        <li><strong>Fin :</strong> Le jeu s'arrête proprement avec <code>pygame.quit()</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="quiz">
+    <h2>🧠 Quiz - Teste tes connaissances</h2>
+
+    <div>
+      <p><strong>1. Quelle bibliothèque Python est utilisée pour créer des jeux graphiques ?</strong></p>
+      <label><input type="radio" name="q1" value="1"> pygame</label><br/>
+      <label><input type="radio" name="q1" value="0"> random</label><br/>
+      <label><input type="radio" name="q1" value="0"> time</label>
+    </div>
+
+    <div>
+      <p><strong>2. Que représente la variable <code>serpent</code> dans le code ?</strong></p>
+      <label><input type="radio" name="q2" value="0"> La vitesse du serpent</label><br/>
+      <label><input type="radio" name="q2" value="1"> La liste des positions des segments du serpent</label><br/>
+      <label><input type="radio" name="q2" value="0"> La taille de la fenêtre</label>
+    </div>
+
+    <div>
+      <p><strong>3. Que fait <code>pygame.draw.rect()</code> ?</strong></p>
+      <label><input type="radio" name="q3" value="1"> Dessine un rectangle à l'écran</label><br/>
+      <label><input type="radio" name="q3" value="0"> Lance une musique</label><br/>
+      <label><input type="radio" name="q3" value="0"> Termine le jeu</label>
+    </div>
+
+    <button onclick="corriger()">Soumettre mes réponses</button>
+    <div id="resultat"></div>
+  </section>
+
+  <script>
+    function corriger() {
+      let score = 0;
+      if (document.querySelector('input[name="q1"]:checked')?.value === "1") score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === "1") score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === "1") score++;
+
+      document.getElementById("resultat").innerText = "Score : " + score + " / 3";
+    }
+  </script>
+
+</body>
+</html>

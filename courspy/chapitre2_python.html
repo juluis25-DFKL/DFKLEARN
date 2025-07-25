@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python - Chapitre 2 : Variables et Types</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #27ae60;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 12px;
+      border-left: 5px solid #27ae60;
+      overflow-x: auto;
+    }
+    .quiz {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .question {
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #219150;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    .meta-info {
+      font-size: 0.9em;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 2 : Variables et Types de Données</h1>
+  <p>Définir et manipuler des informations en Python</p>
+</header>
+
+<section>
+  <h2>1. Qu'est-ce qu'une variable ?</h2>
+  <p>Une variable est comme une boîte dans laquelle on peut stocker des informations (valeurs).</p>
+  <p>Exemple :</p>
+  <pre><code>nom = "Alice"
+age = 25</code></pre>
+</section>
+
+<section>
+  <h2>2. Les principaux types de données</h2>
+  <ul>
+    <li><code>int</code> : nombres entiers (<code>10</code>, <code>-3</code>)</li>
+    <li><code>float</code> : nombres à virgule (<code>3.14</code>, <code>-2.5</code>)</li>
+    <li><code>str</code> : chaînes de caractères (<code>"Bonjour"</code>, <code>'Python'</code>)</li>
+    <li><code>bool</code> : booléens (<code>True</code>, <code>False</code>)</li>
+  </ul>
+  <pre><code>pi = 3.14       # float
+est_jeune = True  # bool
+message = "Salut"  # str</code></pre>
+</section>
+
+<section>
+  <h2>3. Afficher une variable</h2>
+  <p>On utilise la fonction <code>print()</code> :</p>
+  <pre><code>prenom = "Julien"
+print(prenom)</code></pre>
+</section>
+
+<section>
+  <h2>4. Concaténer (coller) des textes</h2>
+  <p>On peut utiliser <code>+</code> pour coller deux chaînes de caractères :</p>
+  <pre><code>prenom = "Marie"
+print("Bonjour " + prenom)</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle variable contient une chaîne de caractères ?</strong></p>
+    <input type="radio" name="q1" value="1"> A. nom = "Paul"<br>
+    <input type="radio" name="q1" value="0"> B. age = 42<br>
+    <input type="radio" name="q1" value="0"> C. actif = False<br>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quel type correspond à un nombre avec virgule ?</strong></p>
+    <input type="radio" name="q2" value="1"> A. float<br>
+    <input type="radio" name="q2" value="0"> B. int<br>
+    <input type="radio" name="q2" value="0"> C. str<br>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que fait <code>print("Salut " + nom)</code> ?</strong></p>
+    <input type="radio" name="q3" value="1"> A. Affiche le texte suivi de la variable nom<br>
+    <input type="radio" name="q3" value="0"> B. Calcule la somme<br>
+    <input type="radio" name="q3" value="0"> C. Donne une erreur<br>
+  </div>
+
+  <button onclick="corriger()">Vérifier mes réponses</button>
+  <div id="resultat" class="result"></div>
+</section>
+
+<div class="meta-info">
+  <p><strong>Créateur :</strong> Guido van Rossum</p>
+  <p><strong>Année de création :</strong> 1991</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corriger() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value == "1") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value == "1") score++;
+    document.getElementById("resultat").innerText = `Votre score : ${score} / 3`;
+  }
+</script>
+
+</body>
+</html>
