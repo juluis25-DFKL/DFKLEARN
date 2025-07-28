@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 2 - Variables et Types en C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .code {
+      background-color: #e8e8e8;
+      padding: 10px;
+      border-left: 5px solid #2980b9;
+      font-family: monospace;
+      white-space: pre;
+    }
+    .quiz, .exercice {
+      background: #ecf0f1;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #3498db;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #resultat {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 2 : Variables et Types en C</h1>
+
+  <h2>1. Déclaration de variables</h2>
+  <p>Une variable est un espace mémoire nommé utilisé pour stocker une valeur. En C, on doit toujours déclarer le type de la variable avant de l'utiliser.</p>
+  <div class="code">
+int age;
+float taille;
+char lettre;
+  </div>
+
+  <h2>2. Types de base</h2>
+  <ul>
+    <li><code>int</code> : entier (ex : 3, -12)</li>
+    <li><code>float</code> : réel à virgule flottante (ex : 1.5, 3.14)</li>
+    <li><code>char</code> : un caractère (ex : 'a', 'Z')</li>
+  </ul>
+
+  <h2>3. Affectation et initialisation</h2>
+  <p>On peut affecter une valeur à une variable avec <code>=</code>.</p>
+  <div class="code">
+int age = 25;
+float note = 18.5;
+char initiale = 'J';
+  </div>
+
+  <h2>4. Affichage et saisie</h2>
+  <div class="code">
+printf("Âge : %d", age);
+scanf("%d", &age); // saisie d'un entier
+  </div>
+
+  <h2>5. Quiz</h2>
+  <div class="quiz">
+    <form id="quiz">
+      <label>1. Quel type est utilisé pour stocker un nombre entier ?<br>
+        <input type="radio" name="q1" value="a"> float<br>
+        <input type="radio" name="q1" value="b"> int<br>
+        <input type="radio" name="q1" value="c"> char
+      </label>
+
+      <label>2. Que signifie le code suivant ? <code>char lettre = 'A';</code><br>
+        <input type="radio" name="q2" value="a"> On déclare une lettre appelée A<br>
+        <input type="radio" name="q2" value="b"> On déclare une variable de type char et on l'initialise à 'A'<br>
+        <input type="radio" name="q2" value="c"> Ce code est incorrect
+      </label>
+
+      <label>3. Quelle est la bonne écriture pour une variable float ?<br>
+        <input type="radio" name="q3" value="a"> float 3note = 17.5;<br>
+        <input type="radio" name="q3" value="b"> float note = 17.5;<br>
+        <input type="radio" name="q3" value="c"> float = 17.5 note;
+      </label>
+
+      <button type="button" onclick="corrigerQuiz()">Corriger</button>
+    </form>
+    <div id="resultat"></div>
+  </div>
+
+  <h2>6. Exercices pratiques</h2>
+  <div class="exercice">
+    <p><strong>Exercice 1 :</strong> Déclarez une variable <code>int age</code>, demandez à l'utilisateur de saisir son âge puis affichez-le.</p>
+    <p><strong>Exercice 2 :</strong> Déclarez une variable <code>float temperature</code>, affectez-lui la valeur 36.5 et affichez-la.</p>
+    <p><strong>Exercice 3 :</strong> Déclarez une variable <code>char genre</code> et affectez-lui la lettre 'M'.</p>
+  </div>
+
+  <script>
+    function corrigerQuiz() {
+      const reponses = {
+        q1: "b",
+        q2: "b",
+        q3: "b"
+      };
+      let score = 0;
+      const total = Object.keys(reponses).length;
+
+      for (let key in reponses) {
+        const val = document.querySelector(`input[name="${key}"]:checked`);
+        if (val && val.value === reponses[key]) {
+          score++;
+        }
+      }
+
+      const pourcentage = Math.round((score / total) * 100);
+      document.getElementById("resultat").innerText = `Votre score est de ${pourcentage} %`;
+    }
+  </script>
+
+</body>
+</html>

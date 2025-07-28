@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapitre 1 - Introduction au Langage C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0 auto;
+      max-width: 900px;
+      background-color: #f0f8ff;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #1d3557;
+    }
+    .code {
+      background-color: #f5f5f5;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    .quiz {
+      background-color: #fff3cd;
+      padding: 10px;
+      border-left: 5px solid #ffc107;
+      margin: 20px 0;
+    }
+    .exercice {
+      background-color: #d1ecf1;
+      padding: 10px;
+      border-left: 5px solid #0c5460;
+      margin: 20px 0;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chapitre 1 : Introduction au Langage C</h1>
+
+  <h2>Qu'est-ce que le langage C ?</h2>
+  <p>Le langage C est un langage de programmation impératif, structuré et très utilisé. Il a été créé au début des années 1970 par Dennis Ritchie. Il est connu pour sa rapidité d'exécution et sa proximité avec le matériel, ce qui le rend idéal pour le développement de systèmes d'exploitation, de logiciels embarqués, de pilotes, etc.</p>
+
+  <h2>Pourquoi apprendre le C ?</h2>
+  <ul>
+    <li>Base pour comprendre d'autres langages comme C++, Java, etc.</li>
+    <li>Exécution rapide</li>
+    <li>Utilisé pour la programmation système</li>
+    <li>Très répandu dans les systèmes embarqués</li>
+  </ul>
+
+  <h2>Premier programme en C</h2>
+  <p>Voici un exemple simple d’un programme en C qui affiche « Bonjour le monde » :</p>
+  <div class="code">
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Bonjour le monde !\n");
+    return 0;
+}
+  </div>
+
+  <h3>Explication :</h3>
+  <ul>
+    <li><code>#include &lt;stdio.h&gt;</code> : Inclut la bibliothèque standard d’entrée/sortie.</li>
+    <li><code>int main()</code> : Point d’entrée du programme.</li>
+    <li><code>printf()</code> : Fonction qui permet d’afficher du texte.</li>
+    <li><code>return 0;</code> : Indique que le programme s’est terminé avec succès.</li>
+  </ul>
+
+  <div class="quiz">
+    <h3>QCM - Vérifie tes connaissances</h3>
+    <form id="quiz">
+      <p>1. Quel est le rôle de <code>main()</code> en C ?</p>
+      <input type="radio" name="q1" value="a"> Une bibliothèque<br>
+      <input type="radio" name="q1" value="b"> Un type de variable<br>
+      <input type="radio" name="q1" value="c"> Le point de départ du programme<br>
+
+      <p>2. Quelle fonction est utilisée pour afficher un texte ?</p>
+      <input type="radio" name="q2" value="a"> scanf()<br>
+      <input type="radio" name="q2" value="b"> printf()<br>
+      <input type="radio" name="q2" value="c"> main()<br><br>
+
+      <button type="button" onclick="corriger()">Corriger</button>
+    </form>
+    <p id="resultat"></p>
+  </div>
+
+  <div class="exercice">
+    <h3>Exercice interactif</h3>
+    <p>Écris un programme C qui affiche ton prénom et ton âge.</p>
+    <p><strong>Exemple attendu :</strong></p>
+    <div class="code">
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Je m'appelle Julien et j'ai 20 ans.\n");
+    return 0;
+}
+    </div>
+  </div>
+
+  <script>
+    function corriger() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+      if (q1 && q1.value === 'c') score++;
+      if (q2 && q2.value === 'b') score++;
+
+      const resultat = document.getElementById("resultat");
+      resultat.innerHTML = `Score : ${score}/2`;
+      resultat.style.fontWeight = "bold";
+    }
+  </script>
+
+</body>
+</html>

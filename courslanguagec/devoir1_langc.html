@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Devoir - Langage C (Chapitres 1 à 3)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #f4f8fb;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #1d3557;
+    }
+    .question {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #ffffff;
+      border-left: 5px solid #1d3557;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    button {
+      background-color: #1d3557;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Devoir sur les Chapitres 1 à 3 - Langage C</h1>
+  <p><strong>Objectif :</strong> Obtenir au moins 60 % pour valider ce devoir. Vous avez 3 tentatives.</p>
+
+  <form id="quizForm">
+    <h2>Partie 1 : QCM (10 questions – 5 points chacune)</h2>
+
+    <div class="question">
+      <p>1. Quel symbole est utilisé pour terminer une instruction en langage C ?</p>
+      <label><input type="radio" name="q1" value="A"> .</label> A<br>
+      <label><input type="radio" name="q1" value="B"> ,</label> B<br>
+      <label><input type="radio" name="q1" value="C"> ;</label> C<br>
+      <label><input type="radio" name="q1" value="D"> :</label> D
+    </div>
+
+    <div class="question">
+      <p>2. Quel est le bon mot-clé pour déclarer une variable entière ?</p>
+      <label><input type="radio" name="q2" value="A"> float</label><br>
+      <label><input type="radio" name="q2" value="B"> int</label><br>
+      <label><input type="radio" name="q2" value="C"> char</label><br>
+      <label><input type="radio" name="q2" value="D"> string</label>
+    </div>
+
+    <div class="question">
+      <p>3. Quelle bibliothèque faut-il inclure pour utiliser printf ?</p>
+      <label><input type="radio" name="q3" value="A"> stdlib.h</label><br>
+      <label><input type="radio" name="q3" value="B"> conio.h</label><br>
+      <label><input type="radio" name="q3" value="C"> stdio.h</label><br>
+      <label><input type="radio" name="q3" value="D"> math.h</label>
+    </div>
+
+    <div class="question">
+      <p>4. Quelle instruction permet de lire une valeur au clavier ?</p>
+      <label><input type="radio" name="q4" value="A"> read()</label><br>
+      <label><input type="radio" name="q4" value="B"> input()</label><br>
+      <label><input type="radio" name="q4" value="C"> scanf()</label><br>
+      <label><input type="radio" name="q4" value="D"> cin</label>
+    </div>
+
+    <div class="question">
+      <p>5. Le type <code>float</code> sert à :</p>
+      <label><input type="radio" name="q5" value="A"> manipuler des chaînes</label><br>
+      <label><input type="radio" name="q5" value="B"> manipuler des entiers</label><br>
+      <label><input type="radio" name="q5" value="C"> manipuler des booléens</label><br>
+      <label><input type="radio" name="q5" value="D"> manipuler des réels</label>
+    </div>
+
+    <div class="question">
+      <p>6. Que signifie l'opérateur <code>==</code> en langage C ?</p>
+      <label><input type="radio" name="q6" value="A"> Affectation</label><br>
+      <label><input type="radio" name="q6" value="B"> Comparaison</label><br>
+      <label><input type="radio" name="q6" value="C"> Addition</label><br>
+      <label><input type="radio" name="q6" value="D"> Incrémentation</label>
+    </div>
+
+    <div class="question">
+      <p>7. Quel mot-clé commence une condition ?</p>
+      <label><input type="radio" name="q7" value="A"> while</label><br>
+      <label><input type="radio" name="q7" value="B"> switch</label><br>
+      <label><input type="radio" name="q7" value="C"> if</label><br>
+      <label><input type="radio" name="q7" value="D"> for</label>
+    </div>
+
+    <div class="question">
+      <p>8. Quelle syntaxe est correcte ?</p>
+      <label><input type="radio" name="q8" value="A"> if x==5:</label><br>
+      <label><input type="radio" name="q8" value="B"> if (x == 5) {}</label><br>
+      <label><input type="radio" name="q8" value="C"> if x = 5 then</label><br>
+      <label><input type="radio" name="q8" value="D"> if x == 5 then</label>
+    </div>
+
+    <div class="question">
+      <p>9. Quel type est utilisé pour une variable booléenne ?</p>
+      <label><input type="radio" name="q9" value="A"> int</label><br>
+      <label><input type="radio" name="q9" value="B"> float</label><br>
+      <label><input type="radio" name="q9" value="C"> char</label><br>
+      <label><input type="radio" name="q9" value="D"> _Bool</label>
+    </div>
+
+    <div class="question">
+      <p>10. Quel est le rôle de <code>return 0;</code> ?</p>
+      <label><input type="radio" name="q10" value="A"> Redémarrer le programme</label><br>
+      <label><input type="radio" name="q10" value="B"> Marquer la fin du programme</label><br>
+      <label><input type="radio" name="q10" value="C"> Retourner à l'utilisateur</label><br>
+      <label><input type="radio" name="q10" value="D"> Afficher une valeur</label>
+    </div>
+
+    <h2>Partie 2 : Exercices d'application</h2>
+
+    <div class="question">
+      <p><strong>Exercice 1 :</strong> Écrire un programme en C qui lit deux entiers et affiche leur somme.</p>
+      <textarea name="ex1" placeholder="Écris ici ton programme..."></textarea>
+    </div>
+
+    <div class="question">
+      <p><strong>Exercice 2 :</strong> Écrire un programme qui vérifie si un nombre est pair ou impair.</p>
+      <textarea name="ex2" placeholder="Écris ici ton programme..."></textarea>
+    </div>
+
+    <button type="button" onclick="corriger()">Corriger</button>
+    <p class="result" id="resultat"></p>
+  </form>
+
+  <script>
+    let tentatives = 0;
+
+    function corriger() {
+      if (tentatives >= 3) {
+        alert("Vous avez épuisé les 3 tentatives.");
+        return;
+      }
+
+      const bonnesReponses = {
+        q1: "C", q2: "B", q3: "C", q4: "C", q5: "D",
+        q6: "B", q7: "C", q8: "B", q9: "D", q10: "B"
+      };
+
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const question = document.querySelector(`input[name="q${i}"]:checked`);
+        if (question && question.value === bonnesReponses[`q${i}`]) {
+          score += 5;
+        }
+      }
+
+      tentatives++;
+      const resultat = document.getElementById("resultat");
+
+      if (score >= 60) {
+        resultat.innerHTML = `✅ Félicitations ! Vous avez obtenu ${score}%. Devoir validé.`;
+      } else {
+        const restants = 3 - tentatives;
+        resultat.innerHTML = `❌ Vous avez obtenu ${score}%. Il faut au moins 60%. Tentatives restantes : ${restants}.`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapitre 3 - Structures conditionnelles en C</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #f8f9fa;
+      color: #333;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #0d6efd;
+    }
+    pre {
+      background: #e9ecef;
+      padding: 10px;
+      border-left: 4px solid #0d6efd;
+      overflow-x: auto;
+    }
+    .quiz, .exercice {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .btn {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chapitre 3 : Structures conditionnelles en C</h1>
+
+  <h2>1. Structure conditionnelle simple : if</h2>
+  <pre>
+if (condition) {
+    // instructions si la condition est vraie
+}
+  </pre>
+
+  <h2>2. if...else</h2>
+  <pre>
+if (condition) {
+    // instructions si la condition est vraie
+} else {
+    // instructions si la condition est fausse
+}
+  </pre>
+
+  <h2>3. Conditions multiples : if...else if...else</h2>
+  <pre>
+if (condition1) {
+    // instructions
+} else if (condition2) {
+    // instructions
+} else {
+    // instructions
+}
+  </pre>
+
+  <h2>4. Opérateur ternaire (facultatif)</h2>
+  <pre>
+(condition) ? valeur_si_vrai : valeur_si_faux;
+  </pre>
+
+  <h2>5. Exercices</h2>
+
+  <div class="quiz">
+    <h3>QCM interactif</h3>
+    <form id="quizForm">
+      <p>1. Quelle est la bonne syntaxe pour tester si une variable x est supérieure à 10 ?</p>
+      <label><input type="radio" name="q1" value="a"> if x > 10</label><br>
+      <label><input type="radio" name="q1" value="b"> if (x > 10)</label><br>
+      <label><input type="radio" name="q1" value="c"> si (x > 10)</label><br><br>
+
+      <p>2. Quelle instruction s'exécute si la condition est fausse dans un if...else ?</p>
+      <label><input type="radio" name="q2" value="a"> Les instructions du if</label><br>
+      <label><input type="radio" name="q2" value="b"> Les instructions du else</label><br>
+      <label><input type="radio" name="q2" value="c"> Aucune</label><br><br>
+
+      <button type="button" class="btn" onclick="corrigerQuiz()">Corriger</button>
+    </form>
+    <p id="resultatQuiz"></p>
+  </div>
+
+  <script>
+    function corrigerQuiz() {
+      const rep1 = document.querySelector('input[name="q1"]:checked');
+      const rep2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+
+      if (rep1 && rep1.value === "b") score++;
+      if (rep2 && rep2.value === "b") score++;
+
+      document.getElementById("resultatQuiz").innerText =
+        "Votre score est : " + score + " / 2";
+    }
+  </script>
+
+  <div class="exercice">
+    <h3>Exercice d'application</h3>
+    <p>Écrire un programme en C qui demande à l’utilisateur de saisir un nombre entier et affiche s’il est pair ou impair.</p>
+
+    <p><strong>Solution :</strong></p>
+    <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int nombre;
+    printf("Entrez un nombre entier : ");
+    scanf("%d", &nombre);
+
+    if (nombre % 2 == 0) {
+        printf("Le nombre est pair.\n");
+    } else {
+        printf("Le nombre est impair.\n");
+    }
+
+    return 0;
+}
+    </pre>
+  </div>
+
+</body>
+</html>

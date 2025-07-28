@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Devoir sur les 5 chapitres de langage C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    textarea {
+      width: 100%;
+      height: 110px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+    .success {
+      color: green;
+    }
+    .fail {
+      color: red;
+    }
+    #attempts {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Devoir : Langage C - Chapitres 1 à 5</h1>
+  <p>Vous avez 3 tentatives pour obtenir au moins 60 % de réussite.</p>
+  <div id="attempts">Tentatives restantes : 3</div>
+</header>
+
+<section>
+  <h2>Exercice 1 (Chapitre 1 - Introduction)</h2>
+  <p>Écris une fonction principale <code>main</code> simple qui affiche <code>"Bonjour, C!"</code>.</p>
+  <textarea id="exo1" placeholder="Exemple : int main() { printf(&quot;Bonjour, C!&quot;); return 0; }"></textarea>
+</section>
+
+<section>
+  <h2>Exercice 2 (Chapitre 2 - Variables et types)</h2>
+  <p>Déclare deux variables entières <code>a</code> et <code>b</code>, affecte-leur 5 et 10, puis affiche leur somme.</p>
+  <textarea id="exo2" placeholder="Exemple : int a=5,b=10; printf(&quot;%d&quot;,a+b);"></textarea>
+</section>
+
+<section>
+  <h2>Exercice 3 (Chapitre 3 - Structures conditionnelles)</h2>
+  <p>Écris un programme qui demande un nombre et affiche s'il est pair ou impair.</p>
+  <textarea id="exo3" placeholder="Utilise scanf et if...else"></textarea>
+</section>
+
+<section>
+  <h2>Exercice 4 (Chapitre 4 - Boucles)</h2>
+  <p>Écris un programme qui affiche les nombres de 1 à 10 avec une boucle <code>for</code>.</p>
+  <textarea id="exo4" placeholder="Exemple : for(int i=1;i&lt;=10;i++) printf(&quot;%d\n&quot;,i);"></textarea>
+</section>
+
+<section>
+  <h2>Exercice 5 (Chapitre 5 - Tableaux)</h2>
+  <p>Déclare un tableau de 5 entiers, remplis-le avec 5 valeurs saisies, puis affiche-les.</p>
+  <textarea id="exo5" placeholder="Utilise scanf, un tableau et une boucle"></textarea>
+</section>
+
+<button onclick="corrigerDevoir()">Soumettre mes réponses</button>
+<div id="result" class="result"></div>
+
+<script>
+  let attemptsLeft = 3;
+
+  function corrigerDevoir() {
+    if(attemptsLeft <= 0) {
+      alert("Vous avez épuisé vos 3 tentatives.");
+      return;
+    }
+
+    const code1 = document.getElementById("exo1").value.toLowerCase().replace(/\s/g, '');
+    const code2 = document.getElementById("exo2").value.toLowerCase().replace(/\s/g, '');
+    const code3 = document.getElementById("exo3").value.toLowerCase().replace(/\s/g, '');
+    const code4 = document.getElementById("exo4").value.toLowerCase().replace(/\s/g, '');
+    const code5 = document.getElementById("exo5").value.toLowerCase().replace(/\s/g, '');
+
+    let score = 0;
+    let feedback = [];
+
+    // Exo1: main + printf "bonjour, c!"
+    const exo1Ok = /intmain\(\)\{.*printf\([^)]*bonjour,c!?[^)]*\);.*return0;.*\}/.test(code1);
+    if(exo1Ok) {
+      score++; feedback.push("Exercice 1 : Correct");
+    } else {
+      feedback.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    // Exo2: variables a=5,b=10 et affichage somme
+    const exo2Vars = /int.*a=5.*b=10/.test(code2);
+    const exo2Print = /printf\([^)]*%d[^)]*\)/.test(code2);
+    const exo2Sum = /a\+b/.test(code2);
+    if(exo2Vars && exo2Print && exo2Sum) {
+      score++; feedback.push("Exercice 2 : Correct");
+    } else {
+      feedback.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    // Exo3: scanf + if/else + test pair/impair
+    const exo3Scan = /scanf\([^)]*%d[^)]*\)/.test(code3);
+    const exo3If = /if.*%2.*==0/.test(code3);
+    const exo3Else = /else/.test(code3);
+    if(exo3Scan && exo3If && exo3Else) {
+      score++; feedback.push("Exercice 3 : Correct");
+    } else {
+      feedback.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    // Exo4: boucle for 1 à 10 + printf
+    const exo4For = /for\(.*i=1.*i.*<=10.*i\+\+.*\)/.test(code4);
+    const exo4Print = /printf\([^)]*%d[^)]*\)/.test(code4);
+    if(exo4For && exo4Print) {
+      score++; feedback.push("Exercice 4 : Correct");
+    } else {
+      feedback.push("Exercice 4 : Incorrect ou incomplet");
+    }
+
+    // Exo5: tableau de 5, scanf et affichage avec boucle
+    const exo5Tab = /int.*\[\s*5\s*\]/.test(code5);
+    const exo5Scan = /scanf\([^)]*%d[^)]*\)/.test(code5);
+    const exo5Loop = /(for|while)\([^)]*\)/.test(code5);
+    const exo5Print = /printf\([^)]*%d[^)]*\)/.test(code5);
+    if(exo5Tab && exo5Scan && exo5Loop && exo5Print) {
+      score++; feedback.push("Exercice 5 : Correct");
+    } else {
+      feedback.push("Exercice 5 : Incorrect ou incomplet");
+    }
+
+    const percent = (score / 5) * 100;
+    attemptsLeft--;
+    document.getElementById("attempts").innerText = `Tentatives restantes : ${attemptsLeft}`;
+
+    let resultText = `Votre score : ${score} / 5 (${percent} %)\n\n${feedback.join('\n')}\n\n`;
+
+    if (percent >= 60) {
+      resultText += "🎉 Félicitations, vous avez réussi le devoir !";
+      document.getElementById("result").className = "result success";
+    } else if(attemptsLeft > 0) {
+      resultText += "😕 Vous n'avez pas atteint 60 %. Réessayez.";
+      document.getElementById("result").className = "result fail";
+    } else {
+      resultText += "❌ Vous avez épuisé vos tentatives. Demandez de l'aide si besoin.";
+      document.getElementById("result").className = "result fail";
+    }
+
+    document.getElementById("result").innerText = resultText;
+  }
+</script>
+
+</body>
+</html>

@@ -17,6 +17,9 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
 }
+li::before {
+  content: "📘 ";
+}
 
 nav a {
   color: white;

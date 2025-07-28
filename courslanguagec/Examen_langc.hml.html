@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Examen final Langage C - 7 chapitres</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 0;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+    }
+    .question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1.1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    textarea {
+      width: 100%;
+      height: 90px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+    .success {
+      color: green;
+    }
+    .fail {
+      color: red;
+    }
+    .attempts {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Examen final Langage C - 7 chapitres</h1>
+  <p>Vous avez 2 tentatives pour réussir avec au moins 80% de score.</p>
+</header>
+
+<section>
+  <h2>🧠 Quiz - QCM (5 questions)</h2>
+
+  <div class="question">
+    <p><strong>1. Quel est le rôle d'un pointeur en C ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) Stocker une valeur</label><br>
+    <label><input type="radio" name="q1" value="b"> b) Stocker une adresse mémoire</label><br>
+    <label><input type="radio" name="q1" value="c"> c) Déclarer un tableau</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quelle boucle exécute son bloc au moins une fois ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) while</label><br>
+    <label><input type="radio" name="q2" value="b"> b) for</label><br>
+    <label><input type="radio" name="q2" value="c"> c) do...while</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Comment déclare-t-on un tableau d'entiers de taille 10 ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) int tab[10];</label><br>
+    <label><input type="radio" name="q3" value="b"> b) int tab();</label><br>
+    <label><input type="radio" name="q3" value="c"> c) int tab = 10;</label>
+  </div>
+
+  <div class="question">
+    <p><strong>4. Quel mot-clé permet de définir une fonction en C ?</strong></p>
+    <label><input type="radio" name="q4" value="a"> a) func</label><br>
+    <label><input type="radio" name="q4" value="b"> b) void</label><br>
+    <label><input type="radio" name="q4" value="c"> c) int (ou autre type)</label>
+  </div>
+
+  <div class="question">
+    <p><strong>5. Quelle fonction permet d'obtenir la longueur d'une chaîne de caractères ?</strong></p>
+    <label><input type="radio" name="q5" value="a"> a) strlen()</label><br>
+    <label><input type="radio" name="q5" value="b"> b) strlength()</label><br>
+    <label><input type="radio" name="q5" value="c"> c) string_length()</label>
+  </div>
+</section>
+
+<section>
+  <h2>✍️ Questions pratiques (saisir le code)</h2>
+
+  <div class="question">
+    <p><strong>6. Écrire une fonction C <code>max</code> qui prend deux entiers et retourne le plus grand.</strong></p>
+    <textarea id="exo6" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="question">
+    <p><strong>7. Déclarez un pointeur vers un entier et affectez-lui l'adresse d'une variable <code>int x = 10;</code>, puis affichez la valeur pointée.</strong></p>
+    <textarea id="exo7" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="question">
+    <p><strong>8. Écrivez un code C qui déclare un tableau <code>int tab[5]</code> et l'initialise avec les valeurs 1, 2, 3, 4, 5, puis affichez tous les éléments avec une boucle <code>for</code>.</strong></p>
+    <textarea id="exo8" placeholder="Écris ton code ici..."></textarea>
+  </div>
+</section>
+
+<button onclick="corrigerExamen()">Soumettre mes réponses</button>
+<div id="resultExam" class="result"></div>
+<div id="attemptInfo" class="attempts"></div>
+
+<script>
+  let attempts = 0;
+  const maxAttempts = 2;
+  const totalQuestions = 8;
+  const minScoreToPass = 0.8; // 80%
+
+  function corrigerExamen() {
+    if (attempts >= maxAttempts) {
+      document.getElementById('resultExam').innerHTML = '<span class="fail">Vous avez épuisé vos tentatives.</span>';
+      return;
+    }
+    attempts++;
+    
+    // Correction QCM
+    let scoreQCM = 0;
+    const correctQCM = {
+      q1: 'b',
+      q2: 'c',
+      q3: 'a',
+      q4: 'c',
+      q5: 'a'
+    };
+    for(let i=1; i<=5; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === correctQCM[`q${i}`]) scoreQCM++;
+    }
+    
+    // Correction exercices codes (vérification simple)
+    let scoreExo = 0;
+    let feedback = [];
+
+    // Exercice 6 : fonction max
+    let exo6 = document.getElementById("exo6").value.replace(/\s/g, '').toLowerCase();
+    if (/intmax\(int[a-z],int[a-z]\).*return\([a-z]>[a-z]\?[a-z]:[a-z]\)/.test(exo6) || 
+        /intmax\(int[a-z],int[a-z]\).*if\([a-z]>[a-z]\).*return[a-z];.*else.*return[a-z];/.test(exo6)) {
+      scoreExo++;
+      feedback.push("Exercice 6 : Correct");
+    } else {
+      feedback.push("Exercice 6 : Incorrect ou incomplet");
+    }
+
+    // Exercice 7 : pointeur + adresse + affichage
+    let exo7 = document.getElementById("exo7").value.replace(/\s/g, '').toLowerCase();
+    if (/intx=10;.*int\*ptr=&x;.*printf\(.*\*ptr.*\)/.test(exo7)) {
+      scoreExo++;
+      feedback.push("Exercice 7 : Correct");
+    } else {
+      feedback.push("Exercice 7 : Incorrect ou incomplet");
+    }
+
+    // Exercice 8 : tableau initialisation et parcours avec for
+    let exo8 = document.getElementById("exo8").value.replace(/\s/g, '').toLowerCase();
+    if (/inttab\[5\]={1,2,3,4,5};.*for\(inti=0;i<5;i\+\+\).*printf\(.*tab\[i\].*\)/.test(exo8)) {
+      scoreExo++;
+      feedback.push("Exercice 8 : Correct");
+    } else {
+      feedback.push("Exercice 8 : Incorrect ou incomplet");
+    }
+    
+    let totalScore = scoreQCM + scoreExo;
+    let percentScore = totalScore / totalQuestions;
+
+    let resultText = `Score total : ${totalScore} / ${totalQuestions} (${(percentScore*100).toFixed(1)}%)\n\n` + feedback.join('\n');
+
+    if (percentScore >= minScoreToPass) {
+      resultText += '\n\n✅ Félicitations, vous avez réussi l\'examen !';
+      document.getElementById('resultExam').innerHTML = `<span class="success">${resultText}</span>`;
+    } else {
+      let attemptsLeft = maxAttempts - attempts;
+      resultText += `\n\n❌ Échec. Il vous reste ${attemptsLeft} tentative(s).`;
+      document.getElementById('resultExam').innerHTML = `<span class="fail">${resultText}</span>`;
+    }
+
+    document.getElementById('attemptInfo').innerText = `Tentative ${attempts} sur ${maxAttempts}.`;
+  }
+</script>
+
+</body>
+</html>

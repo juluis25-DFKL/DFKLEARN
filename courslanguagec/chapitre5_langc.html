@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 5 : Les tableaux en langage C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #27ae60;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 130px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 5 : Les tableaux en langage C</h1>
+  <p>Déclaration, remplissage et parcours avec boucles</p>
+</header>
+
+<section>
+  <h2>1. Déclaration et remplissage d'un tableau</h2>
+  <p>Un tableau est une collection de variables du même type, accessibles par un indice.</p>
+  <pre><code>int tab[5];  // déclaration d'un tableau de 5 entiers
+
+// Remplissage du tableau
+tab[0] = 10;
+tab[1] = 20;
+tab[2] = 30;
+tab[3] = 40;
+tab[4] = 50;
+</code></pre>
+  <p>On peut aussi déclarer et initialiser en même temps :</p>
+  <pre><code>int tab[5] = {10, 20, 30, 40, 50};</code></pre>
+</section>
+
+<section>
+  <h2>2. Parcours du tableau avec une boucle <code>for</code></h2>
+  <p>Pour accéder à tous les éléments, on utilise une boucle <code>for</code> :</p>
+  <pre><code>for (int i = 0; i < 5; i++) {
+    printf("tab[%d] = %d\n", i, tab[i]);
+}</code></pre>
+  <p><strong>Explications :</strong></p>
+  <ul>
+    <li><code>i = 0</code> : on commence à l’indice 0 (premier élément)</li>
+    <li><code>i &lt; 5</code> : on continue tant que <code>i</code> est inférieur à la taille du tableau</li>
+    <li><code>i++</code> : on augmente <code>i</code> de 1 à chaque tour</li>
+    <li><code>tab[i]</code> : on accède à l’élément à l’indice <code>i</code></li>
+  </ul>
+</section>
+
+<section>
+  <h2>3. Parcours avec <code>while</code> et <code>do...while</code></h2>
+  <pre><code>int i = 0;
+while (i < 5) {
+    printf("%d\n", tab[i]);
+    i++;
+}
+
+i = 0;
+do {
+    printf("%d\n", tab[i]);
+    i++;
+} while (i < 5);</code></pre>
+  <p>Les deux font la même chose que la boucle <code>for</code>, mais avec des syntaxes différentes.</p>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Comment déclare-t-on un tableau de 10 entiers en C ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) int tab[10];</label><br>
+    <label><input type="radio" name="q1" value="b"> b) tab = int[10];</label><br>
+    <label><input type="radio" name="q1" value="c"> c) int tab = 10;</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quelle boucle est la plus adaptée pour parcourir un tableau ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) for</label><br>
+    <label><input type="radio" name="q2" value="b"> b) if</label><br>
+    <label><input type="radio" name="q2" value="c"> c) switch</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que fait la ligne <code>printf("tab[%d] = %d\n", i, tab[i]);</code> ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) Affiche l'indice et la valeur de l'élément du tableau</label><br>
+    <label><input type="radio" name="q3" value="b"> b) Modifie la valeur du tableau</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Crée un nouveau tableau</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercice d'application</h2>
+  <p>Écris un programme C qui :</p>
+  <ul>
+    <li>Déclare un tableau de 5 entiers.</li>
+    <li>Remplit ce tableau avec 5 nombres saisis par l'utilisateur.</li>
+    <li>Parcourt ce tableau avec une boucle <code>for</code> pour afficher tous les éléments.</li>
+  </ul>
+  <textarea id="exo" placeholder="Écris ton code ici..."></textarea>
+  <button onclick="corrigerExercice()">Soumettre mon code</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Langage C créé par :</strong> Dennis Ritchie</p>
+  <p><strong>Année de création :</strong> 1972</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'a',
+      q2: 'a',
+      q3: 'a'
+    };
+    for(let i = 1; i <= total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercice() {
+    const code = document.getElementById("exo").value.toLowerCase().replace(/\s/g, '');
+    let result = [];
+    let score = 0;
+
+    // Vérifier déclaration tableau de 5 entiers
+    const decl = /inttab\[5\]/.test(code);
+
+    // Vérifier saisie utilisateur dans une boucle (scanf)
+    const scan = /scanf\([^)]*%d[^)]*\)/.test(code);
+
+    // Vérifier boucle for avec printf pour afficher tab[i]
+    const boucle = /for\(.*i=0.*i<5.*i\+\+.*\)/.test(code);
+    const printTab = /printf\(.*tab\[i\].*\)/.test(code);
+
+    if(decl) {
+      score++;
+      result.push("Déclaration du tableau : Correct");
+    } else {
+      result.push("Déclaration du tableau : Incorrect ou manquante");
+    }
+    if(scan) {
+      score++;
+      result.push("Saisie avec scanf : Correct");
+    } else {
+      result.push("Saisie avec scanf : Incorrect ou manquante");
+    }
+    if(boucle && printTab) {
+      score++;
+      result.push("Parcours et affichage avec boucle for : Correct");
+    } else {
+      result.push("Parcours et affichage avec boucle for : Incorrect ou manquant");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / 3\n\n${result.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

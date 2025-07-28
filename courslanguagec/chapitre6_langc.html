@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 6 : Fonctions et sous-algorithmes en C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #27ae60;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 90px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 6 : Fonctions et sous-algorithmes en C</h1>
+  <p>Définition, appel, passage de paramètres</p>
+</header>
+
+<section>
+  <h2>1. Qu'est-ce qu'une fonction ?</h2>
+  <p>Une fonction est un bloc de code nommé qui réalise une tâche spécifique. Elle permet de structurer le programme, de réutiliser du code et de faciliter la maintenance.</p>
+</section>
+
+<section>
+  <h2>2. Déclaration et définition d'une fonction</h2>
+  <p>Exemple d'une fonction qui calcule la somme de deux entiers :</p>
+  <pre><code>int somme(int a, int b) {
+    return a + b;
+}</code></pre>
+  <p>Ici, <code>int</code> est le type de retour, <code>somme</code> est le nom de la fonction, et <code>int a, int b</code> sont les paramètres.</p>
+</section>
+
+<section>
+  <h2>3. Appeler une fonction</h2>
+  <pre><code>int resultat = somme(5, 7);
+printf("Résultat = %d\n", resultat);</code></pre>
+  <p>La fonction <code>somme</code> est appelée avec les arguments 5 et 7.</p>
+</section>
+
+<section>
+  <h2>4. Passage de paramètres</h2>
+  <p>Les paramètres peuvent être passés par valeur (copie des données). La fonction ne modifie pas les variables originales.</p>
+</section>
+
+<section>
+  <h2>5. Fonctions sans valeur de retour (void)</h2>
+  <pre><code>void afficherMessage() {
+    printf("Bonjour !\n");
+}</code></pre>
+  <p>Cette fonction ne retourne rien, elle affiche juste un message.</p>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quel est le type de retour d'une fonction qui ne retourne rien ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) int</label><br>
+    <label><input type="radio" name="q1" value="b"> b) void</label><br>
+    <label><input type="radio" name="q1" value="c"> c) float</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quelle est la syntaxe correcte pour déclarer une fonction qui prend deux entiers en paramètres ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) int fonction(int a, int b);</label><br>
+    <label><input type="radio" name="q2" value="b"> b) fonction(int a, int b) int;</label><br>
+    <label><input type="radio" name="q2" value="c"> c) int fonction(a, b);</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Quel mot-clé sert à retourner une valeur dans une fonction ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) return</label><br>
+    <label><input type="radio" name="q3" value="b"> b) break</label><br>
+    <label><input type="radio" name="q3" value="c"> c) exit</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Définis une fonction <code>carre</code> qui prend un entier et retourne son carré.</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Écris une fonction <code>afficherBienvenue</code> sans paramètre qui affiche "Bienvenue en C!".</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Dans le <code>main</code>, appelle la fonction <code>carre</code> avec 4 et affiche le résultat.</strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Langage C créé par :</strong> Dennis Ritchie</p>
+  <p><strong>Année de création :</strong> 1972</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'b',
+      q2: 'a',
+      q3: 'a'
+    };
+    for(let i=1; i<=total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+    const total = 3;
+    let feedback = [];
+
+    let exo1 = document.getElementById("exo1").value.replace(/\s/g, '').toLowerCase();
+    // Vérifie fonction carre(int x) { return x*x; } (forme simple)
+    if (/intcarre\(int.*\)\{return.*\*.*\}/.test(exo1)) {
+      score++; feedback.push("Exercice 1 : Correct");
+    } else {
+      feedback.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    let exo2 = document.getElementById("exo2").value.replace(/\s/g, '').toLowerCase();
+    // void afficherBienvenue() { printf("Bienvenue en c!"); }
+    if (/voidafficherbienvenue\(\)\{printf\([^)]*bienvenueen[cC]!?[^)]*\);?\}/.test(exo2)) {
+      score++; feedback.push("Exercice 2 : Correct");
+    } else {
+      feedback.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    let exo3 = document.getElementById("exo3").value.replace(/\s/g, '').toLowerCase();
+    // main() appelle carre(4) et affiche printf("%d", carre(4));
+    if (/intmain\(\).*\{.*printf\([^)]*carre\(4\)[^)]*\);?.*\}/.test(exo3)) {
+      score++; feedback.push("Exercice 3 : Correct");
+    } else {
+      feedback.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / ${total}\n\n${feedback.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

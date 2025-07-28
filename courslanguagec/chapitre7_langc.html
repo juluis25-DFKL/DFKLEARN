@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapitre 7 : Pointeurs et chaînes de caractères en C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #f8f8f8;
+      border-left: 5px solid #27ae60;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e8449;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 90px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 7 : Pointeurs et chaînes de caractères en C</h1>
+  <p>Comprendre les pointeurs, opérateurs <code>*</code> et <code>&</code>, et manipulation des chaînes</p>
+</header>
+
+<section>
+  <h2>1. Qu'est-ce qu'un pointeur ?</h2>
+  <p>Un pointeur est une variable qui stocke l'adresse mémoire d'une autre variable.</p>
+  <pre><code>int a = 10;
+int *p = &a;  // p contient l'adresse de a</code></pre>
+</section>
+
+<section>
+  <h2>2. Opérateur &amp; et *</h2>
+  <ul>
+    <li><code>&</code> : adresse d'une variable</li>
+    <li><code>*</code> : déréférencement, accéder à la valeur pointée</li>
+  </ul>
+  <pre><code>printf("Adresse de a : %p\n", &a);
+printf("Valeur pointée par p : %d\n", *p);</code></pre>
+</section>
+
+<section>
+  <h2>3. Chaînes de caractères en C</h2>
+  <p>Une chaîne est un tableau de caractères terminé par <code>'\0'</code>.</p>
+  <pre><code>char str[] = "Bonjour";
+printf("%s\n", str);</code></pre>
+</section>
+
+<section>
+  <h2>4. Pointeur vers une chaîne</h2>
+  <pre><code>char *ptr = str;
+printf("%c\n", *ptr);  // affiche 'B'
+printf("%s\n", ptr);   // affiche "Bonjour"</code></pre>
+</section>
+
+<section>
+  <h2>5. Fonctions utiles pour chaînes (bibliothèque <code>string.h</code>)</h2>
+  <ul>
+    <li><code>strlen(str)</code> : longueur de la chaîne</li>
+    <li><code>strcpy(dest, src)</code> : copie</li>
+    <li><code>strcmp(str1, str2)</code> : comparaison</li>
+  </ul>
+  <pre><code>#include &lt;string.h&gt;
+
+printf("Longueur : %lu\n", strlen(str));</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Que stocke un pointeur ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) Une valeur entière</label><br>
+    <label><input type="radio" name="q1" value="b"> b) Une adresse mémoire</label><br>
+    <label><input type="radio" name="q1" value="c"> c) Une chaîne de caractères</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Quel opérateur permet d'obtenir l'adresse d'une variable ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) *</label><br>
+    <label><input type="radio" name="q2" value="b"> b) &amp;</label><br>
+    <label><input type="radio" name="q2" value="c"> c) -></label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que fait l'opérateur <code>*</code> devant un pointeur ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) Donne l'adresse</label><br>
+    <label><input type="radio" name="q3" value="b"> b) Donne la valeur pointée</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Modifie la variable</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercices pratiques</h2>
+
+  <div class="exo-question">
+    <p><strong>1. Déclare un entier <code>val</code> égal à 42, un pointeur <code>ptr</code> vers <code>val</code>, puis affiche la valeur pointée par <code>ptr</code>.</strong></p>
+    <textarea id="exo1" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>2. Écris une fonction <code>afficherChaine</code> qui prend un <code>char*</code> et affiche la chaîne.</strong></p>
+    <textarea id="exo2" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <div class="exo-question">
+    <p><strong>3. Utilise la fonction <code>strlen</code> pour afficher la longueur d'une chaîne <code>char str[] = "DFKLearn";</code></strong></p>
+    <textarea id="exo3" placeholder="Écris ton code ici..."></textarea>
+  </div>
+
+  <button onclick="corrigerExercices()">Soumettre mes réponses</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Langage C créé par :</strong> Dennis Ritchie</p>
+  <p><strong>Année de création :</strong> 1972</p>
+  <p><strong>Ce cours a été adapté pour DFKLearn.</strong></p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const total = 3;
+    const reponses = {
+      q1: 'b',
+      q2: 'b',
+      q3: 'b'
+    };
+    for(let i=1; i<=total; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    document.getElementById("resultQuiz").innerText = `Votre score : ${score} / ${total}`;
+  }
+
+  function corrigerExercices() {
+    let score = 0;
+    const total = 3;
+    let feedback = [];
+
+    let exo1 = document.getElementById("exo1").value.replace(/\s/g, '').toLowerCase();
+    // Exemple attendu: int val=42; int *ptr=&val; printf("%d",*ptr);
+    if (/intval\s*=\s*42;.*int\*ptr\s*=\s*&val;.*printf\s*\([^)]*\*ptr[^)]*\);?/.test(exo1)) {
+      score++; feedback.push("Exercice 1 : Correct");
+    } else {
+      feedback.push("Exercice 1 : Incorrect ou incomplet");
+    }
+
+    let exo2 = document.getElementById("exo2").value.replace(/\s/g, '').toLowerCase();
+    // Exemple attendu: void afficherChaine(char*chaine){printf("%s",chaine);}
+    if (/voidafficherchaine\(char\*.*\)\{printf\(.*chaine.*\);?\}/.test(exo2)) {
+      score++; feedback.push("Exercice 2 : Correct");
+    } else {
+      feedback.push("Exercice 2 : Incorrect ou incomplet");
+    }
+
+    let exo3 = document.getElementById("exo3").value.replace(/\s/g, '').toLowerCase();
+    // Exemple attendu: char str[]="dfklearn"; printf("%lu",strlen(str));
+    if (/charstr\[\]=".*";.*printf\(.*strlen\(str\).*;?\)/.test(exo3)) {
+      score++; feedback.push("Exercice 3 : Correct");
+    } else {
+      feedback.push("Exercice 3 : Incorrect ou incomplet");
+    }
+
+    document.getElementById("resultExo").innerText = `Votre score : ${score} / ${total}\n\n${feedback.join('\n')}`;
+  }
+</script>
+
+</body>
+</html>

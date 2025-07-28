@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chapitre 4 - Les boucles en C</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    header {
+      background: #2980b9;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    pre {
+      background: #ecf0f1;
+      border-left: 5px solid #2980b9;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 0 5px 5px 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    .quiz, .exercice {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+    .question, .exo-question {
+      margin-bottom: 18px;
+    }
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2980b9;
+      border: none;
+      color: white;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1c5980;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+      white-space: pre-line;
+    }
+    .wrong {
+      color: red;
+    }
+    textarea {
+      width: 100%;
+      height: 90px;
+      font-family: monospace;
+      font-size: 0.95em;
+      margin-top: 5px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Chapitre 4 : Les boucles en C</h1>
+  <p>Apprendre à utiliser <code>while</code>, <code>for</code> et <code>do...while</code></p>
+</header>
+
+<section>
+  <h2>1. La boucle while</h2>
+  <p>Exécute un bloc tant que la condition est vraie.</p>
+  <pre><code>int i = 0;
+while (i &lt; 5) {
+    printf("%d\n", i);
+    i++;
+}</code></pre>
+</section>
+
+<section>
+  <h2>2. La boucle for</h2>
+  <p>Boucle utilisée quand on connaît le nombre d'itérations.</p>
+  <pre><code>for (int i = 0; i &lt; 5; i++) {
+    printf("%d\n", i);
+}</code></pre>
+</section>
+
+<section>
+  <h2>3. La boucle do...while</h2>
+  <p>Exécute le bloc au moins une fois avant de tester la condition.</p>
+  <pre><code>int i = 0;
+do {
+    printf("%d\n", i);
+    i++;
+} while (i &lt; 5);</code></pre>
+</section>
+
+<section class="quiz">
+  <h2>🧠 Quiz - QCM</h2>
+
+  <div class="question">
+    <p><strong>1. Quelle boucle s'exécute toujours au moins une fois ?</strong></p>
+    <label><input type="radio" name="q1" value="a"> a) while</label><br>
+    <label><input type="radio" name="q1" value="b"> b) for</label><br>
+    <label><input type="radio" name="q1" value="c"> c) do...while</label>
+  </div>
+
+  <div class="question">
+    <p><strong>2. Laquelle de ces boucles convient pour un nombre connu d'itérations ?</strong></p>
+    <label><input type="radio" name="q2" value="a"> a) while</label><br>
+    <label><input type="radio" name="q2" value="b"> b) do...while</label><br>
+    <label><input type="radio" name="q2" value="c"> c) for</label>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Que fait l'instruction <code>i++</code> ?</strong></p>
+    <label><input type="radio" name="q3" value="a"> a) Décrémente i</label><br>
+    <label><input type="radio" name="q3" value="b"> b) Incrémente i</label><br>
+    <label><input type="radio" name="q3" value="c"> c) Met i à 0</label>
+  </div>
+
+  <button onclick="corrigerQuiz()">Vérifier mes réponses</button>
+  <div id="resultQuiz" class="result"></div>
+</section>
+
+<section class="exercice">
+  <h2>✍️ Exercice d'application</h2>
+  <p>Écrivez un programme en C qui demande un nombre N à l'utilisateur puis affiche les nombres de 1 à N.</p>
+  <textarea id="exo1" placeholder="Écrivez votre code ici..."></textarea>
+  <button onclick="corrigerExercice()">Soumettre ma réponse</button>
+  <div id="resultExo" class="result"></div>
+</section>
+
+<div style="margin-top:30px; font-size:0.9em; color:#555;">
+  <p><strong>Langage C - Chapitre 4</strong></p>
+  <p>Ce cours a été adapté pour DFKLearn.</p>
+</div>
+
+<script>
+  function corrigerQuiz() {
+    let score = 0;
+    const reponses = {
+      q1: "c",
+      q2: "c",
+      q3: "b"
+    };
+    for(let i=1; i<=3; i++) {
+      const q = document.querySelector(`input[name="q${i}"]:checked`);
+      if(q && q.value === reponses[`q${i}`]) score++;
+    }
+    const result = document.getElementById("resultQuiz");
+    result.textContent = `Votre score : ${score} / 3`;
+    result.style.color = score === 3 ? "green" : "red";
+  }
+
+  function corrigerExercice() {
+    const code = document.getElementById("exo1").value.toLowerCase().replace(/\s/g, '');
+    const result = document.getElementById("resultExo");
+
+    // Vérification simple : doit contenir printf, scanf, for ou while, et variable N ou n
+    const regexs = [
+      /printf\(.*\\n.*\)/,
+      /scanf\(.*&n.*\)/,
+      /(for|while)\(.*\)/,
+      /n/
+    ];
+
+    const ok = regexs.every(rgx => rgx.test(code));
+    if(ok) {
+      result.textContent = "Exercice correct ! Bien joué.";
+      result.style.color = "green";
+    } else {
+      result.textContent = "Exercice incorrect ou incomplet, essayez encore.";
+      result.style.color = "red";
+    }
+  }
+</script>
+
+</body>
+</html>
