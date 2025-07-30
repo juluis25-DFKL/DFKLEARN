@@ -6,6 +6,32 @@
   <title>DFKLearn - Accueil</title>
   <link rel="stylesheet" href="DFK.css">
 </head>
+<script type="module">
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+    // Ta configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyBc_pVL3FwJfVoBmjWrrZPqC222FUe1pkU",
+      authDomain: "dfklearn.firebaseapp.com",
+      projectId: "dfklearn",
+      storageBucket: "dfklearn.appspot.com",
+      messagingSenderId: "497465193310",
+      appId: "1:497465193310:web:4120af9113e04df40dd5cf",
+      measurementId: "G-47ZGJV5LFY"
+    };
+
+    try {
+      // Connexion
+      const app = initializeApp(firebaseConfig);
+
+      // Afficher un message sur la page
+      document.getElementById("status").textContent = "✅ Firebase connecté ✔";
+    } catch (e) {
+      // Afficher l'erreur sur la page
+      document.getElementById("status").textContent = "❌ Erreur Firebase : " + e.message;
+    }
+</script>
+<link rel="icon" href="data:,">
 <body>
 
   <header>
