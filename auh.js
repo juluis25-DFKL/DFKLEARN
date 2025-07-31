@@ -67,7 +67,8 @@
       alert(`${mode === 'signup' ? 'Inscription' : 'Connexion'} (démo): ${data.email}`);
       closeModal();
       authForm.reset();
-      window.location.href ='index.html'
+      window.location.href ='auh.html'
+      window.location.href ='DFKLEARN.html'
     });
 
     // Accessibilité: escape pour fermer

@@ -1,42 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DFKLearn - Accueil</title>
-  <link rel="stylesheet" href="DFK.css">
-  <a href="auth.html"></a>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DFKLearn – Accueil</title>
+<link rel="stylesheet" href="auth.css">
 </head>
 
 <body>
-
   <header>
-    <h1>Bienvenue sur DFKLearn</h1>
-    <p>Apprendre les bases des langages informatiques pour la première année</p>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>DFKLearn</span>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-secondary" id="loginBtn">Se connecter</button>
+        <button class="btn btn-primary" id="signupBtn">Commencer</button>
+      </div>
+    </div>
   </header>
 
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="coursalgo/Algorithme.html">Algorithme</a>
-    <a href="courslanguagec/langage_c.html">Langage C</a>
-    <a href="courshtml/html.html">HTML</a>
-    <a href="courscss/css.html">CSS</a>
-    <a href="coursjavascript/javascript.html">JavaScript</a>
-    <a href="courspy/python.html">Python</a>
-    
-  </nav>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Apprends plus vite avec des cours interactifs et des quiz</h1>
+        <p class="lead">
+          Rejoins DFKLearn : cours, exercices et examens avec correction instantanée.
+          Commence gratuitement—inscris-toi en 30 secondes.
+        </p>
+        <div class="cta">
+          <button class="btn btn-primary" id="ctaStart">Commencer gratuitement</button>
+          <button class="btn btn-secondary" id="ctaLogin">J’ai déjà un compte</button>
+        </div>
+        <div style="margin-top:14px; font-size:14px; color:var(--muted)">
+          En t’inscrivant, tu acceptes nos <a href="#" class="link" aria-label="Conditions d’utilisation">Conditions</a>.
+        </div>
+      </div>
 
-  <main>
-    <section class="card">
-      <h2>🎓 Cours pour débutants</h2>
-      <p>Des cours simples pour bien commencer en informatique.</p>
+      <div class="card">
+        <div class="mock" aria-hidden="true">
+          <div class="row">
+            <div class="chip" style="max-width:120px"></div>
+            <div class="chip"></div>
+            <div class="chip" style="flex:0.6"></div>
+          </div>
+          <div class="pane"></div>
+        </div>
+        <div style="margin-top:12px; color:var(--muted); font-size:14px">
+          Aperçu : tableau de bord étudiant (exercices, progrès, examens).
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
-    © 2025 DFKLearn - Tous droits réservés
+    © <span id="year"></span> DFKLearn — Tous droits réservés
   </footer>
 
-  <script src="DF.js"></script>
+  <!-- Modals -->
+  <div class="overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal" role="document">
+      <h2 id="authTitle">Créer un compte</h2>
+      <p id="authSubtitle">Inscris-toi pour commencer.</p>
+
+      <form id="authForm">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input class="input" type="email" id="email" name="email" placeholder="ex: nom@email.com" required />
+        </div>
+        <div class="field" id="nameField" style="display:none">
+          <label for="name">Nom complet</label>
+          <input class="input" type="text" id="name" name="name" placeholder="Ton nom" />
+        </div>
+        <div class="field">
+          <label for="password">Mot de passe</label>
+          <input class="input" type="password" id="password" name="password" placeholder="••••••••" required minlength="6" />
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" id="cancelModal">Annuler</button>
+          <button type="submit" class="btn btn-primary" id="submitAuth">Continuer</button>
+        </div>
+      </form>
+
+      <div style="margin-top:10px; font-size:14px; color:var(--muted)">
+        <span id="switchText">Déjà inscrit ?</span>
+        <button class="link" id="switchMode">Se connecter</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="auh.js"></script>
 </body>
-</html>
+</html>auth.html
